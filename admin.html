@@ -520,7 +520,8 @@
       justify-content: center;
       padding: 20px;
     }
-    .modal-backdrop.open {
+    .modal-backdrop.open,
+    .modal-backdrop.active {
       display: flex;
     }
     .modal-box {
@@ -700,6 +701,114 @@
       border-radius: var(--radius-sm);
       border: 1px solid var(--border);
     }
+
+    /* Multi-Photo Gallery Grid (Up to 5 Photos) */
+    .product-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .gallery-slot-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border-dark);
+      background: #f9fafb;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .gallery-slot-card.has-img {
+      border-style: solid;
+      border-color: #cbd5e1;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .gallery-slot-card.is-main {
+      border: 2px solid #059669;
+      box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+    }
+    .gallery-slot-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slot-badge-tag {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      font-size: 9px;
+      font-weight: 800;
+      padding: 2px 5px;
+      border-radius: 4px;
+      line-height: 1;
+      z-index: 2;
+    }
+    .slot-badge-tag.main {
+      background: #059669;
+      color: #ffffff;
+    }
+    .slot-badge-tag.sub {
+      background: rgba(17, 24, 39, 0.75);
+      color: #ffffff;
+    }
+    .gallery-slot-actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(17, 24, 39, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 4px 2px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 3;
+    }
+    .gallery-slot-card:hover .gallery-slot-actions {
+      opacity: 1;
+    }
+    .slot-action-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 10px;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+    .slot-action-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .slot-action-btn.delete:hover {
+      color: #f87171;
+    }
+    .gallery-empty-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 10px;
+      text-align: center;
+      padding: 4px;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+    .gallery-empty-placeholder:hover {
+      color: #111827;
+      background: #f3f4f6;
+    }
+
     .form-grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1056,7 +1165,7 @@
         <div class="form-grid-3">
           <div class="form-group">
             <label>Precio Oferta (S/.) (*)</label>
-            <input type="number" step="0.5" id="prod-form-price" required placeholder="69.00">
+            <input type="number" step="0.5" id="prod-form-price" required placeholder="69.00" oninput="autoSuggestPrices(this.value)">
           </div>
           <div class="form-group">
             <label>Precio Regular (S/.)</label>
@@ -1086,26 +1195,30 @@
         </div>
 
         <div class="form-group">
-          <label>📷 Foto Real del Producto (Sube tu foto o pega URL)</label>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+            <label style="margin-bottom: 0;">📷 Galería de Fotos del Producto (Hasta 5 fotos reales)</label>
+            <span style="font-size: 11px; font-weight: 700; color: #059669;" id="prod-photos-count">0 / 5 fotos</span>
+          </div>
+          <p style="font-size: 11.5px; color: var(--text-muted); margin-bottom: 10px;">
+            La foto <strong>★ Portada</strong> será la imagen principal del catálogo. Las fotos siguientes (opcionales) se mostrarán como miniaturas interactivas cuando el cliente abra los detalles del producto.
+          </p>
+
           <div class="dropzone-area" id="prod-dropzone" onclick="document.getElementById('prod-file-input').click()">
-            <input type="file" id="prod-file-input" accept="image/*" style="display: none;" onchange="handleProductFileSelect(event)">
+            <input type="file" id="prod-file-input" accept="image/*" multiple style="display: none;" onchange="handleMultipleProductFiles(event)">
             <div style="font-size: 24px; margin-bottom: 4px;">📸</div>
-            <div style="font-weight: 600; font-size: 13px;">Haz clic aquí para subir una foto real desde tu equipo</div>
-            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Soporta JPG, PNG, WEBP (Hasta 10MB)</div>
+            <div style="font-weight: 600; font-size: 13px;">Haz clic aquí para subir fotos desde tu equipo o celular</div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Puedes seleccionar varias fotos a la vez (JPG, PNG, WEBP)</div>
+            <div id="upload-progress-text" style="font-size: 11.5px; color: #059669; font-weight: 700; margin-top: 6px; display: none;"></div>
           </div>
           
-          <div class="dropzone-preview" id="prod-img-preview-box" style="display: none;">
-            <img id="prod-img-preview" src="" alt="Vista previa">
-            <div style="flex: 1; min-width: 0;">
-              <div style="font-weight: 600; font-size: 12px; color: #059669;" id="prod-upload-status-text">✓ Foto lista</div>
-              <input type="text" id="prod-form-img-url" placeholder="URL de la imagen" style="font-size: 11px; margin-top: 4px;" readonly>
-            </div>
-            <button type="button" class="btn-secondary" style="font-size: 11px; padding: 4px 8px; color: #ef4444;" onclick="removeProductImage()">Quitar</button>
+          <!-- Galería interactiva de hasta 5 fotos -->
+          <div class="product-gallery-grid" id="product-gallery-grid">
+            <!-- Renderizado dinámicamente -->
           </div>
 
-          <div style="margin-top: 6px; font-size: 11px; color: var(--text-muted);">
-            O pega una URL directa de imagen si ya está alojada en la web:
-            <input type="url" id="prod-manual-url" placeholder="https://..." style="margin-top: 4px; font-size: 12px; padding: 6px 10px;" onchange="handleManualImageUrl(this.value)">
+          <div style="margin-top: 10px; display: flex; gap: 8px;">
+            <input type="url" id="prod-manual-url-input" placeholder="O pega URL directa de imagen (https://...)" style="flex: 1; font-size: 12px; padding: 7px 10px;">
+            <button type="button" class="btn-secondary" style="font-size: 11px; padding: 7px 12px; white-space: nowrap;" onclick="addManualImageUrl()">+ Agregar URL</button>
           </div>
         </div>
 
@@ -1318,6 +1431,7 @@ function deleteRowById(sheet, id) {
     let currentProdCat = 'ALL';
     let editingProductId = null;
     let currentUploadedImgUrl = '';
+    let currentProductGallery = [];
     let adminToken = sessionStorage.getItem('vitacore_admin_token') || '';
 
     function getAuthHeaders(extra = {}) {
@@ -1881,13 +1995,21 @@ function deleteRowById(sheet, id) {
       tbody.innerHTML = filtered.map(p => {
         const img = (p.images && p.images[0]) || '/assets/images/categoria-cargadores.png';
         const isSoldOut = Boolean(p.isSoldOut);
+        const photosCount = (p.images && p.images.length) || 1;
+        const photosBadge = photosCount > 1 
+          ? `<span style="display:inline-block; margin-left:6px; font-size:10px; font-weight:700; color:#0284c7; background:#e0f2fe; border:1px solid #bae6fd; padding:1px 6px; border-radius:999px;">📸 ${photosCount} fotos</span>` 
+          : `<span style="display:inline-block; margin-left:6px; font-size:10px; font-weight:600; color:#64748b; background:#f1f5f9; padding:1px 5px; border-radius:999px;">📸 1 foto</span>`;
+
         return `
           <tr>
             <td>
               <div class="product-thumb-cell">
                 <img src="${img}" alt="${p.title}" class="product-table-img">
                 <div>
-                  <div style="font-weight: 700; color: #111827; font-size: 13px;">${p.title}</div>
+                  <div style="font-weight: 700; color: #111827; font-size: 13px;">
+                    ${p.title}
+                    ${photosBadge}
+                  </div>
                   <div style="font-size: 11px; color: var(--text-muted);">${p.brand || 'VITACORE'} • <code style="background:#f3f4f6; padding:1px 4px; border-radius:3px;">${p.id}</code></div>
                 </div>
               </div>
@@ -1904,9 +2026,10 @@ function deleteRowById(sheet, id) {
               </span>
             </td>
             <td style="text-align: right; white-space: nowrap;">
+              <a href="/?prod=${encodeURIComponent(p.id)}" target="_blank" class="btn-secondary" style="font-size: 11px; padding: 5px 8px; text-decoration: none; color: #111827;" title="Ver ficha en la tienda">👁️</a>
               <button class="btn-secondary" style="font-size: 11px; padding: 5px 9px;" onclick="openProductModal('${p.id}')">✏️ Editar</button>
               <button class="btn-secondary" style="font-size: 11px; padding: 5px 9px;" onclick="toggleProductStock('${p.id}')">${isSoldOut ? 'Reactivar' : 'Agotar'}</button>
-              <button class="btn-secondary" style="font-size: 11px; padding: 5px 9px; color: #ef4444;" onclick="deleteProduct('${p.id}')">🗑️</button>
+              <button class="btn-secondary" style="font-size: 11px; padding: 5px 9px; color: #ef4444;" onclick="deleteProduct('${p.id}')" title="Eliminar producto">🗑️</button>
             </td>
           </tr>
         `;
@@ -1923,6 +2046,20 @@ function deleteRowById(sheet, id) {
       }
     }
 
+    function autoSuggestPrices(salePriceStr) {
+      const price = parseFloat(salePriceStr);
+      if (!price || isNaN(price)) return;
+      const oldPriceInput = document.getElementById('prod-form-oldprice');
+      const bundlePriceInput = document.getElementById('prod-form-bundleprice');
+      
+      if (oldPriceInput && (!oldPriceInput.value || parseFloat(oldPriceInput.value) === 0)) {
+        oldPriceInput.value = Math.round(price * 1.5);
+      }
+      if (bundlePriceInput && (!bundlePriceInput.value || parseFloat(bundlePriceInput.value) === 0)) {
+        bundlePriceInput.value = Math.round(price * 1.8);
+      }
+    }
+
     function openProductModal(productId = null) {
       editingProductId = productId;
       const modal = document.getElementById('product-modal-backdrop');
@@ -1932,8 +2069,11 @@ function deleteRowById(sheet, id) {
 
       if (productId) {
         const prod = allProducts.find(p => p.id === productId);
-        if (!prod) return;
-        titleEl.textContent = '✏️ Editar Producto';
+        if (!prod) {
+          alert('No se encontró el producto a editar');
+          return;
+        }
+        titleEl.textContent = '✏️ Editar Producto: ' + (prod.title.length > 28 ? prod.title.substring(0, 28) + '...' : prod.title);
         document.getElementById('prod-form-id').value = prod.id;
         document.getElementById('prod-form-id').disabled = true;
         document.getElementById('prod-form-title').value = prod.title || '';
@@ -1947,84 +2087,165 @@ function deleteRowById(sheet, id) {
         document.getElementById('prod-form-description').value = prod.description || '';
         document.getElementById('prod-form-features').value = (prod.features || []).join('\n');
 
-        const img = (prod.images && prod.images[0]) || '';
-        setProductImagePreview(img);
+        currentProductGallery = (Array.isArray(prod.images) && prod.images.length > 0) 
+          ? [...prod.images] 
+          : ((prod.images && prod.images[0]) ? [prod.images[0]] : []);
+        renderProductGalleryUI();
       } else {
         titleEl.textContent = '🏷️ Nuevo Producto';
         document.getElementById('prod-form-id').disabled = false;
         document.getElementById('prod-form-brand').value = 'VITACORE Power';
         document.getElementById('prod-form-category').value = 'cargadores';
         document.getElementById('prod-form-stock').value = 15;
-        removeProductImage();
+        currentProductGallery = [];
+        renderProductGalleryUI();
       }
 
+      modal.classList.add('open');
       modal.classList.add('active');
     }
 
     function closeProductModal() {
-      document.getElementById('product-modal-backdrop').classList.remove('active');
+      const modal = document.getElementById('product-modal-backdrop');
+      if (modal) {
+        modal.classList.remove('open');
+        modal.classList.remove('active');
+      }
       editingProductId = null;
-      currentUploadedImgUrl = '';
+      currentProductGallery = [];
     }
 
-    function setProductImagePreview(url) {
-      currentUploadedImgUrl = url;
-      const box = document.getElementById('prod-img-preview-box');
-      const img = document.getElementById('prod-img-preview');
-      const inputUrl = document.getElementById('prod-form-img-url');
-      if (url) {
-        img.src = url;
-        inputUrl.value = url;
-        box.style.display = 'flex';
-      } else {
-        box.style.display = 'none';
+    function renderProductGalleryUI() {
+      const countEl = document.getElementById('prod-photos-count');
+      if (countEl) {
+        countEl.textContent = `${currentProductGallery.length} / 5 fotos`;
+      }
+
+      const grid = document.getElementById('product-gallery-grid');
+      if (!grid) return;
+
+      let html = '';
+      for (let i = 0; i < 5; i++) {
+        const imgUrl = currentProductGallery[i];
+        if (imgUrl) {
+          const isMain = i === 0;
+          html += `
+            <div class="gallery-slot-card has-img ${isMain ? 'is-main' : ''}">
+              <img src="${imgUrl}" alt="Foto ${i + 1}">
+              <span class="slot-badge-tag ${isMain ? 'main' : 'sub'}">${isMain ? '★ Portada' : 'Foto ' + (i + 1)}</span>
+              <div class="gallery-slot-actions">
+                ${!isMain ? `<button type="button" class="slot-action-btn" onclick="setAsMainPhoto(${i})" title="Convertir en Portada principal">⭐ Portada</button>` : ''}
+                <button type="button" class="slot-action-btn delete" onclick="removePhotoFromGallery(${i})" title="Quitar foto">🗑️</button>
+              </div>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="gallery-slot-card" onclick="document.getElementById('prod-file-input').click()" title="Subir foto ${i + 1}">
+              <div class="gallery-empty-placeholder">
+                <span style="font-size: 16px; font-weight: 700;">+</span>
+                <span>Foto ${i + 1}</span>
+                <span style="font-size: 8.5px; opacity: 0.7;">${i === 0 ? '(Principal)' : '(Opcional)'}</span>
+              </div>
+            </div>
+          `;
+        }
+      }
+      grid.innerHTML = html;
+    }
+
+    function setAsMainPhoto(index) {
+      if (index > 0 && index < currentProductGallery.length) {
+        const item = currentProductGallery.splice(index, 1)[0];
+        currentProductGallery.unshift(item);
+        renderProductGalleryUI();
       }
     }
 
-    function removeProductImage() {
-      currentUploadedImgUrl = '';
-      document.getElementById('prod-img-preview-box').style.display = 'none';
-      document.getElementById('prod-form-img-url').value = '';
-      document.getElementById('prod-file-input').value = '';
-    }
-
-    function handleManualImageUrl(url) {
-      if (url && url.trim()) {
-        setProductImagePreview(url.trim());
+    function removePhotoFromGallery(index) {
+      if (index >= 0 && index < currentProductGallery.length) {
+        currentProductGallery.splice(index, 1);
+        renderProductGalleryUI();
       }
     }
 
-    async function handleProductFileSelect(event) {
-      const file = event.target.files && event.target.files[0];
-      if (!file) return;
+    function addManualImageUrl() {
+      const input = document.getElementById('prod-manual-url-input');
+      const url = input ? input.value.trim() : '';
+      if (!url) return;
+      if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/assets/')) {
+        alert('Ingresa una URL de imagen válida (https://... o /assets/...)');
+        return;
+      }
+      if (currentProductGallery.length >= 5) {
+        alert('Ya alcanzaste el límite de 5 fotos por producto.');
+        return;
+      }
+      currentProductGallery.push(url);
+      input.value = '';
+      renderProductGalleryUI();
+    }
 
-      const reader = new FileReader();
-      const statusText = document.getElementById('prod-upload-status-text');
+    async function handleMultipleProductFiles(event) {
+      const files = Array.from(event.target.files || []);
+      if (files.length === 0) return;
 
-      reader.onload = async (e) => {
-        const base64Data = e.target.result;
-        setProductImagePreview(base64Data);
-        if (statusText) statusText.textContent = '⏳ Subiendo foto al servidor...';
+      const availableSlots = 5 - currentProductGallery.length;
+      if (availableSlots <= 0) {
+        alert('Ya tienes el máximo de 5 fotos agregadas. Elimina alguna para reemplazarla.');
+        event.target.value = '';
+        return;
+      }
+
+      const filesToProcess = files.slice(0, availableSlots);
+      if (files.length > availableSlots) {
+        alert(`Solo se procesarán las primeras ${availableSlots} fotos para no superar el límite de 5.`);
+      }
+
+      const progressText = document.getElementById('upload-progress-text');
+      if (progressText) {
+        progressText.style.display = 'block';
+        progressText.textContent = `⏳ Subiendo 0 de ${filesToProcess.length} foto(s)...`;
+      }
+
+      for (let idx = 0; idx < filesToProcess.length; idx++) {
+        const file = filesToProcess[idx];
+        if (progressText) {
+          progressText.textContent = `⏳ Subiendo foto ${idx + 1} de ${filesToProcess.length} (${file.name})...`;
+        }
 
         try {
+          const base64Data = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+
           const res = await fetch('/api/admin/upload', {
             method: 'POST',
             headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
             body: JSON.stringify({ filename: file.name, dataBase64: base64Data })
           });
+
           const data = await res.json();
           if (res.ok && data.success && data.url) {
-            setProductImagePreview(data.url);
-            if (statusText) statusText.textContent = '✓ Foto real guardada en el servidor';
+            currentProductGallery.push(data.url);
+            renderProductGalleryUI();
           } else {
-            alert('Aviso al subir imagen: ' + (data.error || 'Intente nuevamente'));
+            console.warn('Aviso al subir imagen:', data.error);
           }
         } catch (err) {
           console.warn('Error subiendo imagen:', err);
         }
-      };
+      }
 
-      reader.readAsDataURL(file);
+      if (progressText) {
+        progressText.textContent = `✓ ${filesToProcess.length} foto(s) procesadas correctamente.`;
+        setTimeout(() => { progressText.style.display = 'none'; }, 2500);
+      }
+      event.target.value = '';
+      renderProductGalleryUI();
     }
 
     async function saveProduct(event) {
@@ -2046,7 +2267,9 @@ function deleteRowById(sheet, id) {
       const featuresRaw = document.getElementById('prod-form-features').value.trim();
       const features = featuresRaw ? featuresRaw.split('\n').map(f => f.trim()).filter(Boolean) : [];
 
-      const imgUrl = currentUploadedImgUrl || document.getElementById('prod-form-img-url').value.trim() || '/assets/images/categoria-cargadores.png';
+      const images = currentProductGallery.length > 0 
+        ? currentProductGallery 
+        : ['/assets/images/categoria-cargadores.png'];
 
       const payload = {
         id,
@@ -2061,7 +2284,7 @@ function deleteRowById(sheet, id) {
         badge,
         description,
         features,
-        images: [imgUrl]
+        images
       };
 
       try {

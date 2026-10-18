@@ -420,6 +420,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   initAnnouncementCarousel();
   initHeroSlider();
   await fetchProductsFromAPI();
+
+  // Auto-open product PDP if URL contains ?prod=id or ?product=id (from Admin or direct link)
+  const urlParams = new URLSearchParams(window.location.search);
+  const targetProdId = urlParams.get('prod') || urlParams.get('product') || urlParams.get('preview');
+  if (targetProdId) {
+    setTimeout(() => {
+      openPDP(targetProdId);
+    }, 300);
+  }
 });
 
 async function fetchProductsFromAPI() {

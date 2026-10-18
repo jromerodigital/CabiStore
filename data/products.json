@@ -16,7 +16,7 @@
     "isNew": false,
     "badge": "Oferta",
     "isSoldOut": false,
-    "stockLeft": 2,
+    "stockLeft": 10,
     "images": [
       "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80",
       "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=80",
@@ -28,7 +28,8 @@
       "6 Cabezales intercambiables de grado ergonómico",
       "Motor silencioso WhisperDrive (<45dB)",
       "Batería de larga duración hasta 8 horas continuas"
-    ]
+    ],
+    "updatedAt": "2026-10-18T14:45:11.261Z"
   },
   {
     "id": "masajeador-manos-terapia",
@@ -350,7 +351,9 @@
     "isSoldOut": false,
     "stockLeft": 15,
     "images": [
-      "/assets/images/categoria-cargadores.png"
+      "/assets/images/categoria-cargadores.png",
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?auto=format&fit=crop&w=700&q=80"
     ],
     "description": "Carga de alta velocidad de 20W con protocolo Power Delivery inteligente. No recalienta tu dispositivo y protege la salud de tu batería.",
     "features": [
@@ -358,6 +361,7 @@
       "Incluye cable reforzado anti-quiebres de 1 metro",
       "Chip inteligente con protección térmica y anti-sobrevoltaje",
       "Compatible con smartphones, tablets y accesorios"
-    ]
+    ],
+    "updatedAt": "2026-10-18T14:58:11.144Z"
   }
 ]
