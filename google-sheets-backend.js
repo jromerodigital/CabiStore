@@ -118,8 +118,11 @@ function doPost(e) {
 function setupFullSpreadsheet() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   ensureSheetsStructure(ss);
-  setupDashboardSheet();
-  SpreadsheetApp.getActiveSpreadsheet().toast('✅ Estructura y fórmulas configuradas con éxito.', 'VITACORE Store', 5);
+  cleanDefaultEmptySheet(ss);
+  SpreadsheetApp.flush();
+  try {
+    SpreadsheetApp.getActiveSpreadsheet().toast('✅ Estructura y fórmulas configuradas con éxito.', 'VITACORE Store', 5);
+  } catch (e) {}
 }
 
 function ensureSheetsStructure(ss) {
@@ -132,6 +135,7 @@ function ensureSheetsStructure(ss) {
   ];
   var ordersSheet = getOrCreateSheet(ss, 'Pedidos', orderHeaders, '#0f172a');
   applyOrdersValidation(ordersSheet);
+  SpreadsheetApp.flush();
 
   // 2. Hoja Productos
   var productHeaders = [
@@ -142,11 +146,26 @@ function ensureSheetsStructure(ss) {
   ];
   var productsSheet = getOrCreateSheet(ss, 'Productos', productHeaders, '#065f46');
   applyProductsValidation(productsSheet);
+  SpreadsheetApp.flush();
 
-  // 3. Hoja Dashboard
-  if (!ss.getSheetByName('Dashboard')) {
-    setupDashboardSheet();
-  }
+  // 3. Hoja Dashboard con fórmulas nativas
+  setupDashboardSheet();
+  SpreadsheetApp.flush();
+}
+
+/**
+ * Elimina la "Hoja 1" o "Sheet1" vacía inicial que crea Google Sheets automáticamente.
+ */
+function cleanDefaultEmptySheet(ss) {
+  var defaultNames = ['Hoja 1', 'Sheet1'];
+  defaultNames.forEach(function(name) {
+    var s = ss.getSheetByName(name);
+    if (s && ss.getSheets().length > 1 && s.getLastRow() <= 1) {
+      try {
+        ss.deleteSheet(s);
+      } catch (e) {}
+    }
+  });
 }
 
 /**
@@ -157,8 +176,12 @@ function setupDashboardSheet() {
   var sheet = ss.getSheetByName('Dashboard');
   if (!sheet) {
     sheet = ss.insertSheet('Dashboard', 0);
+  } else {
+    try {
+      sheet.getRange('A1:G30').breakApart();
+    } catch (e) {}
+    sheet.clear();
   }
-  sheet.clear();
 
   // Título principal
   sheet.getRange('A1:G1').merge()
@@ -193,10 +216,10 @@ function setupDashboardSheet() {
     sheet.getRange(5, i + 1).setValue(finHeaders[i]).setFontWeight('bold').setFontSize(9).setBackground('#f1f5f9');
   }
 
-  // Fórmulas financieras vinculadas a la hoja 'Pedidos'
-  sheet.getRange('A6').setFormula('=IFERROR(SUM(Pedidos!M2:M), 0)').setNumberFormat('S/. #,##0.00').setFontWeight('bold').setFontSize(13);
-  sheet.getRange('B6').setFormula('=IFERROR(SUMIF(Pedidos!C:C, "Entregado", Pedidos!M:M), 0)').setNumberFormat('S/. #,##0.00').setFontWeight('bold').setFontSize(13).setFontColor('#059669');
-  sheet.getRange('C6').setFormula('=IFERROR(AVERAGEIF(Pedidos!C:C, "<>Cancelado", Pedidos!M:M), 0)').setNumberFormat('S/. #,##0.00').setFontWeight('bold').setFontSize(13);
+  // Fórmulas financieras vinculadas a la hoja 'Pedidos' (con formato de soles seguro con comillas dobles)
+  sheet.getRange('A6').setFormula('=IFERROR(SUM(Pedidos!M2:M), 0)').setNumberFormat('"S/. "#,##0.00').setFontWeight('bold').setFontSize(13);
+  sheet.getRange('B6').setFormula('=IFERROR(SUMIF(Pedidos!C:C, "Entregado", Pedidos!M:M), 0)').setNumberFormat('"S/. "#,##0.00').setFontWeight('bold').setFontSize(13).setFontColor('#059669');
+  sheet.getRange('C6').setFormula('=IFERROR(AVERAGEIF(Pedidos!C:C, "<>Cancelado", Pedidos!M:M), 0)').setNumberFormat('"S/. "#,##0.00').setFontWeight('bold').setFontSize(13);
   sheet.getRange('D6').setFormula('=IFERROR(COUNTIF(Pedidos!C:C, "Entregado") / MAX(1, (COUNTIF(Pedidos!C:C, "Entregado") + COUNTIF(Pedidos!C:C, "Cancelado"))), 0)').setNumberFormat('0.0%').setFontWeight('bold').setFontSize(13).setFontColor('#2563eb');
 
   // SECCIÓN 2: LOGÍSTICA & ESTADOS DE PEDIDOS COD
@@ -212,7 +235,7 @@ function setupDashboardSheet() {
     sheet.getRange(9, j + 1).setValue(logHeaders[j]).setFontWeight('bold').setFontSize(9).setBackground('#f1f5f9');
   }
 
-  sheet.getRange('A10').setFormula('=MAX(0, COUNTA(Pedidos!A2:A))').setFontWeight('bold').setFontSize(13);
+  sheet.getRange('A10').setFormula('=IFERROR(COUNTA(Pedidos!A2:A), 0)').setFontWeight('bold').setFontSize(13);
   sheet.getRange('B10').setFormula('=COUNTIF(Pedidos!C:C, "Pendiente")').setFontWeight('bold').setFontSize(13).setFontColor('#d97706');
   sheet.getRange('C10').setFormula('=COUNTIF(Pedidos!C:C, "En Preparación")').setFontWeight('bold').setFontSize(13).setFontColor('#2563eb');
   sheet.getRange('D10').setFormula('=COUNTIF(Pedidos!C:C, "Despachado")').setFontWeight('bold').setFontSize(13).setFontColor('#7c3aed');
@@ -232,37 +255,48 @@ function setupDashboardSheet() {
     sheet.getRange(13, k + 1).setValue(invHeaders[k]).setFontWeight('bold').setFontSize(9).setBackground('#f1f5f9');
   }
 
-  sheet.getRange('A14').setFormula('=MAX(0, COUNTA(Productos!A2:A))').setFontWeight('bold').setFontSize(13);
+  sheet.getRange('A14').setFormula('=IFERROR(COUNTA(Productos!A2:A), 0)').setFontWeight('bold').setFontSize(13);
   sheet.getRange('B14').setFormula('=COUNTIF(Productos!I:I, "Disponible")').setFontWeight('bold').setFontSize(13).setFontColor('#059669');
   sheet.getRange('C14').setFormula('=COUNTIF(Productos!I:I, "Agotado")').setFontWeight('bold').setFontSize(13).setFontColor('#dc2626');
   sheet.getRange('D14').setFormula('=IFERROR(SUM(Productos!H2:H), 0)').setFontWeight('bold').setFontSize(13);
-
-  // Ajustar anchos de columnas
-  for (var col = 1; col <= 7; col++) {
-    sheet.setColumnWidth(col, 160);
-  }
 }
 
 /**
  * Validador desplegable de estados para la hoja Pedidos.
  */
 function applyOrdersValidation(sheet) {
-  var rule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Pendiente', 'En Preparación', 'Despachado', 'Entregado', 'Cancelado'], true)
-    .setAllowInvalid(false)
-    .build();
-  sheet.getRange('C2:C1000').setDataValidation(rule);
+  try {
+    var maxRows = sheet.getMaxRows();
+    if (maxRows > 1) {
+      var targetRows = Math.min(maxRows - 1, 500);
+      var rule = SpreadsheetApp.newDataValidation()
+        .requireValueInList(['Pendiente', 'En Preparación', 'Despachado', 'Entregado', 'Cancelado'], true)
+        .setAllowInvalid(false)
+        .build();
+      sheet.getRange(2, 3, targetRows, 1).setDataValidation(rule);
+    }
+  } catch (err) {
+    Logger.log('Validation Pedidos: ' + err);
+  }
 }
 
 /**
  * Validador desplegable de estados para la hoja Productos.
  */
 function applyProductsValidation(sheet) {
-  var rule = SpreadsheetApp.newDataValidation()
-    .requireValueInList(['Disponible', 'Agotado'], true)
-    .setAllowInvalid(false)
-    .build();
-  sheet.getRange('I2:I500').setDataValidation(rule);
+  try {
+    var maxRows = sheet.getMaxRows();
+    if (maxRows > 1) {
+      var targetRows = Math.min(maxRows - 1, 300);
+      var rule = SpreadsheetApp.newDataValidation()
+        .requireValueInList(['Disponible', 'Agotado'], true)
+        .setAllowInvalid(false)
+        .build();
+      sheet.getRange(2, 9, targetRows, 1).setDataValidation(rule);
+    }
+  } catch (err) {
+    Logger.log('Validation Productos: ' + err);
+  }
 }
 
 function getOrCreateSheet(ss, name, headers, headerColor) {
@@ -279,12 +313,10 @@ function getOrCreateSheet(ss, name, headers, headerColor) {
       .setFontWeight('bold')
       .setFontSize(10)
       .setHorizontalAlignment('center');
-    sheet.setFrozenRows(1);
-    sheet.setRowHeight(1, 32);
-
-    for (var i = 1; i <= headers.length; i++) {
-      sheet.setColumnWidth(i, 140);
-    }
+    try {
+      sheet.setFrozenRows(1);
+      sheet.setRowHeight(1, 32);
+    } catch (e) {}
   }
   return sheet;
 }
@@ -320,13 +352,13 @@ function upsertOrderRow(sheet, o) {
   for (var i = 1; i < data.length; i++) {
     if (String(data[i][0]).trim() === String(o.id).trim()) {
       sheet.getRange(i + 1, 1, 1, rowData.length).setValues([rowData]);
-      sheet.getRange(i + 1, 13).setNumberFormat('S/. #,##0.00');
+      try { sheet.getRange(i + 1, 13).setNumberFormat('"S/. "#,##0.00'); } catch (e) {}
       return;
     }
   }
 
   sheet.appendRow(rowData);
-  sheet.getRange(sheet.getLastRow(), 13).setNumberFormat('S/. #,##0.00');
+  try { sheet.getRange(sheet.getLastRow(), 13).setNumberFormat('"S/. "#,##0.00'); } catch (e) {}
 }
 
 function upsertProductRow(sheet, p) {
@@ -356,13 +388,13 @@ function upsertProductRow(sheet, p) {
   for (var i = 1; i < data.length; i++) {
     if (String(data[i][0]).trim() === String(p.id).trim()) {
       sheet.getRange(i + 1, 1, 1, rowData.length).setValues([rowData]);
-      sheet.getRange(i + 1, 5, 1, 3).setNumberFormat('S/. #,##0.00');
+      try { sheet.getRange(i + 1, 5, 1, 3).setNumberFormat('"S/. "#,##0.00'); } catch (e) {}
       return;
     }
   }
 
   sheet.appendRow(rowData);
-  sheet.getRange(sheet.getLastRow(), 5, 1, 3).setNumberFormat('S/. #,##0.00');
+  try { sheet.getRange(sheet.getLastRow(), 5, 1, 3).setNumberFormat('"S/. "#,##0.00'); } catch (e) {}
 }
 
 function deleteRowById(sheet, id) {
