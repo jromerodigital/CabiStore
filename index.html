@@ -85,39 +85,28 @@
 
       <div class="hero-slides-viewport" id="hero-slides-track">
 
-        <!-- SLIDE 1: Pistola de Masaje Pro Max -->
-        <div class="hero-slide active" data-slide="0">
-          <div class="hero-banner-inner">
-            <div class="hero-text-wrap">
-              <div class="hero-eyebrow">
-                ⚡ PRODUCTO ESTRELLA • -42% DCTO + 6 CABEZALES GRATIS
-              </div>
-              <h1 class="hero-headline">
-                SUMÉRGETE EN EL MÁS PROFUNDO ALIVIO Y BIENESTAR
-              </h1>
-              <p class="hero-description">
-                Disuelve contracturas en 30 segundos, elimina el estrés cervical y renueva tu energía con la tecnología de percusión terapéutica de VITACORE.
-              </p>
-              <div class="hero-cta-row">
-                <button class="hero-cta-btn" onclick="openPDP('pistola-masaje-promax')">
-                  <span>OBTENER OFERTA 🎁</span>
-                  <span class="hero-cta-sub">Envíos a todo el Perú 🇵🇪</span>
-                </button>
-                <div class="hero-price-box">
-                  <div class="hero-price-old">Normal: S/. 289.00</div>
-                  <div class="hero-price-now">Hoy: S/. 169.00</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-image-wrap">
-              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&h=600&q=80" alt="Pistola de Masaje VITACORE Pro Max" class="hero-product-img">
-            </div>
+        <!-- SLIDE 1: Full-Width Graphic Banner (Estilo The Boost Perú / Elementor) -->
+        <div class="hero-slide hero-slide--banner active" data-slide="0" data-mobile-ratio="adapt" style="background: #f4f4f4;" onclick="triggerSlideAction('product', 'pistola-masaje-promax')">
+          <div class="hero-full-banner-wrap">
+            <picture class="hero-picture-media">
+              <source media="(max-width: 768px)" srcset="https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&amp;width=1100">
+              <img src="https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&amp;width=2000" alt="Banner Principal — Pistola de Masaje Pro Max" class="hero-full-banner-img" fetchpriority="high">
+            </picture>
           </div>
         </div>
 
-        <!-- SLIDE 2: Smartwatch Ultra Amoled -->
-        <div class="hero-slide" data-slide="1" hidden>
+        <!-- SLIDE 2: Full-Width Graphic Banner 2 -->
+        <div class="hero-slide hero-slide--banner" data-slide="1" data-mobile-ratio="adapt" style="background: #f4f4f4;" onclick="triggerSlideAction('product', 'masajeador-manos-terapia')" hidden>
+          <div class="hero-full-banner-wrap">
+            <picture class="hero-picture-media">
+              <source media="(max-width: 768px)" srcset="https://theboostperu.com/cdn/shop/files/gg.png?v=1707606352&amp;width=1100">
+              <img src="https://theboostperu.com/cdn/shop/files/gg.png?v=1707606352&amp;width=2000" alt="Banner Promocional — Masajeador de Manos" class="hero-full-banner-img" loading="lazy">
+            </picture>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Split Product Showcase con imagen Desktop + Mobile diferenciada -->
+        <div class="hero-slide hero-slide--split" data-slide="2" data-mobile-ratio="1:1" style="background: #f3f5f8;" hidden>
           <div class="hero-banner-inner">
             <div class="hero-text-wrap">
               <div class="hero-eyebrow">
@@ -130,7 +119,7 @@
                 Responde llamadas por Bluetooth, monitorea tu ritmo cardíaco y oxígeno SpO2 con más de 100 modos deportivos y batería de hasta 10 días.
               </p>
               <div class="hero-cta-row">
-                <button class="hero-cta-btn" onclick="openPDP('smartwatch-ultra-amoled')">
+                <button class="hero-cta-btn" onclick="triggerSlideAction('product', 'smartwatch-ultra-amoled')">
                   <span>VER OFERTA ULTRA ⌚</span>
                   <span class="hero-cta-sub">Pago Contra Entrega en Lima y Callao 🛵</span>
                 </button>
@@ -141,39 +130,11 @@
               </div>
             </div>
 
-            <div class="hero-image-wrap">
-              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&h=600&q=80" alt="Smartwatch VITACORE Ultra Amoled" class="hero-product-img">
-            </div>
-          </div>
-        </div>
-
-        <!-- SLIDE 3: Terapia Cervical 4D & Bienestar -->
-        <div class="hero-slide" data-slide="2" hidden>
-          <div class="hero-banner-inner">
-            <div class="hero-text-wrap">
-              <div class="hero-eyebrow">
-                🔥 TERAPIA TÉRMICA 4D • CASA Y AUTO 12V INCLUIDO
-              </div>
-              <h2 class="hero-headline">
-                DILE ADIÓS AL ESTRÉS CERVICAL Y TENSIÓN DE ESPALDA
-              </h2>
-              <p class="hero-description">
-                Rodillos Shiatsu 4D bidireccionales con calor infrarrojo relajante para cuello, hombros y zona lumbar. Pide hoy y paga al recibir.
-              </p>
-              <div class="hero-cta-row">
-                <button class="hero-cta-btn" onclick="openPDP('masajeador-cervical-4d')">
-                  <span>COMPRAR CONTRA ENTREGA 🛵</span>
-                  <span class="hero-cta-sub">Entrega rápida 24h a 48h</span>
-                </button>
-                <div class="hero-price-box">
-                  <div class="hero-price-old">Normal: S/. 249.00</div>
-                  <div class="hero-price-now">Hoy: S/. 139.00</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="hero-image-wrap">
-              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&h=600&q=80" alt="Masajeador Cervical 4D VITACORE" class="hero-product-img">
+            <div class="hero-image-wrap" onclick="triggerSlideAction('product', 'smartwatch-ultra-amoled')" style="cursor: pointer;">
+              <picture class="hero-picture-media">
+                <source media="(max-width: 768px)" srcset="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=800&amp;h=800&amp;q=85">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&amp;fit=crop&amp;w=1000&amp;h=650&amp;q=85" alt="Smartwatch VITACORE Ultra Amoled" class="hero-product-img" loading="lazy">
+              </picture>
             </div>
           </div>
         </div>
@@ -209,7 +170,7 @@
         Ver todo el catálogo (11) →
       </button>
     </div>
-    <div class="categories-grid">
+    <div class="categories-grid" id="categories-grid-container">
       <!-- 1. Smartwatch -->
       <a href="#lo-mas-nuevo" class="category-card" data-cat="smartwatch" onclick="filterByCategory('smartwatch')">
         <div class="category-card-media">

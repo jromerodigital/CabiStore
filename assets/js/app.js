@@ -419,7 +419,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   initStickyBar();
   initAnnouncementCarousel();
   initHeroSlider();
-  await fetchProductsFromAPI();
+  await Promise.all([
+    fetchProductsFromAPI(),
+    fetchSiteDesignFromAPI()
+  ]);
 
   // Auto-open product PDP if URL contains ?prod=id or ?product=id (from Admin or direct link)
   const urlParams = new URLSearchParams(window.location.search);
@@ -448,6 +451,28 @@ async function fetchProductsFromAPI() {
     }
   } catch (err) {
     console.warn("Usando catálogo local inicial:", err);
+  }
+}
+
+async function fetchSiteDesignFromAPI() {
+  try {
+    const res = await fetch("/api/site-design");
+    if (!res.ok) return;
+    const data = await res.json();
+    if (!data.success || !data.design) return;
+
+    const { slides, categories, announcements } = data.design;
+    if (Array.isArray(slides) && slides.length > 0) {
+      renderDynamicHeroSlides(slides);
+    }
+    if (Array.isArray(categories) && categories.length > 0) {
+      renderDynamicCategories(categories);
+    }
+    if (Array.isArray(announcements) && announcements.length > 0 && window.setAnnouncementMessages) {
+      window.setAnnouncementMessages(announcements);
+    }
+  } catch (err) {
+    console.warn("Usando diseño de portada local:", err);
   }
 }
 
@@ -718,7 +743,7 @@ window.toggleMobileDrawer = function(isOpen) {
 
 // Announcement Carousel
 function initAnnouncementCarousel() {
-  const messages = [
+  let messages = [
     "¡Pide HOY y paga en casa! Válido solo en Lima Metropolitana 🛵",
     "🚚 Envíos a todo el Perú por Shalom y Olva Courier con número de seguimiento",
     "🎁 ¡Envío GRATIS por compras mayores a S/. 200 en todos los productos!"
@@ -726,6 +751,14 @@ function initAnnouncementCarousel() {
   let idx = 0;
   const el = document.getElementById("announcement-text");
   if (!el) return;
+
+  window.setAnnouncementMessages = (newMessages) => {
+    if (Array.isArray(newMessages) && newMessages.length > 0) {
+      messages = newMessages;
+      idx = 0;
+      el.textContent = messages[0];
+    }
+  };
 
   window.prevAnnouncement = () => {
     idx = (idx - 1 + messages.length) % messages.length;
@@ -739,6 +772,135 @@ function initAnnouncementCarousel() {
   setInterval(() => {
     window.nextAnnouncement();
   }, 5000);
+}
+
+// Acción interactiva de cada Slide (abrir producto, filtrar categoría o ir a sección)
+function triggerSlideAction(actionType, actionTarget) {
+  if (!actionTarget) return;
+  if (actionType === "product") {
+    openPDP(actionTarget);
+  } else if (actionType === "category") {
+    filterByCategory(actionTarget, true);
+  } else if (actionType === "section") {
+    const el = document.querySelector(actionTarget.startsWith("#") ? actionTarget : `#${actionTarget}`);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
+}
+window.triggerSlideAction = triggerSlideAction;
+
+let heroSliderTimer = null;
+let heroTouchBound = false;
+
+// Renderiza dinámicamente los slides configurados desde el Constructor Visual (Admin)
+function renderDynamicHeroSlides(slidesData) {
+  const activeSlides = slidesData.filter(s => s && s.active !== false);
+  if (activeSlides.length === 0) return;
+
+  const track = document.getElementById("hero-slides-track");
+  const dotsContainer = document.getElementById("hero-carousel-dots");
+  if (!track || !dotsContainer) return;
+
+  track.innerHTML = activeSlides.map((s, idx) => {
+    const isFirst = idx === 0;
+    const desktopImg = s.desktopImage || "https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=2000";
+    const mobileImg = s.mobileImage || desktopImg;
+    const ratio = s.mobileRatio || "adapt";
+    const bg = s.bgColor || "#f4f4f4";
+    const actType = s.actionType || "product";
+    const actTarget = s.actionTarget || "pistola-masaje-promax";
+
+    if (s.layoutMode === "banner") {
+      const overlayHtml = s.showOverlayText ? `
+        <div class="hero-banner-overlay ${s.textAlign === 'center' ? 'align-center' : ''}">
+          <div class="hero-text-wrap" style="max-width: 580px;">
+            ${s.eyebrow ? `<div class="hero-eyebrow">${s.eyebrow}</div>` : ''}
+            ${s.headline ? `<h2 class="hero-headline">${s.headline}</h2>` : ''}
+            ${s.description ? `<p class="hero-description">${s.description}</p>` : ''}
+            <div class="hero-cta-row" style="${s.textAlign === 'center' ? 'justify-content:center;' : ''}">
+              <button type="button" class="hero-cta-btn" onclick="event.stopPropagation(); triggerSlideAction('${actType}', '${actTarget}')">
+                <span>${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
+                ${s.ctaSub ? `<span class="hero-cta-sub">${s.ctaSub}</span>` : ''}
+              </button>
+              ${s.price > 0 ? `
+                <div class="hero-price-box">
+                  ${s.oldPrice > 0 ? `<div class="hero-price-old">Normal: S/. ${Number(s.oldPrice).toFixed(2)}</div>` : ''}
+                  <div class="hero-price-now">Hoy: S/. ${Number(s.price).toFixed(2)}</div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      ` : '';
+
+      return `
+        <div class="hero-slide hero-slide--banner ${isFirst ? 'active' : ''}" data-slide="${idx}" data-mobile-ratio="${ratio}" style="background: ${bg};" ${isFirst ? '' : 'hidden'} onclick="triggerSlideAction('${actType}', '${actTarget}')">
+          <div class="hero-full-banner-wrap">
+            <picture class="hero-picture-media">
+              <source media="(max-width: 768px)" srcset="${mobileImg}">
+              <img src="${desktopImg}" alt="${s.title || 'Promoción VITACORE'}" class="hero-full-banner-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
+            </picture>
+            ${overlayHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // Modo "split" (2 columnas en Desktop, Imagen arriba + Tarjeta compacta abajo en Mobile)
+    return `
+      <div class="hero-slide hero-slide--split ${isFirst ? 'active' : ''}" data-slide="${idx}" data-mobile-ratio="${ratio}" style="background: ${bg};" ${isFirst ? '' : 'hidden'}>
+        <div class="hero-banner-inner">
+          <div class="hero-text-wrap">
+            ${s.eyebrow ? `<div class="hero-eyebrow">${s.eyebrow}</div>` : ''}
+            <h2 class="hero-headline">${s.headline || s.title || ''}</h2>
+            ${s.description ? `<p class="hero-description">${s.description}</p>` : ''}
+            <div class="hero-cta-row">
+              <button type="button" class="hero-cta-btn" onclick="triggerSlideAction('${actType}', '${actTarget}')">
+                <span>${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
+                ${s.ctaSub ? `<span class="hero-cta-sub">${s.ctaSub}</span>` : ''}
+              </button>
+              ${s.price > 0 ? `
+                <div class="hero-price-box">
+                  ${s.oldPrice > 0 ? `<div class="hero-price-old">Normal: S/. ${Number(s.oldPrice).toFixed(2)}</div>` : ''}
+                  <div class="hero-price-now">Hoy: S/. ${Number(s.price).toFixed(2)}</div>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+          <div class="hero-image-wrap" onclick="triggerSlideAction('${actType}', '${actTarget}')" style="cursor: pointer;">
+            <picture class="hero-picture-media">
+              <source media="(max-width: 768px)" srcset="${mobileImg}">
+              <img src="${desktopImg}" alt="${s.title || 'Producto VITACORE'}" class="hero-product-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
+            </picture>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  dotsContainer.innerHTML = activeSlides.map((_, idx) => `
+    <span class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToHeroSlide(${idx})" aria-label="Ir al slide ${idx + 1}"></span>
+  `).join("");
+
+  initHeroSlider();
+}
+
+function renderDynamicCategories(categories) {
+  const container = document.getElementById("categories-grid-container");
+  if (!container || !Array.isArray(categories) || categories.length === 0) return;
+
+  container.innerHTML = categories.map(cat => `
+    <a href="#lo-mas-nuevo" class="category-card" data-cat="${cat.id}" onclick="filterByCategory('${cat.id}')">
+      <div class="category-card-media">
+        <img src="${cat.image}" alt="${cat.name}" class="category-img" loading="lazy" decoding="async">
+      </div>
+      <div class="category-card-title">
+        <span>${cat.name}</span>
+        <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+        </svg>
+      </div>
+    </a>
+  `).join("");
 }
 
 // Hero Banner Multi-Slide Carousel
@@ -756,6 +918,10 @@ function initHeroSlider() {
   let isPaused = false;
   let isHovering = false;
   const totalSlides = slides.length;
+
+  if (counterEl) {
+    counterEl.textContent = `1 / ${totalSlides}`;
+  }
 
   function renderSlide(idx) {
     currentSlide = (idx + totalSlides) % totalSlides;
@@ -787,7 +953,8 @@ function initHeroSlider() {
     }
   };
 
-  if (sliderSection) {
+  if (sliderSection && !heroTouchBound) {
+    heroTouchBound = true;
     sliderSection.addEventListener("mouseenter", () => { isHovering = true; });
     sliderSection.addEventListener("mouseleave", () => { isHovering = false; });
 
@@ -805,7 +972,8 @@ function initHeroSlider() {
     }, { passive: true });
   }
 
-  setInterval(() => {
+  if (heroSliderTimer) clearInterval(heroSliderTimer);
+  heroSliderTimer = setInterval(() => {
     if (!isPaused && !isHovering) {
       renderSlide(currentSlide + 1);
     }

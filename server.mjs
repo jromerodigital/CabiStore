@@ -13,6 +13,7 @@ const DATA_DIR = path.join(__dirname, 'data');
 const ORDERS_FILE = path.join(DATA_DIR, 'orders.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'config.json');
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products.json');
+const SITE_DESIGN_FILE = path.join(DATA_DIR, 'site_design.json');
 const UPLOADS_DIR = path.join(__dirname, 'assets', 'uploads');
 
 // ===================== CREDENCIALES ADMIN (Configurables en Railway) =====================
@@ -101,6 +102,11 @@ const PRODUCTS_CATALOG = new Map([
 // ===================== ESTADO EN MEMORIA Y PERSISTENCIA ASÍNCRONA =====================
 let ordersMemory = [];
 let productsMemory = [];
+let siteDesignMemory = {
+  slides: [],
+  categories: [],
+  announcements: []
+};
 let runtimeConfig = {
   sheetsWebhookUrl: process.env.GOOGLE_SHEETS_WEBHOOK_URL || '',
   lastSheetsSync: null,
@@ -114,6 +120,15 @@ function persistProductsAsync() {
   writeQueuePromise = writeQueuePromise
     .then(() => fsp.writeFile(PRODUCTS_FILE, snapshot, 'utf-8'))
     .catch(err => console.error('[Storage] Error guardando products.json:', err));
+  return writeQueuePromise;
+}
+
+function persistSiteDesignAsync() {
+  siteDesignMemory.updatedAt = new Date().toISOString();
+  const snapshot = JSON.stringify(siteDesignMemory, null, 2);
+  writeQueuePromise = writeQueuePromise
+    .then(() => fsp.writeFile(SITE_DESIGN_FILE, snapshot, 'utf-8'))
+    .catch(err => console.error('[Storage] Error guardando site_design.json:', err));
   return writeQueuePromise;
 }
 
@@ -160,6 +175,19 @@ async function initStorage() {
       }
     }
     syncProductsCatalogMap();
+
+    if (fs.existsSync(SITE_DESIGN_FILE)) {
+      const rawDesign = await fsp.readFile(SITE_DESIGN_FILE, 'utf-8');
+      const parsedDesign = JSON.parse(rawDesign || '{}');
+      if (parsedDesign && typeof parsedDesign === 'object') {
+        siteDesignMemory = {
+          slides: Array.isArray(parsedDesign.slides) ? parsedDesign.slides : [],
+          categories: Array.isArray(parsedDesign.categories) ? parsedDesign.categories : [],
+          announcements: Array.isArray(parsedDesign.announcements) ? parsedDesign.announcements : [],
+          updatedAt: parsedDesign.updatedAt || new Date().toISOString()
+        };
+      }
+    }
 
     // Si hay Google Sheets configurado, hidratar/sincronizar al arrancar (útil tras reinicios en Railway)
     if (runtimeConfig.sheetsWebhookUrl) {
@@ -821,6 +849,70 @@ const server = http.createServer(async (req, res) => {
       lastSheetsSync: runtimeConfig.lastSheetsSync,
       lastSheetsError: runtimeConfig.lastSheetsError
     });
+    return;
+  }
+
+  // ===================== 3.7 API CONSTRUCTOR VISUAL (SLIDERS, CATEGORÍAS, ANUNCIOS) =====================
+  if (req.method === 'GET' && (pathname === '/api/site-design' || pathname === '/api/sliders')) {
+    sendJson(req, res, 200, {
+      success: true,
+      design: siteDesignMemory
+    });
+    return;
+  }
+
+  if ((req.method === 'POST' || req.method === 'PUT') && pathname === '/api/admin/site-design') {
+    const admin = getAuthenticatedAdmin(req);
+    if (!admin) {
+      sendJson(req, res, 401, { success: false, error: 'No autorizado' });
+      return;
+    }
+    try {
+      const payload = await readJsonBody(req);
+      if (Array.isArray(payload.slides)) {
+        siteDesignMemory.slides = payload.slides.map((s, idx) => ({
+          id: sanitizeText(s.id || `slide-${Date.now()}-${idx}`, 60),
+          title: sanitizeText(s.title || `Slide ${idx + 1}`, 140),
+          active: s.active !== undefined ? Boolean(s.active) : true,
+          layoutMode: s.layoutMode === 'split' ? 'split' : 'banner',
+          desktopImage: sanitizeText(s.desktopImage || '', 600),
+          mobileImage: sanitizeText(s.mobileImage || '', 600),
+          mobileRatio: ['adapt', '4:5', '1:1', '16:9'].includes(s.mobileRatio) ? s.mobileRatio : 'adapt',
+          showOverlayText: Boolean(s.showOverlayText),
+          eyebrow: sanitizeText(s.eyebrow || '', 140),
+          headline: sanitizeText(s.headline || '', 200),
+          description: sanitizeText(s.description || '', 400),
+          ctaText: sanitizeText(s.ctaText || 'OBTENER OFERTA 🎁', 80),
+          ctaSub: sanitizeText(s.ctaSub || 'Envíos a todo el Perú 🇵🇪', 100),
+          actionType: ['product', 'category', 'section'].includes(s.actionType) ? s.actionType : 'product',
+          actionTarget: sanitizeText(s.actionTarget || 'pistola-masaje-promax', 120),
+          oldPrice: Number(s.oldPrice) || 0,
+          price: Number(s.price) || 0,
+          bgColor: sanitizeText(s.bgColor || '#f4f4f4', 30),
+          textAlign: s.textAlign === 'center' ? 'center' : 'left'
+        }));
+      }
+      if (Array.isArray(payload.categories)) {
+        siteDesignMemory.categories = payload.categories.map(c => ({
+          id: sanitizeText(c.id, 40),
+          name: sanitizeText(c.name, 80),
+          image: sanitizeText(c.image, 600)
+        }));
+      }
+      if (Array.isArray(payload.announcements)) {
+        siteDesignMemory.announcements = payload.announcements
+          .map(a => sanitizeText(a, 220))
+          .filter(Boolean);
+      }
+
+      await persistSiteDesignAsync();
+      sendJson(req, res, 200, {
+        success: true,
+        design: siteDesignMemory
+      });
+    } catch (err) {
+      sendJson(req, res, 400, { success: false, error: 'Error guardando configuración visual.' });
+    }
     return;
   }
 

@@ -854,6 +854,227 @@
     }
     .badge-stock.in-stock { background: #dcfce7; color: #15803d; }
     .badge-stock.sold-out { background: #fee2e2; color: #b91c1c; }
+
+    /* ================= CONSTRUCTOR VISUAL (ELEMENTOR STYLE) ================= */
+    .builder-workspace {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1100px) {
+      .builder-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+    .builder-sidebar-card,
+    .builder-canvas-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .builder-panel-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9fafb;
+    }
+    .builder-panel-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slide-item-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 12px;
+      background: #ffffff;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .slide-item-card:hover {
+      border-color: #9ca3af;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .slide-item-card.selected {
+      border-color: #111827;
+      background: #f8fafc;
+      box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.08);
+    }
+    .slide-thumbs-pair {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .slide-thumb-box {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #f3f4f6;
+      height: 68px;
+    }
+    .slide-thumb-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-thumb-tag {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      background: rgba(15, 23, 42, 0.82);
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      backdrop-filter: blur(2px);
+    }
+    .device-switcher-bar {
+      display: inline-flex;
+      background: #e5e7eb;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 4px;
+    }
+    .device-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s;
+    }
+    .device-btn.active {
+      background: #111827;
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .builder-canvas-stage {
+      background: #0f172a;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 18px 18px;
+      padding: 28px 20px;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-browser-frame {
+      width: 100%;
+      max-width: 100%;
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      transition: width 0.32s cubic-bezier(0.22, 1, 0.36, 1), max-width 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .preview-browser-frame.mobile-mode {
+      max-width: 380px;
+      border-radius: 26px;
+      border: 6px solid #1e293b;
+    }
+    .preview-browser-top {
+      background: #f1f5f9;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 11px;
+      color: #64748b;
+    }
+    .preview-dots {
+      display: flex;
+      gap: 5px;
+    }
+    .preview-dots span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #cbd5e1;
+    }
+    .dual-upload-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 640px) {
+      .dual-upload-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .upload-device-box {
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 12px;
+      background: #f8fafc;
+      text-align: center;
+    }
+    .upload-device-box.mobile-highlight {
+      border-color: #93c5fd;
+      background: #f0f9ff;
+    }
+    .upload-preview-rect {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #e2e8f0;
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #cbd5e1;
+    }
+    .upload-preview-rect img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0f172a;
+    }
+    .cat-builder-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 14px;
+      padding: 18px;
+    }
+    .cat-builder-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: #ffffff;
+      text-align: center;
+    }
+    .cat-builder-card img {
+      width: 100%;
+      height: 110px;
+      object-fit: contain;
+      background: #f4f4f4;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -922,6 +1143,9 @@
       </button>
       <button class="nav-switch-btn" id="nav-btn-products" onclick="switchAdminView('products')">
         🏷️ Catálogo &amp; Mini CRM (<span id="switcher-products-count">0</span>)
+      </button>
+      <button class="nav-switch-btn" id="nav-btn-builder" onclick="switchAdminView('builder')">
+        🎨 Constructor Visual (Sliders &amp; Responsive)
       </button>
     </div>
 
@@ -1115,7 +1339,231 @@
       </div>
     </div>
 
+    <!-- VIEW 3: CONSTRUCTOR VISUAL (ELEMENTOR PRO STYLE: SLIDERS & RESPONSIVE) -->
+    <div id="view-builder" style="display: none;">
+      <div class="page-head" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+        <div class="page-title">
+          <h1>🎨 Constructor Visual &amp; Sliders Responsive (Estilo Elementor)</h1>
+          <p>Sube imágenes independientes para <strong>🖥️ Escritorio (Desktop)</strong> y <strong>📱 Celular (Responsive)</strong>, previsualiza el cambio de medidas en vivo y personaliza tus secciones.</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn-secondary" onclick="openSlideModal()">
+            + Agregar Nuevo Slide
+          </button>
+          <button class="btn-add-product" onclick="saveFullSiteDesign()" id="btn-save-site-design">
+            💾 Publicar Cambios en la Tienda
+          </button>
+        </div>
+      </div>
+
+      <!-- Workspace de 2 columnas estilo Elementor: Lista de Slides + Lienzo Responsive en Vivo -->
+      <div class="builder-workspace">
+        <!-- Columna Izquierda: Capas y Slides -->
+        <div class="builder-sidebar-card">
+          <div class="builder-panel-header">
+            <span class="builder-panel-title">🖼️ Diapositivas del Slider Principal</span>
+            <button class="btn-secondary" style="font-size: 11px; padding: 5px 10px;" onclick="openSlideModal()">+ Añadir Slide</button>
+          </div>
+          <div style="padding: 16px;" id="builder-slides-list">
+            <!-- Renderizado dinámicamente -->
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Previsualizador Interactivo Desktop vs Mobile -->
+        <div class="builder-canvas-card">
+          <div class="builder-panel-header" style="flex-wrap: wrap; gap: 10px;">
+            <div class="builder-panel-title">
+              <span>👁️ Vista Previa en Tiempo Real</span>
+              <span id="preview-slide-badge" style="font-size: 11px; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 12px; font-weight: 700;">Slide 1</span>
+            </div>
+
+            <!-- Conmutador de Dispositivo (Elementor Responsive Switcher) -->
+            <div class="device-switcher-bar">
+              <button type="button" class="device-btn active" id="btn-device-desktop" onclick="setBuilderPreviewDevice('desktop')">
+                🖥️ Escritorio (100%)
+              </button>
+              <button type="button" class="device-btn" id="btn-device-mobile" onclick="setBuilderPreviewDevice('mobile')">
+                📱 Móvil Responsive (380px)
+              </button>
+            </div>
+          </div>
+
+          <div class="builder-canvas-stage">
+            <div class="preview-browser-frame" id="builder-preview-frame">
+              <div class="preview-browser-top">
+                <div class="preview-dots"><span></span><span></span><span></span></div>
+                <div id="preview-mode-label" style="font-weight: 600;">🖥️ Vista Desktop (Panorámica)</div>
+                <div style="font-size: 10px; color: #059669; font-weight: 700;">● En Vivo</div>
+              </div>
+              <div id="builder-live-canvas-body">
+                <!-- Se renderiza el slide activo en modo Desktop o Mobile -->
+              </div>
+            </div>
+            <div id="builder-resolution-hint" style="margin-top: 14px; color: #94a3b8; font-size: 12px; text-align: center;">
+              💡 En modo <strong>🖥️ Escritorio</strong> se muestra la primera imagen horizontal; al cambiar a <strong>📱 Móvil</strong> carga automáticamente la segunda imagen optimizada para celulares.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN ADICIONAL 1: IMÁGENES DE CATEGORÍAS -->
+      <div class="orders-card" style="margin-bottom: 24px;">
+        <div class="builder-panel-header">
+          <div>
+            <div class="builder-panel-title">🗂️ Tarjetas de Categorías (Colecciones Visuales)</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Se mantienen tus fotos oficiales de categorías. Si deseas actualizar alguna foto o nombre en el futuro, puedes hacerlo desde aquí.</div>
+          </div>
+          <button class="btn-secondary" style="font-size: 12px;" onclick="saveFullSiteDesign()">💾 Guardar Categorías</button>
+        </div>
+        <div class="cat-builder-grid" id="builder-categories-grid">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+
+      <!-- SECCIÓN ADICIONAL 2: BARRA DE ANUNCIOS SUPERIOR -->
+      <div class="orders-card" style="margin-bottom: 32px;">
+        <div class="builder-panel-header">
+          <div>
+            <div class="builder-panel-title">📢 Barra Superior de Anuncios (Mensajes Rotativos)</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Textos promocionales que rotan cada 5 segundos en la franja superior de la tienda.</div>
+          </div>
+          <button class="btn-secondary" style="font-size: 12px;" onclick="saveFullSiteDesign()">💾 Guardar Anuncios</button>
+        </div>
+        <div style="padding: 18px;" id="builder-announcements-box">
+          <!-- Renderizado dinámicamente -->
+        </div>
+      </div>
+    </div>
+
   </main>
+
+  <!-- Modal Inspector de Slide (Estilo Elementor Pro: Fotos Desktop + Mobile) -->
+  <div class="modal-backdrop" id="slide-modal-backdrop" onclick="if(event.target === this) closeSlideModal()">
+    <div class="modal-box" style="max-width: 720px;" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeSlideModal()">&times;</button>
+      <h2 class="modal-title" id="slide-modal-title">🎨 Configurar Slide (Desktop + Mobile Responsive)</h2>
+      <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 16px;">
+        Al igual que en <strong>Elementor Pro</strong> y <em>The Boost Perú</em>, puedes cargar <strong>2 imágenes distintas</strong> por cada slide: una horizontal para computadoras y otra vertical o cuadrada adaptada para celulares.
+      </p>
+
+      <form id="slide-form" onsubmit="saveSlideFromModal(event)">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Nombre Interno del Slide (*)</label>
+            <input type="text" id="slide-form-title" required placeholder="Ej: Banner Promocional Pistola de Masaje">
+          </div>
+          <div class="form-group">
+            <label>Estilo de Maquetación (Layout)</label>
+            <select id="slide-form-layout" onchange="toggleSlideOverlayFields()">
+              <option value="banner">🖼️ Banner Gráfico Completo 100% Ancho (Estilo The Boost / Elementor)</option>
+              <option value="split">✨ Banner Dividido (Columna de Texto + Foto de Producto)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CARGA DUAL DE IMÁGENES: DESKTOP VS MOBILE -->
+        <div class="dual-upload-grid">
+          <!-- Caja 1: Imagen Desktop -->
+          <div class="upload-device-box">
+            <div style="font-weight: 700; font-size: 12.5px; color: #0f172a;">🖥️ 1. Imagen Escritorio (Desktop)</div>
+            <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Medida ideal: 1920×700 px o 1600×650 px (Horizontal)</div>
+            <div class="upload-preview-rect">
+              <img id="slide-preview-desktop" src="https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=1100" alt="Vista Desktop">
+            </div>
+            <input type="file" id="slide-file-desktop" accept="image/*" style="display: none;" onchange="uploadSlideDeviceImage(event, 'desktop')">
+            <button type="button" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 6px; font-size: 11.5px;" onclick="document.getElementById('slide-file-desktop').click()">
+              📤 Subir Imagen Desktop desde PC
+            </button>
+            <input type="url" id="slide-form-desktop-url" placeholder="O pega URL de imagen Desktop..." style="width: 100%; font-size: 11.5px; padding: 6px 8px; border: 1px solid #cbd5e1; border-radius: 6px;" oninput="document.getElementById('slide-preview-desktop').src = this.value">
+          </div>
+
+          <!-- Caja 2: Imagen Mobile Responsive -->
+          <div class="upload-device-box mobile-highlight">
+            <div style="font-weight: 700; font-size: 12.5px; color: #0369a1;">📱 2. Imagen Celular (Responsive)</div>
+            <div style="font-size: 11px; color: #0284c7; margin-top: 2px;">Medida ideal: 800×1000 px (4:5) o 900×900 px (1:1)</div>
+            <div class="upload-preview-rect">
+              <img id="slide-preview-mobile" src="https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=1100" alt="Vista Mobile">
+            </div>
+            <input type="file" id="slide-file-mobile" accept="image/*" style="display: none;" onchange="uploadSlideDeviceImage(event, 'mobile')">
+            <button type="button" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 6px; font-size: 11.5px; border-color: #7dd3fc; color: #0369a1;" onclick="document.getElementById('slide-file-mobile').click()">
+              📲 Subir Imagen Mobile para Celulares
+            </button>
+            <input type="url" id="slide-form-mobile-url" placeholder="URL imagen móvil (opcional, si vacío usa Desktop)" style="width: 100%; font-size: 11.5px; padding: 6px 8px; border: 1px solid #93c5fd; border-radius: 6px;" oninput="document.getElementById('slide-preview-mobile').src = this.value || document.getElementById('slide-form-desktop-url').value">
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label>Proporción en Móvil (Responsive)</label>
+            <select id="slide-form-mobile-ratio">
+              <option value="adapt">📏 Adaptar a foto original (Sin recortar)</option>
+              <option value="4:5">📱 Vertical 4:5 (Recomendado Móvil)</option>
+              <option value="1:1">🟦 Cuadrado 1:1</option>
+              <option value="16:9">🎞️ Horizontal Compacto 16:9</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Acción al hacer Clic</label>
+            <select id="slide-form-action-type" onchange="populateSlideActionTargets()">
+              <option value="product">🛒 Abrir Producto (Popup Compra)</option>
+              <option value="category">🗂️ Filtrar una Categoría</option>
+              <option value="section">⚓ Ir a Sección de la Página</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Destino del Clic</label>
+            <select id="slide-form-action-target">
+              <!-- Se llena dinámicamente con tus productos o categorías -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="background: #f8fafc; border: 1px solid var(--border); padding: 10px 14px; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <div style="font-size: 12.5px; font-weight: 700; color: #111827;">Mostrar textos y botón HTML sobre el banner</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Desactívalo si tu imagen ya tiene letras diseñadas (como en The Boost Perú). Actívalo si deseas agregar título, precio y botón encima.</div>
+          </div>
+          <input type="checkbox" id="slide-form-show-text" style="width: 18px; height: 18px; cursor: pointer;" onchange="toggleSlideOverlayFields()">
+        </div>
+
+        <div id="slide-overlay-fields-wrap" style="border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 14px; background: #ffffff;">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Etiqueta Superior (Eyebrow)</label>
+              <input type="text" id="slide-form-eyebrow" placeholder="Ej: ⚡ OFERTA ESTRELLA • ENVÍO RÁPIDO">
+            </div>
+            <div class="form-group">
+              <label>Título Principal (Headline)</label>
+              <input type="text" id="slide-form-headline" placeholder="Ej: SUMÉRGETE EN EL MÁS PROFUNDO ALIVIO">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descripción Corta</label>
+            <textarea id="slide-form-description" rows="2" placeholder="Texto persuasivo del producto o promoción..."></textarea>
+          </div>
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label>Texto del Botón</label>
+              <input type="text" id="slide-form-cta-text" placeholder="OBTENER OFERTA 🎁">
+            </div>
+            <div class="form-group">
+              <label>Precio Oferta (S/.)</label>
+              <input type="number" step="0.01" id="slide-form-price" placeholder="169.00">
+            </div>
+            <div class="form-group">
+              <label>Precio Regular (S/.)</label>
+              <input type="number" step="0.01" id="slide-form-oldprice" placeholder="289.00">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);">
+          <button type="button" class="btn-secondary" onclick="closeSlideModal()">Cancelar</button>
+          <button type="submit" class="btn-login-submit" style="width: auto; padding: 9px 22px;">Guardar Slide y Previsualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Modal Creación / Edición de Producto (Mini CRM) -->
   <div class="modal-backdrop" id="product-modal-backdrop" onclick="if(event.target === this) closeProductModal()">
@@ -1899,25 +2347,28 @@ function deleteRowById(sheet, id) {
     }
 
     // ==========================================================================
-    // VISTA Y NAVEGACIÓN PRINCIPAL (PEDIDOS VS PRODUCTOS)
+    // VISTA Y NAVEGACIÓN PRINCIPAL (PEDIDOS VS PRODUCTOS VS CONSTRUCTOR VISUAL)
     // ==========================================================================
     function switchAdminView(view) {
       const ordersView = document.getElementById('view-orders');
       const prodsView = document.getElementById('view-products');
+      const builderView = document.getElementById('view-builder');
       const btnOrders = document.getElementById('nav-btn-orders');
       const btnProds = document.getElementById('nav-btn-products');
+      const btnBuilder = document.getElementById('nav-btn-builder');
 
-      if (view === 'orders') {
-        ordersView.style.display = 'block';
-        prodsView.style.display = 'none';
-        btnOrders.classList.add('active');
-        btnProds.classList.remove('active');
-      } else {
-        ordersView.style.display = 'none';
-        prodsView.style.display = 'block';
-        btnOrders.classList.remove('active');
-        btnProds.classList.add('active');
+      ordersView.style.display = view === 'orders' ? 'block' : 'none';
+      prodsView.style.display = view === 'products' ? 'block' : 'none';
+      if (builderView) builderView.style.display = view === 'builder' ? 'block' : 'none';
+
+      btnOrders.classList.toggle('active', view === 'orders');
+      btnProds.classList.toggle('active', view === 'products');
+      if (btnBuilder) btnBuilder.classList.toggle('active', view === 'builder');
+
+      if (view === 'products') {
         fetchProducts();
+      } else if (view === 'builder') {
+        fetchSiteDesign();
       }
     }
 
@@ -2386,12 +2837,549 @@ function deleteRowById(sheet, id) {
       }
     }
 
+    // ==========================================================================
+    // CONSTRUCTOR VISUAL (ELEMENTOR STYLE: SLIDERS DESKTOP/MOBILE, CATEGORÍAS, ANUNCIOS)
+    // ==========================================================================
+    let siteDesignState = {
+      slides: [],
+      categories: [],
+      announcements: []
+    };
+    let selectedBuilderSlideIdx = 0;
+    let builderPreviewDevice = 'desktop';
+    let editingSlideIdx = null;
+
+    async function fetchSiteDesign() {
+      try {
+        const res = await fetch('/api/site-design');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.design) {
+            siteDesignState = {
+              slides: Array.isArray(data.design.slides) ? data.design.slides : [],
+              categories: Array.isArray(data.design.categories) ? data.design.categories : [],
+              announcements: Array.isArray(data.design.announcements) ? data.design.announcements : []
+            };
+            if (selectedBuilderSlideIdx >= siteDesignState.slides.length) {
+              selectedBuilderSlideIdx = 0;
+            }
+            renderBuilderWorkspace();
+          }
+        }
+      } catch (err) {
+        console.error('Error cargando diseño visual:', err);
+      }
+    }
+
+    function renderBuilderWorkspace() {
+      renderBuilderSlidesList();
+      renderBuilderLiveCanvas();
+      renderBuilderCategories();
+      renderBuilderAnnouncements();
+    }
+
+    function selectBuilderSlide(index) {
+      selectedBuilderSlideIdx = index;
+      renderBuilderSlidesList();
+      renderBuilderLiveCanvas();
+    }
+
+    function setBuilderPreviewDevice(device) {
+      builderPreviewDevice = device === 'mobile' ? 'mobile' : 'desktop';
+      document.getElementById('btn-device-desktop')?.classList.toggle('active', builderPreviewDevice === 'desktop');
+      document.getElementById('btn-device-mobile')?.classList.toggle('active', builderPreviewDevice === 'mobile');
+      const frame = document.getElementById('builder-preview-frame');
+      if (frame) {
+        frame.classList.toggle('mobile-mode', builderPreviewDevice === 'mobile');
+      }
+      const modeLabel = document.getElementById('preview-mode-label');
+      if (modeLabel) {
+        modeLabel.textContent = builderPreviewDevice === 'mobile'
+          ? '📱 Vista Móvil Responsive (380px)'
+          : '🖥️ Vista Desktop (Panorámica 100%)';
+      }
+      renderBuilderLiveCanvas();
+    }
+
+    function renderBuilderSlidesList() {
+      const container = document.getElementById('builder-slides-list');
+      if (!container) return;
+
+      if (siteDesignState.slides.length === 0) {
+        container.innerHTML = `<div class="empty-state" style="padding:20px;">No hay slides creados. Haz clic en "+ Añadir Slide".</div>`;
+        return;
+      }
+
+      container.innerHTML = siteDesignState.slides.map((s, idx) => {
+        const isSelected = idx === selectedBuilderSlideIdx;
+        const desktopImg = s.desktopImage || '/assets/images/categoria-cargadores.png';
+        const mobileImg = s.mobileImage || desktopImg;
+        const hasCustomMobile = Boolean(s.mobileImage && s.mobileImage !== s.desktopImage);
+        const modeBadge = s.layoutMode === 'split'
+          ? `<span style="font-size:10px; background:#fef3c7; color:#b45309; padding:2px 6px; border-radius:4px; font-weight:700;">✨ Split (Texto+Foto)</span>`
+          : `<span style="font-size:10px; background:#dcfce7; color:#15803d; padding:2px 6px; border-radius:4px; font-weight:700;">🖼️ Banner 100%</span>`;
+
+        return `
+          <div class="slide-item-card ${isSelected ? 'selected' : ''}" onclick="selectBuilderSlide(${idx})">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="font-weight:700; font-size:12.5px; color:#111827;">
+                #${idx + 1} • ${s.title || 'Slide ' + (idx + 1)}
+              </div>
+              ${modeBadge}
+            </div>
+
+            <div class="slide-thumbs-pair">
+              <div class="slide-thumb-box" title="Imagen para Escritorio (Desktop)">
+                <img src="${desktopImg}" alt="Desktop">
+                <span class="slide-thumb-tag">🖥️ Desktop</span>
+              </div>
+              <div class="slide-thumb-box" title="Imagen para Celulares (Mobile)">
+                <img src="${mobileImg}" alt="Mobile">
+                <span class="slide-thumb-tag" style="background:${hasCustomMobile ? '#0284c7' : 'rgba(15,23,42,0.75)'};">
+                  📱 ${hasCustomMobile ? 'Mobile Propia' : 'Mobile Auto'}
+                </span>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px; padding-top:8px; border-top:1px solid #f1f5f9;">
+              <div style="display:flex; gap:4px;">
+                <button type="button" class="btn-secondary" style="padding:3px 7px; font-size:11px;" onclick="event.stopPropagation(); moveSlideOrder(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} title="Subir posición">⬆️</button>
+                <button type="button" class="btn-secondary" style="padding:3px 7px; font-size:11px;" onclick="event.stopPropagation(); moveSlideOrder(${idx}, 1)" ${idx === siteDesignState.slides.length - 1 ? 'disabled' : ''} title="Bajar posición">⬇️</button>
+                <button type="button" class="btn-secondary" style="padding:3px 7px; font-size:11px;" onclick="event.stopPropagation(); toggleSlideActive(${idx})">
+                  ${s.active !== false ? '🟢 Activo' : '⚪ Oculto'}
+                </button>
+              </div>
+              <div style="display:flex; gap:5px;">
+                <button type="button" class="btn-secondary" style="padding:4px 9px; font-size:11px; font-weight:700; color:#0f172a;" onclick="event.stopPropagation(); openSlideModal(${idx})">✏️ Editar Fotos</button>
+                <button type="button" class="btn-secondary" style="padding:4px 7px; font-size:11px; color:#ef4444;" onclick="event.stopPropagation(); deleteSlideItem(${idx})" title="Eliminar slide">🗑️</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderBuilderLiveCanvas() {
+      const body = document.getElementById('builder-live-canvas-body');
+      const badge = document.getElementById('preview-slide-badge');
+      if (!body) return;
+
+      const s = siteDesignState.slides[selectedBuilderSlideIdx];
+      if (!s) {
+        body.innerHTML = `<div style="padding:40px; text-align:center; color:#64748b;">Selecciona o añade un slide para previsualizar.</div>`;
+        return;
+      }
+
+      if (badge) {
+        badge.textContent = `Slide #${selectedBuilderSlideIdx + 1}: ${s.title || ''}`;
+      }
+
+      const isMobile = builderPreviewDevice === 'mobile';
+      const activeImg = isMobile ? (s.mobileImage || s.desktopImage) : s.desktopImage;
+      const ratioMap = {
+        'adapt': 'auto',
+        '4:5': '4 / 5',
+        '1:1': '1 / 1',
+        '16:9': '16 / 9'
+      };
+      const aspectCss = isMobile && s.mobileRatio && s.mobileRatio !== 'adapt'
+        ? `aspect-ratio: ${ratioMap[s.mobileRatio]}; object-fit: cover;`
+        : `height: auto; object-fit: contain;`;
+
+      if (s.layoutMode === 'banner') {
+        body.innerHTML = `
+          <div style="position:relative; width:100%; background:${s.bgColor || '#f4f4f4'}; overflow:hidden;">
+            <img src="${activeImg}" alt="${s.title}" style="width:100%; display:block; max-height:${isMobile ? '460px' : '380px'}; ${aspectCss}">
+            ${s.showOverlayText ? `
+              <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(15,23,42,0.68) 0%, rgba(15,23,42,0.2) 100%); display:flex; flex-direction:column; justify-content:center; padding:${isMobile ? '16px' : '28px'}; color:#fff;">
+                ${s.eyebrow ? `<div style="font-size:10px; font-weight:700; background:rgba(255,255,255,0.2); display:inline-block; padding:3px 8px; border-radius:99px; width:fit-content; margin-bottom:8px;">${s.eyebrow}</div>` : ''}
+                <div style="font-size:${isMobile ? '17px' : '22px'}; font-weight:800; line-height:1.15; margin-bottom:8px;">${s.headline || s.title}</div>
+                ${s.description ? `<div style="font-size:12px; opacity:0.9; margin-bottom:12px; max-width:420px;">${s.description}</div>` : ''}
+                <div>
+                  <span style="background:#04a015; color:#fff; font-weight:800; font-size:12px; padding:8px 16px; border-radius:99px; display:inline-block;">${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+          <div style="padding:10px 14px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:11.5px;">
+            <span>
+              <strong>Modo:</strong> 🖼️ Banner Gráfico Completo • 
+              <strong>Imagen activa (${isMobile ? '📱 Mobile' : '🖥️ Desktop'}):</strong> 
+              ${isMobile ? (s.mobileImage ? '✅ Imagen Móvil Dedicada' : '🔄 Adaptando Imagen Desktop') : '✅ Imagen Panorámica Desktop'}
+            </span>
+            <button type="button" class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="openSlideModal(${selectedBuilderSlideIdx})">
+              ✏️ Cambiar Imágenes / Configurar
+            </button>
+          </div>
+        `;
+      } else {
+        // Split mode preview
+        body.innerHTML = `
+          <div style="display:grid; grid-template-columns:${isMobile ? '1fr' : '1.1fr 0.9fr'}; gap:16px; padding:${isMobile ? '14px' : '24px'}; align-items:center; background:${s.bgColor || '#f3f5f8'};">
+            <div style="${isMobile ? 'order:2; text-align:center;' : ''}">
+              ${s.eyebrow ? `<div style="font-size:10px; font-weight:700; background:#fff; padding:3px 8px; border-radius:99px; display:inline-block; margin-bottom:8px; border:1px solid #e2e8f0;">${s.eyebrow}</div>` : ''}
+              <div style="font-size:${isMobile ? '16px' : '21px'}; font-weight:800; color:#111827; line-height:1.15; margin-bottom:8px;">${s.headline || s.title}</div>
+              <div style="font-size:12px; color:#4b5563; margin-bottom:12px;">${s.description || ''}</div>
+              <div style="display:flex; align-items:center; gap:12px; justify-content:${isMobile ? 'center' : 'flex-start'}; flex-wrap:wrap;">
+                <span style="background:#04a015; color:#fff; font-weight:800; font-size:12px; padding:8px 16px; border-radius:99px;">${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
+                ${s.price ? `<span style="font-weight:800; font-size:14px; color:#111827;">Hoy: S/. ${Number(s.price).toFixed(2)}</span>` : ''}
+              </div>
+            </div>
+            <div style="${isMobile ? 'order:1;' : ''}">
+              <img src="${activeImg}" alt="${s.title}" style="width:100%; max-height:${isMobile ? '220px' : '240px'}; object-fit:cover; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+            </div>
+          </div>
+          <div style="padding:10px 14px; background:#f8fafc; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:11.5px;">
+            <span>
+              <strong>Modo:</strong> ✨ Split (Texto + Producto) • 
+              <strong>Vista (${isMobile ? '📱 Mobile' : '🖥️ Desktop'}):</strong> Foto arriba y texto compacto abajo en móvil
+            </span>
+            <button type="button" class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="openSlideModal(${selectedBuilderSlideIdx})">
+              ✏️ Cambiar Imágenes / Configurar
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    function moveSlideOrder(idx, delta) {
+      const targetIdx = idx + delta;
+      if (targetIdx < 0 || targetIdx >= siteDesignState.slides.length) return;
+      const temp = siteDesignState.slides[idx];
+      siteDesignState.slides[idx] = siteDesignState.slides[targetIdx];
+      siteDesignState.slides[targetIdx] = temp;
+      selectedBuilderSlideIdx = targetIdx;
+      renderBuilderWorkspace();
+      saveFullSiteDesign(true);
+    }
+
+    function toggleSlideActive(idx) {
+      const s = siteDesignState.slides[idx];
+      if (!s) return;
+      s.active = s.active === false ? true : false;
+      renderBuilderWorkspace();
+      saveFullSiteDesign(true);
+    }
+
+    function deleteSlideItem(idx) {
+      if (siteDesignState.slides.length <= 1) {
+        alert('Debe existir al menos 1 slide activo en el carrusel principal.');
+        return;
+      }
+      if (!confirm('¿Eliminar este slide del carrusel?')) return;
+      siteDesignState.slides.splice(idx, 1);
+      if (selectedBuilderSlideIdx >= siteDesignState.slides.length) {
+        selectedBuilderSlideIdx = Math.max(0, siteDesignState.slides.length - 1);
+      }
+      renderBuilderWorkspace();
+      saveFullSiteDesign(true);
+    }
+
+    function populateSlideActionTargets(selectedValue = '') {
+      const type = document.getElementById('slide-form-action-type')?.value || 'product';
+      const targetSelect = document.getElementById('slide-form-action-target');
+      if (!targetSelect) return;
+
+      if (type === 'product') {
+        const list = allProducts.length > 0 ? allProducts : [
+          { id: 'pistola-masaje-promax', title: 'Pistola de Masaje Pro Max' },
+          { id: 'masajeador-manos-terapia', title: 'Masajeador de Manos' },
+          { id: 'smartwatch-ultra-amoled', title: 'Smartwatch Ultra Amoled' }
+        ];
+        targetSelect.innerHTML = list.map(p => `<option value="${p.id}">${p.title} (S/. ${Number(p.price || 0).toFixed(2)})</option>`).join('');
+      } else if (type === 'category') {
+        const cats = [
+          { id: 'cargadores', name: '⚡ Cargadores' },
+          { id: 'smartwatch', name: '⌚ Smartwatch' },
+          { id: 'audio', name: '🎧 Audio' },
+          { id: 'masajeadores', name: '💆 Masajeadores' },
+          { id: 'smarthome', name: '🏡 Smart Home' }
+        ];
+        targetSelect.innerHTML = cats.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+      } else {
+        const secs = [
+          { id: '#lo-mas-nuevo', name: '🛍️ Catálogo Completo de Productos' },
+          { id: '#categorias', name: '🗂️ Sección de Categorías' },
+          { id: '#beneficios', name: '🛡️ Sección de Beneficios' },
+          { id: '#faq', name: '❓ Preguntas Frecuentes (FAQ)' }
+        ];
+        targetSelect.innerHTML = secs.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
+      }
+
+      if (selectedValue) {
+        targetSelect.value = selectedValue;
+      }
+    }
+
+    function toggleSlideOverlayFields() {
+      const layout = document.getElementById('slide-form-layout')?.value || 'banner';
+      const showCheck = document.getElementById('slide-form-show-text');
+      const wrap = document.getElementById('slide-overlay-fields-wrap');
+      if (!wrap || !showCheck) return;
+
+      if (layout === 'split') {
+        showCheck.checked = true;
+        wrap.style.display = 'block';
+      } else {
+        wrap.style.display = showCheck.checked ? 'block' : 'none';
+      }
+    }
+
+    function openSlideModal(idx = null) {
+      editingSlideIdx = idx;
+      const modal = document.getElementById('slide-modal-backdrop');
+      const titleEl = document.getElementById('slide-modal-title');
+      if (!modal) return;
+
+      if (idx !== null && siteDesignState.slides[idx]) {
+        const s = siteDesignState.slides[idx];
+        titleEl.textContent = `✏️ Editar Slide #${idx + 1}: ${s.title}`;
+        document.getElementById('slide-form-title').value = s.title || '';
+        document.getElementById('slide-form-layout').value = s.layoutMode || 'banner';
+        document.getElementById('slide-form-desktop-url').value = s.desktopImage || '';
+        document.getElementById('slide-form-mobile-url').value = s.mobileImage || '';
+        document.getElementById('slide-preview-desktop').src = s.desktopImage || '';
+        document.getElementById('slide-preview-mobile').src = s.mobileImage || s.desktopImage || '';
+        document.getElementById('slide-form-mobile-ratio').value = s.mobileRatio || 'adapt';
+        document.getElementById('slide-form-action-type').value = s.actionType || 'product';
+        populateSlideActionTargets(s.actionTarget || 'pistola-masaje-promax');
+        document.getElementById('slide-form-show-text').checked = Boolean(s.showOverlayText || s.layoutMode === 'split');
+        document.getElementById('slide-form-eyebrow').value = s.eyebrow || '';
+        document.getElementById('slide-form-headline').value = s.headline || '';
+        document.getElementById('slide-form-description').value = s.description || '';
+        document.getElementById('slide-form-cta-text').value = s.ctaText || 'OBTENER OFERTA 🎁';
+        document.getElementById('slide-form-price').value = s.price || '';
+        document.getElementById('slide-form-oldprice').value = s.oldPrice || '';
+      } else {
+        titleEl.textContent = '🎨 Agregar Nuevo Slide al Carrusel';
+        document.getElementById('slide-form').reset();
+        document.getElementById('slide-form-layout').value = 'banner';
+        document.getElementById('slide-form-desktop-url').value = '';
+        document.getElementById('slide-form-mobile-url').value = '';
+        document.getElementById('slide-preview-desktop').src = 'https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=1100';
+        document.getElementById('slide-preview-mobile').src = 'https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=1100';
+        document.getElementById('slide-form-mobile-ratio').value = 'adapt';
+        document.getElementById('slide-form-action-type').value = 'product';
+        populateSlideActionTargets();
+        document.getElementById('slide-form-show-text').checked = false;
+      }
+
+      toggleSlideOverlayFields();
+      modal.classList.add('open');
+      modal.classList.add('active');
+    }
+
+    function closeSlideModal() {
+      const modal = document.getElementById('slide-modal-backdrop');
+      if (modal) {
+        modal.classList.remove('open');
+        modal.classList.remove('active');
+      }
+      editingSlideIdx = null;
+    }
+
+    async function uploadSlideDeviceImage(event, deviceType) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+
+      try {
+        const base64Data = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({ filename: `${deviceType}_${file.name}`, dataBase64: base64Data })
+        });
+        const data = await res.json();
+        if (res.ok && data.success && data.url) {
+          if (deviceType === 'desktop') {
+            document.getElementById('slide-form-desktop-url').value = data.url;
+            document.getElementById('slide-preview-desktop').src = data.url;
+            if (!document.getElementById('slide-form-mobile-url').value) {
+              document.getElementById('slide-preview-mobile').src = data.url;
+            }
+          } else {
+            document.getElementById('slide-form-mobile-url').value = data.url;
+            document.getElementById('slide-preview-mobile').src = data.url;
+          }
+        } else {
+          alert('No se pudo subir la imagen: ' + (data.error || 'Error'));
+        }
+      } catch (err) {
+        alert('Error al subir imagen desde tu equipo.');
+      } finally {
+        event.target.value = '';
+      }
+    }
+
+    async function saveSlideFromModal(event) {
+      event.preventDefault();
+      const desktopUrl = document.getElementById('slide-form-desktop-url').value.trim();
+      if (!desktopUrl) {
+        alert('Por favor sube o ingresa al menos la Imagen Desktop del slide.');
+        return;
+      }
+
+      const mobileUrl = document.getElementById('slide-form-mobile-url').value.trim();
+      const layoutMode = document.getElementById('slide-form-layout').value;
+
+      const slideObj = {
+        id: editingSlideIdx !== null && siteDesignState.slides[editingSlideIdx]
+          ? siteDesignState.slides[editingSlideIdx].id
+          : `slide-${Date.now()}`,
+        title: document.getElementById('slide-form-title').value.trim() || 'Slide Promocional',
+        active: editingSlideIdx !== null && siteDesignState.slides[editingSlideIdx]
+          ? siteDesignState.slides[editingSlideIdx].active
+          : true,
+        layoutMode,
+        desktopImage: desktopUrl,
+        mobileImage: mobileUrl,
+        mobileRatio: document.getElementById('slide-form-mobile-ratio').value || 'adapt',
+        showOverlayText: layoutMode === 'split' ? true : document.getElementById('slide-form-show-text').checked,
+        actionType: document.getElementById('slide-form-action-type').value || 'product',
+        actionTarget: document.getElementById('slide-form-action-target').value || 'pistola-masaje-promax',
+        eyebrow: document.getElementById('slide-form-eyebrow').value.trim(),
+        headline: document.getElementById('slide-form-headline').value.trim(),
+        description: document.getElementById('slide-form-description').value.trim(),
+        ctaText: document.getElementById('slide-form-cta-text').value.trim() || 'OBTENER OFERTA 🎁',
+        ctaSub: 'Envíos a todo el Perú 🇵🇪',
+        price: parseFloat(document.getElementById('slide-form-price').value) || 0,
+        oldPrice: parseFloat(document.getElementById('slide-form-oldprice').value) || 0,
+        bgColor: '#f4f4f4',
+        textAlign: 'left'
+      };
+
+      if (editingSlideIdx !== null && siteDesignState.slides[editingSlideIdx]) {
+        siteDesignState.slides[editingSlideIdx] = slideObj;
+        selectedBuilderSlideIdx = editingSlideIdx;
+      } else {
+        siteDesignState.slides.push(slideObj);
+        selectedBuilderSlideIdx = siteDesignState.slides.length - 1;
+      }
+
+      closeSlideModal();
+      renderBuilderWorkspace();
+      await saveFullSiteDesign(true);
+    }
+
+    function renderBuilderCategories() {
+      const grid = document.getElementById('builder-categories-grid');
+      if (!grid) return;
+
+      grid.innerHTML = siteDesignState.categories.map((cat, idx) => `
+        <div class="cat-builder-card">
+          <img src="${cat.image}" alt="${cat.name}" id="cat-preview-img-${idx}">
+          <div style="margin-bottom:8px;">
+            <input type="text" value="${cat.name}" onchange="siteDesignState.categories[${idx}].name = this.value" style="width:100%; font-size:12px; font-weight:700; text-align:center; padding:5px 8px; border:1px solid #d1d5db; border-radius:6px;">
+          </div>
+          <input type="file" id="cat-file-input-${idx}" accept="image/*" style="display:none;" onchange="uploadCategoryImage(event, ${idx})">
+          <button type="button" class="btn-secondary" style="width:100%; justify-content:center; font-size:11px; padding:5px 8px;" onclick="document.getElementById('cat-file-input-${idx}').click()">
+            📸 Cambiar Foto
+          </button>
+        </div>
+      `).join('');
+    }
+
+    async function uploadCategoryImage(event, idx) {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      try {
+        const base64Data = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({ filename: `cat_${file.name}`, dataBase64: base64Data })
+        });
+        const data = await res.json();
+        if (res.ok && data.success && data.url) {
+          siteDesignState.categories[idx].image = data.url;
+          renderBuilderCategories();
+          await saveFullSiteDesign(true);
+        }
+      } catch (err) {
+        alert('No se pudo subir la imagen de categoría.');
+      }
+    }
+
+    function renderBuilderAnnouncements() {
+      const box = document.getElementById('builder-announcements-box');
+      if (!box) return;
+
+      if (!Array.isArray(siteDesignState.announcements) || siteDesignState.announcements.length === 0) {
+        siteDesignState.announcements = [
+          "¡Pide HOY y paga en casa! Válido solo en Lima Metropolitana 🛵"
+        ];
+      }
+
+      box.innerHTML = siteDesignState.announcements.map((msg, idx) => `
+        <div style="display:flex; gap:8px; margin-bottom:10px; align-items:center;">
+          <span style="font-size:12px; font-weight:700; color:#64748b; width:75px;">Anuncio #${idx + 1}</span>
+          <input type="text" value="${msg.replace(/"/g, '&quot;')}" oninput="siteDesignState.announcements[${idx}] = this.value" style="flex:1; padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px; font-size:13px;">
+          <button type="button" class="btn-secondary" style="color:#ef4444; padding:6px 10px;" onclick="removeAnnouncementItem(${idx})" ${siteDesignState.announcements.length <= 1 ? 'disabled' : ''}>🗑️</button>
+        </div>
+      `).join('') + `
+        <button type="button" class="btn-secondary" style="font-size:11.5px; margin-top:4px;" onclick="addAnnouncementItem()">+ Añadir Mensaje Rotativo</button>
+      `;
+    }
+
+    function addAnnouncementItem() {
+      siteDesignState.announcements.push('🔥 Nueva promoción disponible hoy en VITACORE Perú');
+      renderBuilderAnnouncements();
+    }
+
+    function removeAnnouncementItem(idx) {
+      if (siteDesignState.announcements.length <= 1) return;
+      siteDesignState.announcements.splice(idx, 1);
+      renderBuilderAnnouncements();
+    }
+
+    async function saveFullSiteDesign(silent = false) {
+      const btn = document.getElementById('btn-save-site-design');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = '⏳ Publicando...';
+      }
+      try {
+        const res = await fetch('/api/admin/site-design', {
+          method: 'POST',
+          headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify(siteDesignState)
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          if (!silent) {
+            alert('✅ ¡Diseño visual y sliders publicados en vivo en la tienda!');
+          }
+        } else if (!silent) {
+          alert('Error al guardar diseño: ' + (data.error || 'Verifica tu sesión'));
+        }
+      } catch (err) {
+        if (!silent) alert('Error de red al guardar el diseño visual.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = '💾 Publicar Cambios en la Tienda';
+        }
+      }
+    }
+
     // Inicializar verificando sesión Admin
     (async () => {
       const ok = await checkAdminSession();
       if (ok) {
         await fetchOrdersAndStats();
         await fetchProducts();
+        await fetchSiteDesign();
       }
       setInterval(async () => {
         if (!document.getElementById('admin-login-screen').classList.contains('hidden')) return;

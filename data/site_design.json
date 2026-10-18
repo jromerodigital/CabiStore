@@ -1,0 +1,100 @@
+{
+  "slides": [
+    {
+      "id": "slide-1",
+      "title": "Banner Principal — Pistola de Masaje Pro Max",
+      "active": true,
+      "layoutMode": "banner",
+      "desktopImage": "https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=2000",
+      "mobileImage": "https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=1100",
+      "mobileRatio": "adapt",
+      "showOverlayText": false,
+      "eyebrow": "⚡ PRODUCTO ESTRELLA • -42% DCTO + 6 CABEZALES GRATIS",
+      "headline": "SUMÉRGETE EN EL MÁS PROFUNDO ALIVIO Y BIENESTAR",
+      "description": "Disuelve contracturas en 30 segundos, elimina el estrés cervical y renueva tu energía con la tecnología de percusión terapéutica de VITACORE.",
+      "ctaText": "OBTENER OFERTA 🎁",
+      "ctaSub": "Envíos a todo el Perú 🇵🇪",
+      "actionType": "product",
+      "actionTarget": "pistola-masaje-promax",
+      "oldPrice": 289,
+      "price": 169,
+      "bgColor": "#f4f4f4",
+      "textAlign": "left"
+    },
+    {
+      "id": "slide-2",
+      "title": "Banner Promocional — Masajeador de Manos",
+      "active": true,
+      "layoutMode": "banner",
+      "desktopImage": "https://theboostperu.com/cdn/shop/files/gg.png?v=1707606352&width=2000",
+      "mobileImage": "https://theboostperu.com/cdn/shop/files/gg.png?v=1707606352&width=1100",
+      "mobileRatio": "adapt",
+      "showOverlayText": false,
+      "eyebrow": "🔥 TERAPIA DE CALOR Y COMPRESIÓN 360°",
+      "headline": "ALIVIO INSTANTÁNEO PARA TUS MANOS Y MUÑECAS",
+      "description": "Muñequera de compresión elástica de regalo incluida hoy con tu pedido contra entrega.",
+      "ctaText": "VER OFERTA 🎁",
+      "ctaSub": "Pago Contra Entrega en Lima y Callao 🛵",
+      "actionType": "product",
+      "actionTarget": "masajeador-manos-terapia",
+      "oldPrice": 359,
+      "price": 179,
+      "bgColor": "#f4f4f4",
+      "textAlign": "left"
+    },
+    {
+      "id": "slide-3",
+      "title": "Smartwatch Ultra Amoled (Split + Fotos Desktop/Mobile)",
+      "active": true,
+      "layoutMode": "split",
+      "desktopImage": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&h=650&q=85",
+      "mobileImage": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&h=800&q=85",
+      "mobileRatio": "1:1",
+      "showOverlayText": true,
+      "eyebrow": "⌚ TECNOLOGÍA & DEPORTE • CORREA EXTRA DE REGALO",
+      "headline": "CONECTIVIDAD TOTAL Y SALUD EN TU MUÑECA 24/7",
+      "description": "Responde llamadas por Bluetooth, monitorea tu ritmo cardíaco y oxígeno SpO2 con más de 100 modos deportivos y batería de hasta 10 días.",
+      "ctaText": "VER OFERTA ULTRA ⌚",
+      "ctaSub": "Pago Contra Entrega en Lima y Callao 🛵",
+      "actionType": "product",
+      "actionTarget": "smartwatch-ultra-amoled",
+      "oldPrice": 320,
+      "price": 189,
+      "bgColor": "#f3f5f8",
+      "textAlign": "left"
+    }
+  ],
+  "categories": [
+    {
+      "id": "smartwatch",
+      "name": "Smartwatch",
+      "image": "//theboostperu.com/cdn/shop/collections/apple-watch-8-41mm-midnight-pos1.png?v=1707755594&width=1500"
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "image": "//theboostperu.com/cdn/shop/collections/812F91CA-C545-4ECA-BE5E-A9A4A25E1FB3-750-rhuwvr.webp_13-16-34-161.webp?v=1707753612&width=1500"
+    },
+    {
+      "id": "masajeadores",
+      "name": "Masajeadores",
+      "image": "//theboostperu.com/cdn/shop/collections/Pistola-de-masaje.png?v=1763673890&width=1500"
+    },
+    {
+      "id": "smarthome",
+      "name": "Smart Home",
+      "image": "//theboostperu.com/cdn/shop/collections/HL_family_creative_KdjOKY8HP714_main-variant-transparent_2x_8e3f16fc-0ea3-466b-8289-15e134ace1f0.png?v=1707755776&width=1500"
+    },
+    {
+      "id": "cargadores",
+      "name": "Cargadores",
+      "image": "/assets/images/categoria-cargadores.png"
+    }
+  ],
+  "announcements": [
+    "¡Pide HOY y paga en casa! Válido solo en Lima Metropolitana 🛵",
+    "🚚 Envíos a todo el Perú por Shalom y Olva Courier con número de seguimiento",
+    "🎁 ¡Envío GRATIS por compras mayores a S/. 200 en todos los productos!"
+  ],
+  "updatedAt": "2026-10-18T18:25:00.000Z"
+}
