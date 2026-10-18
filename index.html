@@ -55,8 +55,9 @@
           <li><a href="#lo-mas-nuevo" class="nav-item-link" onclick="resetAndShowAllCatalog()">Catálogo</a></li>
           <li><a href="#categorias" class="nav-item-link">Categorías</a></li>
           <li><a href="#lo-mas-nuevo" class="nav-item-link" onclick="sortByQuick('discount-desc')">Ofertas 🔥</a></li>
+          <li><a href="#beneficios" class="nav-item-link">Beneficios</a></li>
           <li><a href="#faq" class="nav-item-link">FAQ</a></li>
-          <li><a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20VITACORE,%20deseo%20asesoria%20sobre%20un%20producto" target="_blank" class="nav-item-link">Contacto</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20VITACORE,%20deseo%20asesoria%20sobre%20un%20producto" target="_blank" class="nav-item-link">Contacto</a></li>
         </ul>
       </nav>
 
@@ -382,40 +383,148 @@
   </section>
 
   <!-- ==========================================================================
-       6. TRUST VALUES RIBBON (4 Pillars)
+       6. BENEFICIOS Y PILARES DE CONFIANZA VITACORE (Interactive Experience)
        ========================================================================== -->
-  <section class="trust-strip" aria-label="Beneficios de compra">
-    <div class="trust-strip-inner">
-      <div class="trust-strip-item">
-        <div class="trust-icon-box">🛵</div>
-        <div>
-          <div class="trust-strip-title">Pago Contra Entrega</div>
-          <div class="trust-strip-desc">Pagas en efectivo o Yape/Plin al recibir en Lima y Callao.</div>
-        </div>
+  <section class="benefits-experience-section" id="beneficios" aria-label="Beneficios y Garantías VITACORE">
+    <div class="benefits-experience-inner">
+      <div class="benefits-experience-head">
+        <span class="benefits-tag-pill">
+          <span class="pulse-dot"></span>
+          COMPRA 100% PROTEGIDA EN PERÚ
+        </span>
+        <h2 class="benefits-main-title">¿Por qué comprar en VITACORE Perú?</h2>
+        <p class="benefits-main-subtitle">
+          Eliminamos todo el riesgo de comprar por internet. Stock físico en Lima, despachos monitoreados y garantía técnica directa.
+        </p>
       </div>
 
-      <div class="trust-strip-item">
-        <div class="trust-icon-box">🚚</div>
-        <div>
-          <div class="trust-strip-title">Envíos a Todo el Perú</div>
-          <div class="trust-strip-desc">Despachos diarios por Shalom y Olva Courier con seguimiento.</div>
-        </div>
-      </div>
+      <div class="benefits-cards-grid">
+        <!-- Card 1: Pago Contra Entrega -->
+        <article class="benefit-glass-card" onclick="openBenefitDetail('cod')" tabindex="0" role="button" aria-label="Ver detalles de Pago Contra Entrega">
+          <div class="benefit-card-header">
+            <div class="benefit-icon-box benefit-icon-emerald">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="benefit-highlight-badge badge-emerald">Cero Riesgo</span>
+          </div>
+          <h3 class="benefit-title">Pago Contra Entrega</h3>
+          <p class="benefit-text">
+            No pagas nada por adelantado en Lima y Callao. Nuestro motorizado te entrega el producto y pagas al recibirlo en la puerta.
+          </p>
+          <ul class="benefit-points">
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Efectivo, Yape o Plin al instante</span>
+            </li>
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Inspecciona tu paquete en mano</span>
+            </li>
+          </ul>
+          <div class="benefit-card-footer">
+            <span>Ver cómo funciona</span>
+            <span class="benefit-arrow">→</span>
+          </div>
+        </article>
 
-      <div class="trust-strip-item">
-        <div class="trust-icon-box">🛡️</div>
-        <div>
-          <div class="trust-strip-title">Garantía de 12 Meses</div>
-          <div class="trust-strip-desc">Cambio inmediato ante cualquier falla técnica de fábrica.</div>
-        </div>
-      </div>
+        <!-- Card 2: Envíos a Todo el Perú -->
+        <article class="benefit-glass-card" onclick="openBenefitDetail('shipping')" tabindex="0" role="button" aria-label="Ver detalles de Envíos a Todo el Perú">
+          <div class="benefit-card-header">
+            <div class="benefit-icon-box benefit-icon-blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13"/>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/>
+                <circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <span class="benefit-highlight-badge badge-blue">Cobertura Nacional</span>
+          </div>
+          <h3 class="benefit-title">Envíos a Todo el Perú</h3>
+          <p class="benefit-text">
+            Despachos diarios monitoreados vía Shalom y Olva Courier con número de guía oficial para rastreo en tiempo real.
+          </p>
+          <ul class="benefit-points">
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Foto de guía y paquete rotulado</span>
+            </li>
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Rastreo activo 24/7 en línea</span>
+            </li>
+          </ul>
+          <div class="benefit-card-footer">
+            <span>Rastreo y cobertura</span>
+            <span class="benefit-arrow">→</span>
+          </div>
+        </article>
 
-      <div class="trust-strip-item">
-        <div class="trust-icon-box">📦</div>
-        <div>
-          <div class="trust-strip-title">Stock 100% Inmediato</div>
-          <div class="trust-strip-desc">Entrega rápida en 24 a 48 horas hábiles hasta tu puerta.</div>
-        </div>
+        <!-- Card 3: Garantía de 12 Meses -->
+        <article class="benefit-glass-card" onclick="openBenefitDetail('warranty')" tabindex="0" role="button" aria-label="Ver detalles de Garantía de 12 Meses">
+          <div class="benefit-card-header">
+            <div class="benefit-icon-box benefit-icon-purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+            </div>
+            <span class="benefit-highlight-badge badge-purple">Garantía Real</span>
+          </div>
+          <h3 class="benefit-title">Garantía de 12 Meses</h3>
+          <p class="benefit-text">
+            Tranquilidad absoluta. Si tu dispositivo presenta cualquier defecto técnico de fábrica, te cambiamos el producto por uno nuevo.
+          </p>
+          <ul class="benefit-points">
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Reemplazo técnico directo en Perú</span>
+            </li>
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Soporte post-venta por WhatsApp</span>
+            </li>
+          </ul>
+          <div class="benefit-card-footer">
+            <span>Términos de garantía</span>
+            <span class="benefit-arrow">→</span>
+          </div>
+        </article>
+
+        <!-- Card 4: Stock 100% Inmediato -->
+        <article class="benefit-glass-card" onclick="openBenefitDetail('stock')" tabindex="0" role="button" aria-label="Ver detalles de Stock Inmediato">
+          <div class="benefit-card-header">
+            <div class="benefit-icon-box benefit-icon-amber">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <span class="benefit-highlight-badge badge-amber">Almacén Lima</span>
+          </div>
+          <h3 class="benefit-title">Stock 100% Inmediato</h3>
+          <p class="benefit-text">
+            No esperes semanas de China. Todos los productos están listos en nuestro almacén central para despacho en 24 a 48 horas.
+          </p>
+          <ul class="benefit-points">
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Control de calidad antes del despacho</span>
+            </li>
+            <li>
+              <svg class="point-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Empaque reforzado y precintado</span>
+            </li>
+          </ul>
+          <div class="benefit-card-footer">
+            <span>Tiempos de entrega</span>
+            <span class="benefit-arrow">→</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -424,99 +533,170 @@
   <!-- ==========================================================================
        7. FREQUENTLY ASKED QUESTIONS (FAQ)
        ========================================================================== -->
-  <section class="products-section" id="faq" style="max-width: 800px; margin-bottom: 80px;">
-    <div class="section-header">
-      <h2 class="section-title">Preguntas Frecuentes</h2>
-      <p class="section-subtitle">Resolvemos todas tus dudas antes de realizar tu compra.</p>
-    </div>
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="section-header">
+        <span class="catalog-brand-eyebrow">
+          <span class="eyebrow-dot"></span>
+          RESOLVEMOS TUS DUDAS ANTES DE COMPRAR
+        </span>
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Todo lo que necesitas saber sobre tu compra, envíos y garantía contra entrega.</p>
+      </div>
 
-    <div style="display: flex; flex-direction: column; gap: 14px;">
-      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
-        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cómo funciona el Pago Contra Entrega en Lima y Callao?</summary>
-        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
-          Realizas tu pedido a través de nuestra web sin pagar nada por adelantado. Nuestro motorizado acudirá a tu dirección y podrás cancelar en efectivo o mediante Yape/Plin una vez que tengas el producto en tus manos.
-        </p>
-      </details>
+      <div class="faq-accordion-group">
+        <details class="faq-item" id="faq-item-cod">
+          <summary>
+            <span>¿Cómo funciona el Pago Contra Entrega en Lima y Callao?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">
+            Realizas tu pedido a través de nuestra web <strong>sin pagar nada por adelantado</strong>. Nuestro motorizado acudirá a tu dirección y podrás cancelar en efectivo o mediante Yape/Plin una vez que tengas el paquete en tus manos y verifiques que todo esté conforme.
+          </div>
+        </details>
 
-      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
-        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cómo se envían los pedidos a Provincias?</summary>
-        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
-          Los envíos a nivel nacional se realizan a través de las agencias Shalom y Olva Courier con número de guía oficial para rastreo en tiempo real. Para provincias se solicita un adelanto mínimo o pago total antes del despacho.
-        </p>
-      </details>
+        <details class="faq-item" id="faq-item-shipping">
+          <summary>
+            <span>¿Cómo se realizan los envíos a Provincias?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">
+            Los envíos a nivel nacional se realizan diariamente a través de <strong>Shalom y Olva Courier</strong>. Una vez que entregamos tu paquete a la agencia, te enviamos por WhatsApp la foto de tu paquete rotulado con su <strong>número de guía oficial</strong> para que puedas rastrearlo en tiempo real hasta su llegada a tu ciudad.
+          </div>
+        </details>
 
-      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
-        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Qué garantía tienen los productos VITACORE?</summary>
-        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
-          Todos nuestros dispositivos cuentan con 12 meses de garantía directa. Si el producto presenta algún desperfecto de fábrica, te realizamos el cambio inmediato por uno completamente nuevo.
-        </p>
-      </details>
+        <details class="faq-item" id="faq-item-warranty">
+          <summary>
+            <span>¿Qué cubre la Garantía de 12 Meses de VITACORE?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">
+            Todos nuestros dispositivos cuentan con <strong>12 meses de garantía directa</strong> contra fallas técnicas o defectos de fabricación. Si el producto presenta algún desperfecto que impida su correcto funcionamiento, te realizamos el <strong>reemplazo inmediato por uno completamente nuevo</strong> sin trámites lentos ni complicaciones.
+          </div>
+        </details>
 
-      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
-        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cuánto tiempo tarda en llegar mi pedido?</summary>
-        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
-          En Lima Metropolitana las entregas se realizan entre 24 a 48 horas hábiles (o con opción Express 24h). En provincias, los paquetes llegan a la agencia de destino en un plazo de 48 a 72 horas hábiles.
-        </p>
-      </details>
+        <details class="faq-item" id="faq-item-stock">
+          <summary>
+            <span>¿Cuánto tiempo tarda en llegar mi pedido?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">
+            En <strong>Lima Metropolitana y Callao</strong>, los pedidos se entregan en un plazo de <strong>24 a 48 horas hábiles</strong> (con opción de entrega el mismo día o al día siguiente según la hora de tu confirmación). Para <strong>Provincias</strong>, el tiempo estimado de tránsito es de <strong>48 a 72 horas hábiles</strong> dependiendo de la agencia de destino.
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
   <!-- ==========================================================================
-       8. FOOTER
+       8. SITE FOOTER (Premium Dark Edition)
        ========================================================================== -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <h4>VITACORE PERÚ</h4>
-        <p>
-          Líderes en tecnología de masaje, relajación muscular y bienestar para el hogar. Garantizamos productos probados, soporte post-venta personalizado y envíos transparentes a todo el país.
-        </p>
-      </div>
+  <footer class="site-footer-dark">
+    <div class="footer-top-wrap">
+      <div class="footer-inner">
+        <!-- Col 1: Brand Info & Direct WhatsApp CTA -->
+        <div class="footer-col footer-col-brand">
+          <div class="footer-brand-header">
+            <span class="footer-brand-logo">VITACORE</span>
+            <span class="footer-brand-badge">OFICIAL PERÚ</span>
+          </div>
+          <p class="footer-brand-desc">
+            Tecnología de bienestar, masaje y relajación diseñada para elevar tu calidad de vida. Productos certificados con garantía directa y atención personalizada.
+          </p>
+          <div class="footer-wa-direct-card">
+            <div class="footer-wa-info">
+              <div class="footer-wa-status">
+                <span class="status-pulse-dot"></span>
+                <span>Atención WhatsApp en Vivo</span>
+              </div>
+              <a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20VITACORE,%20deseo%20asesoria%20personalizada" target="_blank" class="footer-wa-number">
+                +51 984 718 555
+              </a>
+            </div>
+            <a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20VITACORE,%20deseo%20asesoria%20personalizada" target="_blank" class="footer-wa-btn" aria-label="Escribir por WhatsApp">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.115-.515-1.745-.722-2.883-2.485-2.97-2.601-.088-.117-.708-.942-.708-1.798s.446-1.277.606-1.451c.16-.175.348-.218.465-.218.116 0 .233.001.334.007.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.088.072.19.014.305-.058.115-.087.19-.174.291-.088.102-.185.228-.264.307-.088.087-.179.182-.077.357.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.088.277.073.379-.044.102-.117.438-.51.554-.685.118-.175.233-.146.393-.087.16.058 1.019.48 1.194.567.175.088.291.131.335.204.043.072.043.42-.101.825z"/></svg>
+              <span>Chatear</span>
+            </a>
+          </div>
+        </div>
 
-      <div class="footer-col">
-        <h4>Enlaces Rápidos</h4>
-        <ul class="footer-links">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#catalogo">Catálogo Completo</a></li>
-          <li><a href="#catalogo">Ofertas Flash</a></li>
-          <li><a href="#faq">Preguntas Frecuentes</a></li>
-        </ul>
-      </div>
+        <!-- Col 2: Enlaces Rápidos -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Navegación</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#" class="footer-link">Inicio</a></li>
+            <li><a href="#lo-mas-nuevo" class="footer-link" onclick="resetAndShowAllCatalog()">Catálogo Completo</a></li>
+            <li><a href="#categorias" class="footer-link">Categorías</a></li>
+            <li><a href="#beneficios" class="footer-link">Beneficios &amp; Garantía</a></li>
+            <li><a href="#faq" class="footer-link">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
 
-      <div class="footer-col">
-        <h4>Atención al Cliente</h4>
-        <ul class="footer-links">
-          <li><a href="https://api.whatsapp.com/send?phone=51953833260" target="_blank">WhatsApp: 953 833 260</a></li>
-          <li><a href="mailto:soporte@vitacoreperu.com">soporte@vitacoreperu.com</a></li>
-          <li><span>Horario: Lun - Sáb: 9:00 AM - 7:00 PM</span></li>
-          <li><span>Lima, Perú</span></li>
-        </ul>
-      </div>
+        <!-- Col 3: Atención al Cliente -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Atención al Cliente</h4>
+          <ul class="footer-nav-list">
+            <li>
+              <a href="https://api.whatsapp.com/send?phone=51984718555" target="_blank" class="footer-link footer-contact-item">
+                <span class="contact-icon">📱</span>
+                <span>WhatsApp: <strong>984 718 555</strong></span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:soporte@vitacoreperu.com" class="footer-link footer-contact-item">
+                <span class="contact-icon">✉️</span>
+                <span>soporte@vitacoreperu.com</span>
+              </a>
+            </li>
+            <li class="footer-contact-item muted">
+              <span class="contact-icon">⏰</span>
+              <span>Lun - Sáb: 9:00 AM - 7:00 PM</span>
+            </li>
+            <li class="footer-contact-item muted">
+              <span class="contact-icon">📍</span>
+              <span>Lima Metropolitana, Perú</span>
+            </li>
+          </ul>
+        </div>
 
-      <div class="footer-col">
-        <h4>Políticas & Legal</h4>
-        <ul class="footer-links">
-          <li><a href="#">Términos del Servicio</a></li>
-          <li><a href="#">Política de Privacidad</a></li>
-          <li><a href="#">Política de Envíos y Reembolsos</a></li>
-          <li><a href="#">Libro de Reclamaciones</a></li>
-        </ul>
+        <!-- Col 4: Políticas & Legal -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Políticas &amp; Legal</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#faq" onclick="openBenefitDetail('cod')" class="footer-link">Términos de Compra COD</a></li>
+            <li><a href="#faq" onclick="openBenefitDetail('warranty')" class="footer-link">Política de Garantía 12 Meses</a></li>
+            <li><a href="#faq" onclick="openBenefitDetail('shipping')" class="footer-link">Política de Envíos y Despacho</a></li>
+            <li>
+              <a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20VITACORE,%20solicito%20el%20Libro%20de%20Reclamaciones" target="_blank" class="footer-link footer-reclamaciones-link">
+                <span class="reclamaciones-icon">📖</span>
+                <span>Libro de Reclamaciones</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div>&copy; 2026 VITACORE Perú. Todos los derechos reservados. Tienda online protegida con SSL.</div>
-      <div style="display: flex; gap: 12px; font-weight: 700; font-size: 0.78rem;">
-        <span>🤝 CONTRA ENTREGA</span>
-        <span>•</span>
-        <span>VISA</span>
-        <span>•</span>
-        <span>MASTERCARD</span>
-        <span>•</span>
-        <span>YAPE / PLIN</span>
+    <!-- Bottom Bar -->
+    <div class="footer-bottom-wrap">
+      <div class="footer-bottom-inner">
+        <div class="footer-copy-text">
+          &copy; 2026 VITACORE Perú. Todos los derechos reservados. Tienda oficial protegida con cifrado SSL 256-bit.
+        </div>
+
+        <div class="footer-payment-tags">
+          <span class="footer-pay-pill">🤝 Pago Contra Entrega</span>
+          <span class="footer-pay-pill">💳 Tarjetas Visa / Master</span>
+          <span class="footer-pay-pill">🟣 Yape / Plin</span>
+          <a href="/admin.html" class="footer-admin-link-dark" title="Panel Administrador" aria-label="Acceso Administrador">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Admin</span>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
+
 
   <!-- ==========================================================================
        9. PRODUCT DETAIL PAGE (PDP) MODAL (Rich Studio Experience)
@@ -861,9 +1041,11 @@
         <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('audio')">🎧 Audio <span>→</span></a></li>
         <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('masajeadores')">💆 Masajeadores <span>→</span></a></li>
         <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('smarthome')">🏡 Smart Home <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('cargadores')">⚡ Cargadores <span>→</span></a></li>
+        <li><a href="#beneficios" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Beneficios &amp; Garantía <span>→</span></a></li>
         <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Lo más nuevo 🔥 <span>→</span></a></li>
         <li><a href="#faq" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Preguntas Frecuentes <span>→</span></a></li>
-        <li><a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20VITACORE,%20necesito%20ayuda" target="_blank" class="mobile-drawer-link" style="color: #059669; font-weight: 700;">WhatsApp Soporte <span>💬</span></a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20VITACORE,%20necesito%20ayuda" target="_blank" class="mobile-drawer-link" style="color: #059669; font-weight: 700;">WhatsApp Soporte <span>💬</span></a></li>
       </ul>
       <div style="padding: 20px; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: #888;">
         Envíos 100% seguros a todo el Perú 🇵🇪<br>Pago Contra Entrega en Lima Metropolitana
@@ -892,7 +1074,7 @@
   <!-- ==========================================================================
        12. FLOATING WHATSAPP BUTTON
        ========================================================================== -->
-  <a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20equipo%20VITACORE,%20deseo%20asesoria%20sobre%20los%20masajeadores" target="_blank" class="floating-whatsapp-btn" aria-label="Chatear por WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20equipo%20VITACORE,%20deseo%20asesoria%20sobre%20los%20productos" target="_blank" class="floating-whatsapp-btn" aria-label="Chatear por WhatsApp">
     <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.115-.515-1.745-.722-2.883-2.485-2.97-2.601-.088-.117-.708-.942-.708-1.798s.446-1.277.606-1.451c.16-.175.348-.218.465-.218.116 0 .233.001.334.007.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.088.072.19.014.305-.058.115-.087.19-.174.291-.088.102-.185.228-.264.307-.088.087-.179.182-.077.357.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.088.277.073.379-.044.102-.117.438-.51.554-.685.118-.175.233-.146.393-.087.16.058 1.019.48 1.194.567.175.088.291.131.335.204.043.072.043.42-.101.825z"/></svg>
   </a>
 

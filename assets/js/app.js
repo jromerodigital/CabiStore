@@ -6,7 +6,7 @@
 
 const CONFIG = {
   storeName: "VITACORE Perú",
-  whatsappNumber: "51953833260",
+  whatsappNumber: "51984718555",
   freeShippingThreshold: 200,
   currency: "S/."
 };
@@ -1447,5 +1447,30 @@ window.toggleCartDrawer = toggleCartDrawer;
 window.updateCartItemQty = updateCartItemQty;
 window.removeFromCart = removeFromCart;
 window.checkoutFromCart = checkoutFromCart;
+
+function openBenefitDetail(type) {
+  const targetMap = {
+    'cod': 'faq-item-cod',
+    'shipping': 'faq-item-shipping',
+    'warranty': 'faq-item-warranty',
+    'stock': 'faq-item-stock'
+  };
+
+  const targetId = targetMap[type] || 'faq-item-cod';
+  const targetElement = document.getElementById(targetId);
+
+  if (targetElement) {
+    targetElement.open = true;
+    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetElement.classList.add('faq-highlight-active');
+    setTimeout(() => {
+      targetElement.classList.remove('faq-highlight-active');
+    }, 2400);
+  } else {
+    const faqSec = document.getElementById('faq');
+    if (faqSec) faqSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+window.openBenefitDetail = openBenefitDetail;
 
 
