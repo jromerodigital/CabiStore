@@ -1314,14 +1314,19 @@
       </div>
 
       <details style="background:#f9fafb; border:1px solid var(--border); border-radius:var(--radius-sm); padding:12px;">
-        <summary style="font-weight:600; font-size:13px; cursor:pointer;">¿Cómo obtener la URL en tu Google Sheet en 1 minuto?</summary>
+        <summary style="font-weight:600; font-size:13px; cursor:pointer;">📖 Guía paso a paso para conectar Google Sheets con Fórmulas</summary>
         <ol style="font-size:12px; color:#374151; margin:10px 0 10px 18px; line-height:1.6;">
-          <li>Abre una hoja de cálculo en Google Sheets y ve a <strong>Extensiones &gt; Apps Script</strong>.</li>
-          <li>Borra el contenido y pega el código de abajo.</li>
-          <li>Haz clic en <strong>Implementar &gt; Nueva implementación &gt; Aplicación web</strong>.</li>
-          <li>En <em>Quién tiene acceso</em> selecciona <strong>Cualquier persona</strong> y copia la URL generada.</li>
+          <li>Abre una hoja nueva en Google Sheets y ve al menú superior: <strong>Extensiones &gt; Apps Script</strong>.</li>
+          <li>Borra cualquier código existente en el editor de Apps Script y pega el contenido del script oficial.</li>
+          <li>Haz clic en <strong>Implementar &gt; Nueva implementación</strong> (ícono de engranaje &gt; <em>Aplicación web</em>).</li>
+          <li>En <strong>Quién tiene acceso (Who has access)</strong> selecciona obligatoriamente <strong>Cualquier persona (Anyone)</strong>.</li>
+          <li>Haz clic en <strong>Implementar</strong>, autoriza los permisos de Google y copia la URL terminada en <code>/exec</code>.</li>
+          <li>Pega la URL arriba en este panel y haz clic en <strong>Guardar y Conectar</strong>. ¡Se crearán automáticamente las pestañas <strong>Dashboard</strong> (con todas las fórmulas), <strong>Pedidos</strong> y <strong>Productos</strong>!</li>
         </ol>
-        <button class="btn-secondary" style="font-size:11px; padding:4px 10px;" onclick="copyAppsScriptCode()">📋 Copiar Código Apps Script</button>
+        <div style="display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;">
+          <button class="btn-login-submit" style="font-size:11px; padding:6px 12px; width:auto;" onclick="copyAppsScriptCode()">📋 Copiar Código Apps Script Completo</button>
+          <a href="/google-sheets-backend.js" download="google-sheets-backend.js" class="btn-secondary" style="font-size:11px; padding:6px 12px; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">💾 Descargar google-sheets-backend.js</a>
+        </div>
         <pre class="code-snippet-box" id="apps-script-code">function doGet(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName('Pedidos') || ss.getActiveSheet();
@@ -1843,7 +1848,18 @@ function deleteRowById(sheet, id) {
       }
     }
 
-    function copyAppsScriptCode() {
+    async function copyAppsScriptCode() {
+      try {
+        const res = await fetch('/google-sheets-backend.js');
+        if (res.ok) {
+          const code = await res.text();
+          await navigator.clipboard.writeText(code);
+          alert('¡Script oficial completo de Google Sheets copiado al portapapeles!\n\nListo para pegar en tu Google Sheet (Extensiones > Apps Script).');
+          return;
+        }
+      } catch (err) {
+        console.warn('Fallback al código embebido:', err);
+      }
       const code = document.getElementById('apps-script-code').textContent;
       navigator.clipboard.writeText(code).then(() => {
         alert('¡Código de Google Apps Script copiado al portapapeles!');

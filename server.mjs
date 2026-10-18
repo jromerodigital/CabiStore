@@ -1017,6 +1017,7 @@ const server = http.createServer(async (req, res) => {
   const isAllowedStatic =
     pathname === '/index.html' ||
     pathname === '/admin.html' ||
+    pathname === '/google-sheets-backend.js' ||
     pathname.startsWith('/assets/');
 
   if (!isAllowedStatic) {
