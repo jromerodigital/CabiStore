@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE BOOST / VITACORE PERÚ: Belleza, Bienestar, Masajeadores y Tecnología</title>
+  <meta name="description" content="Tienda oficial VITACORE Perú. Masajeadores de percusión, bienestar, relajación y tecnología con Pago Contra Entrega en Lima y Callao y Envíos a todo el Perú por Shalom y Olva Courier.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23121212'><path d='M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5 10 5 10-5-5-2.5-5 2.5z'/></svg>">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=2.6">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <aside class="announcement-bar" aria-label="Aviso promocional">
+    <button class="announcement-arrow" onclick="prevAnnouncement()" aria-label="Anterior">&lt;</button>
+    <div class="announcement-content" id="announcement-text">
+      ¡Pide HOY y paga en casa! Válido solo en Lima Metropolitana 🛵
+    </div>
+    <button class="announcement-arrow" onclick="nextAnnouncement()" aria-label="Siguiente">&gt;</button>
+  </aside>
+
+  <!-- ==========================================================================
+       2. MAIN HEADER & LOGO (Single-Row Compact E-Commerce Layout)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-main-row">
+      <!-- Left: Mobile Hamburger + Brand Logo -->
+      <div class="header-brand-left">
+        <button class="header-icon-btn mobile-only-btn" onclick="toggleMobileDrawer(true)" aria-label="Menú principal">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="#" class="site-logo" aria-label="VITACORE Perú Inicio">
+          <div class="logo-house-symbol">
+            <svg class="roof-svg" viewBox="0 0 120 26">
+              <path d="M 6 22 L 60 4 L 114 22" />
+              <path d="M 88 11 L 88 5 L 98 5 L 98 15" />
+            </svg>
+            <div class="logo-brand-name">VITACORE</div>
+            <div class="logo-subtext">PERÚ • BIENESTAR</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Navigation Menu -->
+      <nav class="header-nav" aria-label="Navegación principal">
+        <ul class="nav-menu-list">
+          <li><a href="#" class="nav-item-link active">Inicio</a></li>
+          <li><a href="#lo-mas-nuevo" class="nav-item-link" onclick="resetAndShowAllCatalog()">Catálogo</a></li>
+          <li><a href="#categorias" class="nav-item-link">Categorías</a></li>
+          <li><a href="#lo-mas-nuevo" class="nav-item-link" onclick="sortByQuick('discount-desc')">Ofertas 🔥</a></li>
+          <li><a href="#faq" class="nav-item-link">FAQ</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20VITACORE,%20deseo%20asesoria%20sobre%20un%20producto" target="_blank" class="nav-item-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right: Search & Cart Bag -->
+      <div class="header-right-actions">
+        <button class="header-icon-btn" onclick="focusCatalogSearch()" aria-label="Buscar producto" title="Buscar en el catálogo">
+          <svg width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </button>
+        <button class="cart-bag-btn" onclick="toggleCartDrawer(true)" aria-label="Bolsa de compras" id="header-cart-btn" title="Ver carrito de compras">
+          <svg width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-badge-count" id="header-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       3. HERO BANNER SLIDER (Single Unified E-Commerce Slider Section)
+       ========================================================================== -->
+  <section class="hero-banner-section" id="hero-slider" aria-label="Promociones principales">
+    <div class="hero-slider-stage">
+      <button type="button" class="hero-side-arrow prev" onclick="prevHeroSlide()" aria-label="Slide anterior">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+
+      <div class="hero-slides-viewport" id="hero-slides-track">
+
+        <!-- SLIDE 1: Pistola de Masaje Pro Max -->
+        <div class="hero-slide active" data-slide="0">
+          <div class="hero-banner-inner">
+            <div class="hero-text-wrap">
+              <div class="hero-eyebrow">
+                ⚡ PRODUCTO ESTRELLA • -42% DCTO + 6 CABEZALES GRATIS
+              </div>
+              <h1 class="hero-headline">
+                SUMÉRGETE EN EL MÁS PROFUNDO ALIVIO Y BIENESTAR
+              </h1>
+              <p class="hero-description">
+                Disuelve contracturas en 30 segundos, elimina el estrés cervical y renueva tu energía con la tecnología de percusión terapéutica de VITACORE.
+              </p>
+              <div class="hero-cta-row">
+                <button class="hero-cta-btn" onclick="openPDP('pistola-masaje-promax')">
+                  <span>OBTENER OFERTA 🎁</span>
+                  <span class="hero-cta-sub">Envíos a todo el Perú 🇵🇪</span>
+                </button>
+                <div class="hero-price-box">
+                  <div class="hero-price-old">Normal: S/. 289.00</div>
+                  <div class="hero-price-now">Hoy: S/. 169.00</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-image-wrap">
+              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&h=600&q=80" alt="Pistola de Masaje VITACORE Pro Max" class="hero-product-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: Smartwatch Ultra Amoled -->
+        <div class="hero-slide" data-slide="1" hidden>
+          <div class="hero-banner-inner">
+            <div class="hero-text-wrap">
+              <div class="hero-eyebrow">
+                ⌚ TECNOLOGÍA &amp; DEPORTE • CORREA EXTRA DE REGALO
+              </div>
+              <h2 class="hero-headline">
+                CONECTIVIDAD TOTAL Y SALUD EN TU MUÑECA 24/7
+              </h2>
+              <p class="hero-description">
+                Responde llamadas por Bluetooth, monitorea tu ritmo cardíaco y oxígeno SpO2 con más de 100 modos deportivos y batería de hasta 10 días.
+              </p>
+              <div class="hero-cta-row">
+                <button class="hero-cta-btn" onclick="openPDP('smartwatch-ultra-amoled')">
+                  <span>VER OFERTA ULTRA ⌚</span>
+                  <span class="hero-cta-sub">Pago Contra Entrega en Lima y Callao 🛵</span>
+                </button>
+                <div class="hero-price-box">
+                  <div class="hero-price-old">Normal: S/. 320.00</div>
+                  <div class="hero-price-now">Hoy: S/. 189.00</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-image-wrap">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&h=600&q=80" alt="Smartwatch VITACORE Ultra Amoled" class="hero-product-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Terapia Cervical 4D & Bienestar -->
+        <div class="hero-slide" data-slide="2" hidden>
+          <div class="hero-banner-inner">
+            <div class="hero-text-wrap">
+              <div class="hero-eyebrow">
+                🔥 TERAPIA TÉRMICA 4D • CASA Y AUTO 12V INCLUIDO
+              </div>
+              <h2 class="hero-headline">
+                DILE ADIÓS AL ESTRÉS CERVICAL Y TENSIÓN DE ESPALDA
+              </h2>
+              <p class="hero-description">
+                Rodillos Shiatsu 4D bidireccionales con calor infrarrojo relajante para cuello, hombros y zona lumbar. Pide hoy y paga al recibir.
+              </p>
+              <div class="hero-cta-row">
+                <button class="hero-cta-btn" onclick="openPDP('masajeador-cervical-4d')">
+                  <span>COMPRAR CONTRA ENTREGA 🛵</span>
+                  <span class="hero-cta-sub">Entrega rápida 24h a 48h</span>
+                </button>
+                <div class="hero-price-box">
+                  <div class="hero-price-old">Normal: S/. 249.00</div>
+                  <div class="hero-price-now">Hoy: S/. 139.00</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-image-wrap">
+              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&h=600&q=80" alt="Masajeador Cervical 4D VITACORE" class="hero-product-img">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="hero-side-arrow next" onclick="nextHeroSlide()" aria-label="Siguiente slide">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- Slider Dots & Controls Bar (Integrated inside Hero Section) -->
+    <div class="carousel-controls-bar">
+      <button type="button" class="carousel-nav-btn" onclick="prevHeroSlide()" aria-label="Slide anterior">&lt;</button>
+      <div class="carousel-dots" id="hero-carousel-dots">
+        <span class="carousel-dot active" onclick="goToHeroSlide(0)" aria-label="Ir al slide 1"></span>
+        <span class="carousel-dot" onclick="goToHeroSlide(1)" aria-label="Ir al slide 2"></span>
+        <span class="carousel-dot" onclick="goToHeroSlide(2)" aria-label="Ir al slide 3"></span>
+      </div>
+      <span class="carousel-counter-text" id="hero-slide-counter">1 / 3</span>
+      <button type="button" class="carousel-nav-btn" onclick="nextHeroSlide()" aria-label="Siguiente slide">&gt;</button>
+      <button type="button" class="carousel-pause-btn" id="hero-pause-btn" onclick="toggleHeroPause()" aria-label="Pausar o reanudar carrusel">||</button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. CATEGORÍAS (Exact The Boost Perú Clean Collection Grid)
+       ========================================================================== -->
+  <section class="categories-section" id="categorias">
+    <div class="categories-header-row">
+      <h2 class="categories-heading">Categorías</h2>
+      <button type="button" class="btn-see-all-top" onclick="resetAndShowAllCatalog()">
+        Ver todo el catálogo (11) →
+      </button>
+    </div>
+    <div class="categories-grid">
+      <!-- 1. Smartwatch -->
+      <a href="#lo-mas-nuevo" class="category-card" data-cat="smartwatch" onclick="filterByCategory('smartwatch')">
+        <div class="category-card-media">
+          <img src="//theboostperu.com/cdn/shop/collections/apple-watch-8-41mm-midnight-pos1.png?v=1707755594&width=1500" alt="Smartwatch" class="category-img" loading="lazy" decoding="async">
+        </div>
+        <div class="category-card-title">
+          <span>Smartwatch</span>
+          <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 2. Audio -->
+      <a href="#lo-mas-nuevo" class="category-card" data-cat="audio" onclick="filterByCategory('audio')">
+        <div class="category-card-media">
+          <img src="//theboostperu.com/cdn/shop/collections/812F91CA-C545-4ECA-BE5E-A9A4A25E1FB3-750-rhuwvr.webp_13-16-34-161.webp?v=1707753612&width=1500" alt="Audio" class="category-img" loading="lazy" decoding="async">
+        </div>
+        <div class="category-card-title">
+          <span>Audio</span>
+          <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 3. Masajeadores -->
+      <a href="#lo-mas-nuevo" class="category-card" data-cat="masajeadores" onclick="filterByCategory('masajeadores')">
+        <div class="category-card-media">
+          <img src="//theboostperu.com/cdn/shop/collections/Pistola-de-masaje.png?v=1763673890&width=1500" alt="Masajeadores" class="category-img" loading="lazy" decoding="async">
+        </div>
+        <div class="category-card-title">
+          <span>Masajeadores</span>
+          <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 4. Smart Home -->
+      <a href="#lo-mas-nuevo" class="category-card" data-cat="smarthome" onclick="filterByCategory('smarthome')">
+        <div class="category-card-media">
+          <img src="//theboostperu.com/cdn/shop/collections/HL_family_creative_KdjOKY8HP714_main-variant-transparent_2x_8e3f16fc-0ea3-466b-8289-15e134ace1f0.png?v=1707755776&width=1500" alt="Smart Home" class="category-img" loading="lazy" decoding="async">
+        </div>
+        <div class="category-card-title">
+          <span>Smart Home</span>
+          <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+
+      <!-- 5. Cargadores -->
+      <a href="#lo-mas-nuevo" class="category-card" data-cat="cargadores" onclick="filterByCategory('cargadores')">
+        <div class="category-card-media">
+          <img src="/assets/images/categoria-cargadores.png" alt="Cargadores" class="category-img" loading="lazy" decoding="async">
+        </div>
+        <div class="category-card-title">
+          <span>Cargadores</span>
+          <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. CATÁLOGO INTERACTIVO (Shopify / Retail Perú Filter & Sort System)
+       ========================================================================== -->
+  <section class="products-section" id="lo-mas-nuevo">
+    <div class="catalog-top-head">
+      <div>
+        <span class="catalog-brand-eyebrow">CATÁLOGO OFICIAL • VITACORE PERÚ</span>
+        <h2 class="section-title">Explora Nuestros Productos</h2>
+        <p class="section-subtitle" id="catalog-active-filter-text">Mostrando los productos más pedidos con stock inmediato</p>
+      </div>
+
+      <!-- Cinta de Pasarelas y Métodos de Pago integrados en Catálogo -->
+      <div class="catalog-payment-strip" aria-label="Medios de pago aceptados">
+        <span class="pay-pill cod">🛵 Pago Contra Entrega</span>
+        <span class="pay-pill yape">📱 Yape / Plin</span>
+        <span class="pay-pill card">💳 Visa / Mastercard</span>
+        <span class="pay-pill courier">🚚 Shalom / Olva</span>
+      </div>
+    </div>
+
+    <!-- Barra de Categorías Rápidas + Botón Ver Todo -->
+    <div class="catalog-chips-row" role="tablist" aria-label="Filtrar por categoría">
+      <button type="button" class="cat-filter-chip active" data-cat="all" onclick="filterByCategory('all', false)">
+        Todo el Catálogo <span class="chip-count" id="chip-count-all">11</span>
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="masajeadores" onclick="filterByCategory('masajeadores', false)">
+        💆 Masajeadores
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="smartwatch" onclick="filterByCategory('smartwatch', false)">
+        ⌚ Smartwatch
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="audio" onclick="filterByCategory('audio', false)">
+        🎧 Audio
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="smarthome" onclick="filterByCategory('smarthome', false)">
+        🏡 Smart Home
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="cargadores" onclick="filterByCategory('cargadores', false)">
+        ⚡ Cargadores
+      </button>
+      <button type="button" class="cat-filter-chip" data-cat="bienestar" onclick="filterByCategory('bienestar', false)">
+        ✨ Bienestar &amp; Descanso
+      </button>
+    </div>
+
+    <!-- Barra de Controles: Buscador + Filtro Marca/Línea + Filtro Precio + Ordenar Por -->
+    <div class="catalog-controls-toolbar">
+      <div class="catalog-search-box">
+        <svg class="catalog-search-icon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="search" id="catalog-search-input" class="catalog-search-input" placeholder="Buscar producto, marca o beneficio (ej: cervical, reloj, audífonos)..." oninput="handleCatalogFilterChange()">
+      </div>
+
+      <div class="catalog-selects-group">
+        <div class="catalog-select-wrap">
+          <label for="catalog-brand-select">Marca / Línea:</label>
+          <select id="catalog-brand-select" class="catalog-select" onchange="handleCatalogFilterChange()">
+            <option value="all">Todas las líneas VITACORE</option>
+            <option value="VITACORE Pro Therapy">VITACORE Pro Therapy</option>
+            <option value="VITACORE SmartTech">VITACORE SmartTech</option>
+            <option value="VITACORE SoundLab">VITACORE SoundLab</option>
+            <option value="VITACORE Sleep & Care">VITACORE Sleep &amp; Care</option>
+          </select>
+        </div>
+
+        <div class="catalog-select-wrap">
+          <label for="catalog-price-select">Precio:</label>
+          <select id="catalog-price-select" class="catalog-select" onchange="handleCatalogFilterChange()">
+            <option value="all">Todos los precios</option>
+            <option value="under-140">Hasta S/. 140</option>
+            <option value="140-170">S/. 140 a S/. 170</option>
+            <option value="over-170">Más de S/. 170</option>
+          </select>
+        </div>
+
+        <div class="catalog-select-wrap">
+          <label for="catalog-sort-select">Ordenar por:</label>
+          <select id="catalog-sort-select" class="catalog-select sort-highlight" onchange="handleCatalogFilterChange()">
+            <option value="bestselling">🔥 Más pedidos</option>
+            <option value="newest">✨ Más recientes</option>
+            <option value="oldest">⏳ Más antiguos</option>
+            <option value="price-asc">💰 Precio: Menor a Mayor</option>
+            <option value="price-desc">💎 Precio: Mayor a Menor</option>
+            <option value="discount-desc">🏷️ Mayor Descuento (%)</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn-catalog-reset" id="btn-catalog-reset" onclick="resetAndShowAllCatalog()" title="Mostrar todos los productos sin filtros">
+          Ver Todo
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid de Productos -->
+    <div class="products-grid" id="products-grid">
+      <!-- Inyectado dinámicamente por app.js -->
+    </div>
+
+    <!-- Pie de Catálogo: Botón "Ver todos los productos" -->
+    <div class="catalog-footer-more" id="catalog-footer-more">
+      <button type="button" class="btn-load-all-products" id="btn-load-all-products" onclick="expandAllCatalogProducts()">
+        Ver todos los productos disponibles ↓
+      </button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. TRUST VALUES RIBBON (4 Pillars)
+       ========================================================================== -->
+  <section class="trust-strip" aria-label="Beneficios de compra">
+    <div class="trust-strip-inner">
+      <div class="trust-strip-item">
+        <div class="trust-icon-box">🛵</div>
+        <div>
+          <div class="trust-strip-title">Pago Contra Entrega</div>
+          <div class="trust-strip-desc">Pagas en efectivo o Yape/Plin al recibir en Lima y Callao.</div>
+        </div>
+      </div>
+
+      <div class="trust-strip-item">
+        <div class="trust-icon-box">🚚</div>
+        <div>
+          <div class="trust-strip-title">Envíos a Todo el Perú</div>
+          <div class="trust-strip-desc">Despachos diarios por Shalom y Olva Courier con seguimiento.</div>
+        </div>
+      </div>
+
+      <div class="trust-strip-item">
+        <div class="trust-icon-box">🛡️</div>
+        <div>
+          <div class="trust-strip-title">Garantía de 12 Meses</div>
+          <div class="trust-strip-desc">Cambio inmediato ante cualquier falla técnica de fábrica.</div>
+        </div>
+      </div>
+
+      <div class="trust-strip-item">
+        <div class="trust-icon-box">📦</div>
+        <div>
+          <div class="trust-strip-title">Stock 100% Inmediato</div>
+          <div class="trust-strip-desc">Entrega rápida en 24 a 48 horas hábiles hasta tu puerta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       7. FREQUENTLY ASKED QUESTIONS (FAQ)
+       ========================================================================== -->
+  <section class="products-section" id="faq" style="max-width: 800px; margin-bottom: 80px;">
+    <div class="section-header">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <p class="section-subtitle">Resolvemos todas tus dudas antes de realizar tu compra.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
+        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cómo funciona el Pago Contra Entrega en Lima y Callao?</summary>
+        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
+          Realizas tu pedido a través de nuestra web sin pagar nada por adelantado. Nuestro motorizado acudirá a tu dirección y podrás cancelar en efectivo o mediante Yape/Plin una vez que tengas el producto en tus manos.
+        </p>
+      </details>
+
+      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
+        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cómo se envían los pedidos a Provincias?</summary>
+        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
+          Los envíos a nivel nacional se realizan a través de las agencias Shalom y Olva Courier con número de guía oficial para rastreo en tiempo real. Para provincias se solicita un adelanto mínimo o pago total antes del despacho.
+        </p>
+      </details>
+
+      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
+        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Qué garantía tienen los productos VITACORE?</summary>
+        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
+          Todos nuestros dispositivos cuentan con 12 meses de garantía directa. Si el producto presenta algún desperfecto de fábrica, te realizamos el cambio inmediato por uno completamente nuevo.
+        </p>
+      </details>
+
+      <details style="background: #fafafa; border: 1px solid var(--border-light); border-radius: 8px; padding: 14px 18px;">
+        <summary style="font-weight: 700; cursor: pointer; color: #121212;">¿Cuánto tiempo tarda en llegar mi pedido?</summary>
+        <p style="margin-top: 10px; color: #555; line-height: 1.6; font-size: 0.92rem;">
+          En Lima Metropolitana las entregas se realizan entre 24 a 48 horas hábiles (o con opción Express 24h). En provincias, los paquetes llegan a la agencia de destino en un plazo de 48 a 72 horas hábiles.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>VITACORE PERÚ</h4>
+        <p>
+          Líderes en tecnología de masaje, relajación muscular y bienestar para el hogar. Garantizamos productos probados, soporte post-venta personalizado y envíos transparentes a todo el país.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Enlaces Rápidos</h4>
+        <ul class="footer-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#catalogo">Catálogo Completo</a></li>
+          <li><a href="#catalogo">Ofertas Flash</a></li>
+          <li><a href="#faq">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Atención al Cliente</h4>
+        <ul class="footer-links">
+          <li><a href="https://api.whatsapp.com/send?phone=51953833260" target="_blank">WhatsApp: 953 833 260</a></li>
+          <li><a href="mailto:soporte@vitacoreperu.com">soporte@vitacoreperu.com</a></li>
+          <li><span>Horario: Lun - Sáb: 9:00 AM - 7:00 PM</span></li>
+          <li><span>Lima, Perú</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Políticas & Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#">Términos del Servicio</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Política de Envíos y Reembolsos</a></li>
+          <li><a href="#">Libro de Reclamaciones</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 VITACORE Perú. Todos los derechos reservados. Tienda online protegida con SSL.</div>
+      <div style="display: flex; gap: 12px; font-weight: 700; font-size: 0.78rem;">
+        <span>🤝 CONTRA ENTREGA</span>
+        <span>•</span>
+        <span>VISA</span>
+        <span>•</span>
+        <span>MASTERCARD</span>
+        <span>•</span>
+        <span>YAPE / PLIN</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       9. PRODUCT DETAIL PAGE (PDP) MODAL (Rich Studio Experience)
+       ========================================================================== -->
+  <div class="pdp-modal-backdrop" id="pdp-modal-backdrop" onclick="if(event.target.id === 'pdp-modal-backdrop') closePDP()">
+    <div class="pdp-modal-box" onclick="event.stopPropagation()">
+      <button class="pdp-close-btn" onclick="closePDP()" aria-label="Cerrar modal">&times;</button>
+
+      <div class="pdp-grid">
+        <!-- Gallery -->
+        <div class="pdp-gallery">
+          <div class="pdp-main-image-wrap">
+            <img src="" alt="Producto" class="pdp-main-image" id="pdp-main-img">
+          </div>
+          <div class="pdp-thumbnail-row" id="pdp-thumbnail-row"></div>
+        </div>
+
+        <!-- Info & Buy Area -->
+        <div class="pdp-info">
+          <div class="pdp-vendor">VITACORE PERÚ</div>
+          <h2 class="pdp-title" id="pdp-title">Nombre del Producto</h2>
+
+          <div class="pdp-rating-row">
+            <span class="star-icons">★★★★★</span>
+            <span class="review-count" id="pdp-rating-text">4.9 (384 Reseñas)</span>
+          </div>
+
+          <div class="pdp-price-row">
+            <span class="pdp-price-old" id="pdp-price-old">S/. 289.00</span>
+            <span class="pdp-price-current" id="pdp-price-current">S/. 169.00</span>
+            <span class="pdp-badge-oferta">Oferta</span>
+          </div>
+
+          <div class="pdp-bestseller-tag">
+            🏅 Más vendido entre los productos de su categoría.
+          </div>
+
+          <!-- Big Conversion CTA -->
+          <button class="btn-pdp-buy-now" onclick="openCODModal()">
+            <span class="btn-cta-main-text">
+              <span>⚡</span> COMPRAR AHORA 🎁
+            </span>
+            <span class="btn-cta-sub-text">Pago Contra Entrega en Lima y Envíos a todo el Perú</span>
+          </button>
+          <button type="button" class="btn-pdp-add-cart" onclick="handleAddToCart(state.activeProduct ? state.activeProduct.id : PRODUCTS[0].id)">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span>Agregar al Carrito de Compras</span>
+          </button>
+
+          <!-- Countdown Urgency Box -->
+          <div class="countdown-box">
+            <div class="countdown-heading">OFERTA DEL DÍA TERMINA EN ⏰</div>
+            <div class="countdown-digits-wrap">
+              <span class="countdown-digit" id="cd-hours">03</span>
+              <span class="countdown-sep">:</span>
+              <span class="countdown-digit" id="cd-mins">22</span>
+              <span class="countdown-sep">:</span>
+              <span class="countdown-digit" id="cd-secs">15</span>
+            </div>
+          </div>
+
+          <!-- Stock Scarcity -->
+          <div class="stock-urgency-wrap">
+            <div class="stock-label">
+              <span>CORRE ‼️</span> Solo quedan 2 en stock 🚨
+            </div>
+            <div class="stock-meter-track">
+              <div class="stock-meter-fill"></div>
+            </div>
+          </div>
+
+          <!-- Payment Trust Badges -->
+          <div class="pdp-trust-badges">
+            <div class="trust-badges-label">Paga seguro y confiable con 👇🏻</div>
+            <div class="trust-badges-row">
+              <span>🤝 Contra Entrega</span>
+              <span>•</span>
+              <span>💳 VISA</span>
+              <span>•</span>
+              <span>💳 MasterCard</span>
+              <span>•</span>
+              <span>📱 Yape / Plin</span>
+            </div>
+          </div>
+
+          <!-- Tabs / Description -->
+          <div class="pdp-details-tabs">
+            <details open>
+              <summary class="tab-summary">
+                Descripción y Beneficios
+                <span>▾</span>
+              </summary>
+              <div class="tab-content">
+                <p id="pdp-description-text"></p>
+                <ul id="pdp-features-list" style="list-style: none; margin-top: 10px; line-height: 1.8;"></ul>
+              </div>
+            </details>
+
+            <details>
+              <summary class="tab-summary">
+                Garantía y Envíos
+                <span>▾</span>
+              </summary>
+              <div class="tab-content">
+                <p><strong>Lima y Callao:</strong> Entrega en 24h a 48h con pago al recibir en efectivo o Yape.</p>
+                <p style="margin-top: 6px;"><strong>Provincias:</strong> Envíos diarios por Shalom y Olva Courier con guía de seguimiento.</p>
+                <p style="margin-top: 6px;"><strong>Garantía:</strong> 12 meses por defectos de fábrica con cambio directo.</p>
+              </div>
+            </details>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       10. RELEASIT CASH ON DELIVERY (COD) CHECKOUT MODAL
+       ========================================================================== -->
+  <div class="cod-modal-backdrop" id="cod-modal-backdrop" onclick="if(event.target.id === 'cod-modal-backdrop') closeCODModal()">
+    <div class="cod-modal-card" onclick="event.stopPropagation()">
+      <div class="cod-modal-header">
+        <h3 class="cod-header-title">
+          👉🏻 PAGO CONTRA ENTREGA LIMA Y CALLAO 🛵 Y PROVINCIA PREVIO ADELANTO 🚚
+        </h3>
+        <button class="cod-close-btn" onclick="closeCODModal()" aria-label="Cerrar">&times;</button>
+      </div>
+
+      <!-- Quantity Offers / Bundles (Releasit Style) -->
+      <div class="bundle-options-list">
+        <div class="bundle-item selected" id="bundle-opt-1" onclick="selectBundle(1)">
+          <div class="bundle-left">
+            <img src="" alt="Pack 1" class="bundle-img" id="bundle-img-1">
+            <div>
+              <div class="bundle-title">Compra 1 unidad</div>
+              <span class="bundle-badge">HASTA HOY</span>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-old-price" id="bundle-old-1">S/. 289.00</div>
+            <div class="bundle-current-price" id="bundle-price-1">S/. 169.00</div>
+          </div>
+        </div>
+
+        <div class="bundle-item" id="bundle-opt-2" onclick="selectBundle(2)">
+          <div class="bundle-left">
+            <img src="" alt="Pack 2" class="bundle-img" id="bundle-img-2">
+            <div>
+              <div class="bundle-title">¡Compra 2 con SUPER DESCUENTO!</div>
+              <span class="bundle-badge save" id="bundle-save-tag">¡Ahorra S/. 19.00!</span>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-old-price" id="bundle-old-2">S/. 578.00</div>
+            <div class="bundle-current-price" id="bundle-price-2">S/. 319.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discount Coupon -->
+      <div class="coupon-row">
+        <input type="text" class="coupon-input" id="cod-coupon-input" placeholder="Código de descuento (ej: VITACORE10)">
+        <button type="button" class="btn-apply-coupon" onclick="applyCoupon()">Aplicar</button>
+      </div>
+
+      <!-- Form Box (Releasit Form) -->
+      <form class="cod-form-box" onsubmit="submitCODForm(event)">
+        <div class="cod-form-subtitle">
+          Ingrese sus datos y dirección de entrega 📦
+        </div>
+
+        <div class="form-group">
+          <label for="cod-email">Correo electrónico (Opcional)</label>
+          <div class="input-with-icon">
+            <span class="input-icon-left">✉️</span>
+            <input type="email" id="cod-email" class="form-control" placeholder="tucorreo@ejemplo.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cod-name">Nombres y Apellidos *</label>
+          <div class="input-with-icon">
+            <span class="input-icon-left">👤</span>
+            <input type="text" id="cod-name" class="form-control" placeholder="Ej: Carlos Mendoza Ruiz" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cod-dni">DNI, CE o RUC *</label>
+            <div class="input-with-icon">
+              <span class="input-icon-left">🪪</span>
+              <input type="text" id="cod-dni" class="form-control" placeholder="8 a 11 dígitos" required maxlength="11">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cod-phone">Teléfono WhatsApp *</label>
+            <div class="input-with-icon">
+              <span class="input-icon-left">📱</span>
+              <input type="tel" id="cod-phone" class="form-control" placeholder="9 dígitos" required maxlength="9">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cod-address">Dirección de entrega *</label>
+          <div class="input-with-icon">
+            <span class="input-icon-left">📍</span>
+            <input type="text" id="cod-address" class="form-control" placeholder="Av / Calle / Jr / Número / Dpto" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cod-ref">Referencia de entrega</label>
+          <div class="input-with-icon">
+            <span class="input-icon-left">📝</span>
+            <input type="text" id="cod-ref" class="form-control" placeholder="Ej: Frente al parque, rejas negras">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cod-dept">Departamento *</label>
+          <select id="cod-dept" class="form-control no-icon" required>
+            <option value="PE-LMA" selected>Lima (Metropolitana)</option>
+            <option value="PE-CAL">Callao</option>
+            <option value="PE-LIM">Lima (Departamento / Provincias)</option>
+            <option value="PE-AMA">Amazonas</option>
+            <option value="PE-ANC">Áncash</option>
+            <option value="PE-APU">Apurímac</option>
+            <option value="PE-ARE">Arequipa</option>
+            <option value="PE-AYA">Ayacucho</option>
+            <option value="PE-CAJ">Cajamarca</option>
+            <option value="PE-CUS">Cuzco</option>
+            <option value="PE-HUV">Huancavelica</option>
+            <option value="PE-HUC">Huánuco</option>
+            <option value="PE-ICA">Ica</option>
+            <option value="PE-JUN">Junín</option>
+            <option value="PE-LAL">La Libertad</option>
+            <option value="PE-LAM">Lambayeque</option>
+            <option value="PE-LOR">Loreto</option>
+            <option value="PE-MDD">Madre de Dios</option>
+            <option value="PE-MOQ">Moquegua</option>
+            <option value="PE-PAS">Pasco</option>
+            <option value="PE-PIU">Piura</option>
+            <option value="PE-PUN">Puno</option>
+            <option value="PE-SAM">San Martín</option>
+            <option value="PE-TAC">Tacna</option>
+            <option value="PE-TUM">Tumbes</option>
+            <option value="PE-UCA">Ucayali</option>
+          </select>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cod-city">Provincia *</label>
+            <input type="text" id="cod-city" class="form-control no-icon" value="Lima" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cod-dist">Distrito *</label>
+            <input type="text" id="cod-dist" class="form-control no-icon" placeholder="Ej: Miraflores" required>
+          </div>
+        </div>
+
+        <!-- Shipping Rates Selection -->
+        <div class="shipping-options-group">
+          <label style="font-size: 0.82rem; font-weight: 600; color: #333; margin-bottom: 6px; display: block;">Método de Envío:</label>
+
+          <div class="shipping-option-item selected" id="shipping-opt-1" data-price="0">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>🛵</span>
+              <span class="ship-name">Envío Delivery VITACORE (2-3 días) - Contraentrega</span>
+            </div>
+            <span class="ship-price-val">GRATIS</span>
+          </div>
+
+          <div class="shipping-option-item" id="shipping-opt-2" data-price="15">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span>⚡</span>
+              <span class="ship-name">Envío Delivery Express 24h Lima - Contraentrega</span>
+            </div>
+            <span class="ship-price-val">S/. 15.00</span>
+          </div>
+        </div>
+
+        <!-- Totals Summary -->
+        <div class="totals-summary-box">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="cod-subtotal-val">S/. 169.00</span>
+          </div>
+          <div class="total-row">
+            <span>Envío:</span>
+            <span id="cod-shipping-val">GRATIS</span>
+          </div>
+          <div class="total-row final">
+            <span>Total a Pagar al Recibir:</span>
+            <span id="cod-total-val" style="color: #059669;">S/. 169.00</span>
+          </div>
+        </div>
+
+        <!-- Warning Alert -->
+        <div class="anti-fraud-alert">
+          🚨 COMPLETA TU ORDEN SOLO SI ESTAS 100% SEGURO(A) DE TU COMPRA
+        </div>
+
+        <!-- Primary Confirm Button -->
+        <button type="submit" class="btn-submit-cod" id="btn-submit-cod">
+          <span>CONFIRMAR PEDIDO - S/. 169.00</span>
+          <span class="sub">(Pago Contra entrega y Previo adelanto)</span>
+        </button>
+
+        <!-- Secondary Button -->
+        <button type="button" class="btn-card-checkout" onclick="alert('Opción de pago con tarjeta activa. Tu pedido se ha registrado; te enviaremos el link de pago seguro Niubiz / Izipay por WhatsApp.')">
+          <span>💳 PAGO CON TARJETA</span>
+          <span style="font-size: 0.75rem; opacity: 0.85;">(Pago seguro en línea)</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       10. MOBILE NAVIGATION DRAWER
+       ========================================================================== -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" onclick="toggleMobileDrawer(false)">
+    <div class="mobile-drawer-panel" id="mobile-drawer-panel" onclick="event.stopPropagation()">
+      <div class="mobile-drawer-header">
+        <div class="logo-house-symbol" style="width: 100px;">
+          <svg class="roof-svg" viewBox="0 0 120 30">
+            <path d="M 6 26 L 60 4 L 114 26" />
+            <path d="M 88 12 L 88 6 L 98 6 L 98 16" />
+          </svg>
+          <div class="logo-brand-name" style="font-size: 1.25rem;">VITACORE</div>
+        </div>
+        <button class="mobile-drawer-close" onclick="toggleMobileDrawer(false)" aria-label="Cerrar menú">✕</button>
+      </div>
+      <ul class="mobile-drawer-links">
+        <li><a href="#" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Inicio <span>→</span></a></li>
+        <li><a href="#categorias" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Categorías <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('smartwatch')">⌚ Smartwatch <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('audio')">🎧 Audio <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('masajeadores')">💆 Masajeadores <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false); filterByCategory('smarthome')">🏡 Smart Home <span>→</span></a></li>
+        <li><a href="#lo-mas-nuevo" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Lo más nuevo 🔥 <span>→</span></a></li>
+        <li><a href="#faq" class="mobile-drawer-link" onclick="toggleMobileDrawer(false)">Preguntas Frecuentes <span>→</span></a></li>
+        <li><a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20VITACORE,%20necesito%20ayuda" target="_blank" class="mobile-drawer-link" style="color: #059669; font-weight: 700;">WhatsApp Soporte <span>💬</span></a></li>
+      </ul>
+      <div style="padding: 20px; border-top: 1px solid var(--border-light); font-size: 0.85rem; color: #888;">
+        Envíos 100% seguros a todo el Perú 🇵🇪<br>Pago Contra Entrega en Lima Metropolitana
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       11. MOBILE STICKY BUY BAR
+       ========================================================================== -->
+  <aside class="mobile-sticky-bar" aria-label="Barra de compra rápida móvil">
+    <div class="sticky-bar-inner">
+      <div class="sticky-product-snippet">
+        <img src="" alt="Producto" class="sticky-thumb" id="sticky-thumb">
+        <div class="sticky-details">
+          <div class="sticky-title" id="sticky-title">Pistola VITACORE Pro Max</div>
+          <div class="sticky-price" id="sticky-price">S/. 169.00</div>
+        </div>
+      </div>
+      <button class="btn-sticky-buy" onclick="openCODModal()">
+        OBTENER OFERTA 🎁
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       12. FLOATING WHATSAPP BUTTON
+       ========================================================================== -->
+  <a href="https://api.whatsapp.com/send?phone=51953833260&text=Hola%20equipo%20VITACORE,%20deseo%20asesoria%20sobre%20los%20masajeadores" target="_blank" class="floating-whatsapp-btn" aria-label="Chatear por WhatsApp">
+    <svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.074-2.115-.515-1.745-.722-2.883-2.485-2.97-2.601-.088-.117-.708-.942-.708-1.798s.446-1.277.606-1.451c.16-.175.348-.218.465-.218.116 0 .233.001.334.007.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.088.072.19.014.305-.058.115-.087.19-.174.291-.088.102-.185.228-.264.307-.088.087-.179.182-.077.357.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.088.277.073.379-.044.102-.117.438-.51.554-.685.118-.175.233-.146.393-.087.16.058 1.019.48 1.194.567.175.088.291.131.335.204.043.072.043.42-.101.825z"/></svg>
+  </a>
+
+  <!-- ==========================================================================
+       13. SHOPPING CART DRAWER (Slide-over Cart)
+       ========================================================================== -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" onclick="if(event.target === this) toggleCartDrawer(false)">
+    <div class="cart-drawer-panel" onclick="event.stopPropagation()">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title-wrap">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="cart-drawer-title">Carrito de Compras</h3>
+          <span class="cart-drawer-count" id="cart-drawer-count-badge">0</span>
+        </div>
+        <button type="button" class="cart-drawer-close" onclick="toggleCartDrawer(false)" aria-label="Cerrar carrito">✕</button>
+      </div>
+
+      <!-- Free shipping progress meter -->
+      <div class="cart-shipping-meter" id="cart-shipping-meter">
+        <div class="cart-shipping-text" id="cart-shipping-text">
+          ¡Agrega <strong>S/. 200.00</strong> para <strong>Envío GRATIS</strong>! 🚚
+        </div>
+        <div class="cart-shipping-bar">
+          <div class="cart-shipping-fill" id="cart-shipping-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items Container -->
+      <div class="cart-drawer-items" id="cart-drawer-items">
+        <!-- Renderizado dinámicamente por app.js -->
+      </div>
+
+      <!-- Cart Drawer Footer -->
+      <div class="cart-drawer-footer" id="cart-drawer-footer">
+        <div class="cart-drawer-subtotal-row">
+          <span class="subtotal-label">Subtotal</span>
+          <span class="subtotal-val" id="cart-drawer-subtotal">S/. 0.00</span>
+        </div>
+        <div class="cart-drawer-trust-note">
+          🛵 Pago Contra Entrega en Lima y Callao • Envíos a todo el Perú
+        </div>
+        <button type="button" class="btn-cart-checkout" id="btn-cart-checkout" onclick="checkoutFromCart()">
+          <span>⚡ Comprar Ahora Contra Entrega</span>
+        </button>
+        <button type="button" class="btn-cart-continue" onclick="toggleCartDrawer(false)">
+          ← Seguir explorando productos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Notification Toast -->
+  <div class="cart-toast" id="cart-toast">
+    <div class="cart-toast-icon">✓</div>
+    <div class="cart-toast-body">
+      <div class="cart-toast-title" id="cart-toast-title">Producto añadido</div>
+      <div class="cart-toast-sub">Se agregó a tu carrito de compras</div>
+    </div>
+    <button type="button" class="cart-toast-btn" onclick="toggleCartDrawer(true)">Ver Carrito</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/app.js?v=2.7"></script>
+</body>
+</html>

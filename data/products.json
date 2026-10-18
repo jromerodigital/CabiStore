@@ -1,0 +1,363 @@
+[
+  {
+    "id": "pistola-masaje-promax",
+    "title": "Pistola de Masaje Percusión VITACORE Pro Max + 6 Cabezales de regalo 🎁",
+    "brand": "VITACORE Pro Therapy",
+    "category": "masajeadores",
+    "price": 169,
+    "oldPrice": 289,
+    "bundlePrice": 319,
+    "savings": 19,
+    "rating": 4.9,
+    "reviewsCount": 384,
+    "ordersCount": 920,
+    "releasedAt": "2026-10-12",
+    "isBestSeller": true,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 2,
+    "images": [
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Elimina contracturas musculares profundas, fatiga lumbar y tensión del cuello en solo 30 segundos. Motor Brushless ultra silencioso con 30 niveles de potencia.",
+    "features": [
+      "30 Niveles de velocidad regulables",
+      "6 Cabezales intercambiables de grado ergonómico",
+      "Motor silencioso WhisperDrive (<45dB)",
+      "Batería de larga duración hasta 8 horas continuas"
+    ]
+  },
+  {
+    "id": "masajeador-manos-terapia",
+    "title": "Masajeador de manos + Muñequera de compresión de regalo 🎁",
+    "brand": "VITACORE Pro Therapy",
+    "category": "masajeadores",
+    "price": 179,
+    "oldPrice": 359,
+    "bundlePrice": 339,
+    "savings": 19,
+    "rating": 5,
+    "reviewsCount": 218,
+    "ordersCount": 640,
+    "releasedAt": "2026-10-05",
+    "isBestSeller": true,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 3,
+    "images": [
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Alivia el dolor del túnel carpiano, artritis y rigidez muscular en los dedos y muñecas con terapia de calor y acupresión inteligente 360°.",
+    "features": [
+      "3 Modos y 5 niveles de intensidad ajustables",
+      "3 Niveles de calor terapéutico relajante",
+      "Temporizador inteligente de apagado automático",
+      "Incluye muñequera de compresión elástica de regalo"
+    ]
+  },
+  {
+    "id": "masajeador-cervical-4d",
+    "title": "Masajeador Cervical Térmico 4D Shiatsu para Cuello y Espalda",
+    "brand": "VITACORE Pro Therapy",
+    "category": "masajeadores",
+    "price": 139,
+    "oldPrice": 249,
+    "bundlePrice": 259,
+    "savings": 19,
+    "rating": 4.8,
+    "reviewsCount": 165,
+    "ordersCount": 510,
+    "releasedAt": "2026-09-20",
+    "isBestSeller": false,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 4,
+    "images": [
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Diseño anatómico con 8 nodos bidireccionales y calefacción infrarroja que disuelven los nudos musculares del cuello, hombros y zona lumbar.",
+    "features": [
+      "8 Rodillos 4D bidireccionales con rotación automática",
+      "Termoterapia relajante a temperatura constante",
+      "Correas de agarre ajustables para brazos",
+      "Adaptador para casa (220V) y para vehículo (12V) incluido"
+    ]
+  },
+  {
+    "id": "masajeador-ojos-presion",
+    "title": "Masajeador de ojos inteligente con termoterapia y música Bluetooth",
+    "brand": "VITACORE Sleep & Care",
+    "category": "bienestar",
+    "price": 139,
+    "oldPrice": 279,
+    "bundlePrice": 259,
+    "savings": 19,
+    "rating": 4.9,
+    "reviewsCount": 142,
+    "ordersCount": 430,
+    "releasedAt": "2026-10-14",
+    "isBestSeller": false,
+    "isNew": true,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 2,
+    "images": [
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Compresión de aire multidimensional que alivia migrañas, fatiga ocular provocada por pantallas y ayuda a conciliar el sueño profundo.",
+    "features": [
+      "Presoterapia de aire con micro-vibración",
+      "Compresas calientes a 42°C para reducir ojeras",
+      "Conexión Bluetooth para reproducir música relajante",
+      "Plegable a 180° y ultraligero para viajes"
+    ]
+  },
+  {
+    "id": "dilatador-nasal-magnetico",
+    "title": "Dilatador nasal magnético ergonómico anti-ronquidos (Pack x 2)",
+    "brand": "VITACORE Sleep & Care",
+    "category": "accesorios",
+    "price": 79,
+    "oldPrice": 159,
+    "bundlePrice": 145,
+    "savings": 13,
+    "rating": 4.7,
+    "reviewsCount": 95,
+    "ordersCount": 310,
+    "releasedAt": "2026-08-15",
+    "isBestSeller": false,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 5,
+    "images": [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Maximiza el flujo de aire al dormir o entrenar. Abre las fosas nasales instantáneamente y reduce los ronquidos nocturnos de forma segura.",
+    "features": [
+      "Imanes terapéuticos de grado médico",
+      "Silicona ultra suave hipoalergénica",
+      "Reutilizable y de fácil lavado",
+      "Estuche protector higiénico incluido"
+    ]
+  },
+  {
+    "id": "smartwatch-ultra-amoled",
+    "title": "Smartwatch VITACORE Ultra Amoled + Correa deportiva extra de regalo ⌚",
+    "brand": "VITACORE SmartTech",
+    "category": "smartwatch",
+    "price": 189,
+    "oldPrice": 320,
+    "bundlePrice": 350,
+    "savings": 28,
+    "rating": 4.9,
+    "reviewsCount": 280,
+    "ordersCount": 815,
+    "releasedAt": "2026-10-15",
+    "isBestSeller": true,
+    "isNew": true,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 3,
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Pantalla AMOLED brillante siempre activa. Realiza y recibe llamadas por Bluetooth, monitorea frecuencia cardíaca 24/7 y oxígeno SpO2.",
+    "features": [
+      "Pantalla HD AMOLED de alta resolución",
+      "Altavoz y micrófono para llamadas nítidas",
+      "Más de 100 modos deportivos y resistencia IP68",
+      "Batería de larga duración de 7 a 10 días"
+    ]
+  },
+  {
+    "id": "smartwatch-elegance-slim",
+    "title": "Smartwatch VITACORE Elegance Slim (Batería 10 días + 100 Modos Sport)",
+    "brand": "VITACORE SmartTech",
+    "category": "smartwatch",
+    "price": 149,
+    "oldPrice": 249,
+    "bundlePrice": 279,
+    "savings": 19,
+    "rating": 4.8,
+    "reviewsCount": 153,
+    "ordersCount": 460,
+    "releasedAt": "2026-09-10",
+    "isBestSeller": false,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 6,
+    "images": [
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Diseño ultraligero de aleación con monitoreo de sueño, contador de pasos y notificaciones de WhatsApp.",
+    "features": [
+      "Cuerpo de aluminio aeroespacial ultra delgado",
+      "Resistencia al agua para lluvia y deporte",
+      "Monitoreo de frecuencia cardíaca y presión arterial",
+      "Notificaciones en tiempo real en tu muñeca"
+    ]
+  },
+  {
+    "id": "audifonos-pro-anc",
+    "title": "Audífonos Inalámbricos VITACORE SoundPro con Cancelación de Ruido",
+    "brand": "VITACORE SoundLab",
+    "category": "audio",
+    "price": 149,
+    "oldPrice": 260,
+    "bundlePrice": 279,
+    "savings": 19,
+    "rating": 4.8,
+    "reviewsCount": 189,
+    "ordersCount": 590,
+    "releasedAt": "2026-10-08",
+    "isBestSeller": true,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 4,
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Audio de alta fidelidad con bajos profundos y tecnología ANC activa que silencia el ruido ambiental para concentrarte en tus llamadas y música.",
+    "features": [
+      "Cancelación de Ruido Activa Híbrida (ANC)",
+      "Hasta 36 horas de autonomía con estuche de carga",
+      "Controles táctiles intuitivos de volumen y asistente",
+      "Baja latencia ideal para videos y videojuegos"
+    ]
+  },
+  {
+    "id": "auriculares-air-sport",
+    "title": "Auriculares Inalámbricos Air Pro con Estuche de Carga Inalámbrica",
+    "brand": "VITACORE SoundLab",
+    "category": "audio",
+    "price": 119,
+    "oldPrice": 199,
+    "bundlePrice": 219,
+    "savings": 19,
+    "rating": 4.9,
+    "reviewsCount": 204,
+    "ordersCount": 615,
+    "releasedAt": "2026-10-16",
+    "isBestSeller": false,
+    "isNew": true,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 5,
+    "images": [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Ajuste ergonómico seguro para running y entrenamientos. Micrófono dual con aislamiento de voz HD.",
+    "features": [
+      "Chip de audio Bluetooth 5.3 con enlace instantáneo",
+      "Estuche magnético compacto con indicador LED",
+      "Carga rápida: 15 minutos brindan 3 horas de uso",
+      "Compatibilidad total con iPhone y Android"
+    ]
+  },
+  {
+    "id": "parlante-smarthome-alexa",
+    "title": "Altavoz Inteligente Smart Home con Control de Voz & Reloj LED",
+    "brand": "VITACORE SmartTech",
+    "category": "smarthome",
+    "price": 139,
+    "oldPrice": 239,
+    "bundlePrice": 259,
+    "savings": 19,
+    "rating": 4.8,
+    "reviewsCount": 165,
+    "ordersCount": 495,
+    "releasedAt": "2026-10-11",
+    "isBestSeller": false,
+    "isNew": true,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 3,
+    "images": [
+      "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Controla tu música, alarmas, luces y dispositivos inteligentes del hogar mediante comandos de voz en español.",
+    "features": [
+      "Sonido envolvente 360° nítido y balanceado",
+      "Pantalla frontal con indicador de hora y clima",
+      "Conexión WiFi y Bluetooth multi-dispositivo",
+      "Botón físico de privacidad para apagar micrófono"
+    ]
+  },
+  {
+    "id": "difusor-ultrasonico-smart",
+    "title": "Difusor Aromático Ultrasónico Smart Home con Luz Ambiente y App WiFi",
+    "brand": "VITACORE SmartTech",
+    "category": "smarthome",
+    "price": 119,
+    "oldPrice": 199,
+    "bundlePrice": 219,
+    "savings": 19,
+    "rating": 4.7,
+    "reviewsCount": 124,
+    "ordersCount": 375,
+    "releasedAt": "2026-08-28",
+    "isBestSeller": false,
+    "isNew": false,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 4,
+    "images": [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=700&q=80"
+    ],
+    "description": "Humedece el aire de tu habitación y difunde aceites esenciales con temporizador programable y luces RGB relajantes.",
+    "features": [
+      "Capacidad de 500ml para hasta 12 horas continuas",
+      "Control remoto y compatibilidad con app móvil",
+      "7 Colores LED seleccionables",
+      "Apagado automático de seguridad cuando se acaba el agua"
+    ]
+  },
+  {
+    "id": "cargador-rapido-20w-lightning",
+    "title": "Cargador Rápido 20W Power Delivery + Cable Reforzado 1M",
+    "brand": "VITACORE Power",
+    "category": "cargadores",
+    "price": 69,
+    "oldPrice": 129,
+    "bundlePrice": 119,
+    "savings": 19,
+    "rating": 4.9,
+    "reviewsCount": 87,
+    "ordersCount": 240,
+    "releasedAt": "2026-10-17",
+    "isBestSeller": true,
+    "isNew": true,
+    "badge": "Oferta",
+    "isSoldOut": false,
+    "stockLeft": 15,
+    "images": [
+      "/assets/images/categoria-cargadores.png"
+    ],
+    "description": "Carga de alta velocidad de 20W con protocolo Power Delivery inteligente. No recalienta tu dispositivo y protege la salud de tu batería.",
+    "features": [
+      "Carga ultra rápida 20W USB-C PD",
+      "Incluye cable reforzado anti-quiebres de 1 metro",
+      "Chip inteligente con protección térmica y anti-sobrevoltaje",
+      "Compatible con smartphones, tablets y accesorios"
+    ]
+  }
+]
