@@ -14,12 +14,29 @@ const TiendaState = {
   viewMode: "grid" // "grid" o "list"
 };
 
+function getStoreProducts() {
+  if (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS) && PRODUCTS.length > 0) {
+    return PRODUCTS;
+  }
+  return [];
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initTiendaURLParams();
   setupTiendaEventListeners();
-  renderTiendaQuickCategories();
-  renderTiendaFiltersCount();
-  applyTiendaFilters();
+  
+  // Si app.js carga después o tarda, reintentar la hidratación
+  const tryInit = (retries = 10) => {
+    const prods = getStoreProducts();
+    if (prods.length > 0 || retries <= 0) {
+      renderTiendaQuickCategories();
+      renderTiendaFiltersCount();
+      applyTiendaFilters();
+    } else {
+      setTimeout(() => tryInit(retries - 1), 100);
+    }
+  };
+  tryInit();
 });
 
 // 1. Leer parámetros de URL (?categoria=audio, ?buscar=pistola, etc.)
@@ -64,21 +81,22 @@ function renderTiendaQuickCategories() {
 
 // 3. Renderizar Contadores Dinámicos en la barra lateral
 function renderTiendaFiltersCount() {
-  const countAll = PRODUCTS.length;
+  const prods = getStoreProducts();
+  const countAll = prods.length;
   const setElText = (id, txt) => {
     const el = document.getElementById(id);
     if (el) el.textContent = txt;
   };
 
   setElText("count-cat-all", countAll);
-  setElText("count-cat-smartwatch", PRODUCTS.filter(p => p.category === "smartwatch").length);
-  setElText("count-cat-audio", PRODUCTS.filter(p => p.category === "audio").length);
-  setElText("count-cat-masajeadores", PRODUCTS.filter(p => p.category === "masajeadores").length);
-  setElText("count-cat-smarthome", PRODUCTS.filter(p => p.category === "smarthome").length);
-  setElText("count-cat-cargadores", PRODUCTS.filter(p => p.category === "cargadores").length);
+  setElText("count-cat-smartwatch", prods.filter(p => p.category === "smartwatch").length);
+  setElText("count-cat-audio", prods.filter(p => p.category === "audio").length);
+  setElText("count-cat-masajeadores", prods.filter(p => p.category === "masajeadores").length);
+  setElText("count-cat-smarthome", prods.filter(p => p.category === "smarthome").length);
+  setElText("count-cat-cargadores", prods.filter(p => p.category === "cargadores").length);
 
-  setElText("count-stock", PRODUCTS.filter(p => !p.isSoldOut).length);
-  setElText("count-bestsellers", PRODUCTS.filter(p => p.isBestSeller).length);
+  setElText("count-stock", prods.filter(p => !p.isSoldOut).length);
+  setElText("count-bestsellers", prods.filter(p => p.isBestSeller).length);
 
   // Sincronizar radio buttons
   document.querySelectorAll("input[name='tienda-cat']").forEach(radio => {
@@ -120,7 +138,8 @@ function setupTiendaEventListeners() {
 
 // 5. Aplicar Filtros y Actualizar Grid
 function applyTiendaFilters() {
-  let list = [...PRODUCTS];
+  const prods = getStoreProducts();
+  let list = [...prods];
 
   // Filtro Categoría
   if (TiendaState.category && TiendaState.category !== "all") {
@@ -185,7 +204,7 @@ function applyTiendaFilters() {
   // Actualizar etiqueta de resultados
   const countLabel = document.getElementById("tienda-results-count");
   if (countLabel) {
-    countLabel.innerHTML = `Mostrando <strong>${list.length}</strong> de <strong>${PRODUCTS.length}</strong> productos`;
+    countLabel.innerHTML = `Mostrando <strong>${list.length}</strong> de <strong>${prods.length}</strong> productos`;
   }
 }
 

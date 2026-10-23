@@ -854,13 +854,6 @@ function renderDynamicHeroSlides(slidesData) {
   initHeroSlider();
 }
 
-  dotsContainer.innerHTML = activeSlides.map((_, idx) => `
-    <span class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToHeroSlide(${idx})" aria-label="Ir al slide ${idx + 1}"></span>
-  `).join("");
-
-  initHeroSlider();
-}
-
 function renderDynamicCategories(categories) {
   const container = document.getElementById("categories-grid-container");
   if (!container || !Array.isArray(categories) || categories.length === 0) return;
