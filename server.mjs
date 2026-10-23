@@ -1109,9 +1109,11 @@ const server = http.createServer(async (req, res) => {
   // ===================== 5. ARCHIVOS ESTÁTICOS (LISTA BLANCA ESTRICTA) =====================
   if (pathname === '/') pathname = '/index.html';
   if (pathname === '/admin' || pathname === '/admin/') pathname = '/admin.html';
+  if (pathname === '/tienda' || pathname === '/tienda/') pathname = '/tienda.html';
 
   const isAllowedStatic =
     pathname === '/index.html' ||
+    pathname === '/tienda.html' ||
     pathname === '/admin.html' ||
     pathname === '/google-sheets-backend.js' ||
     pathname.startsWith('/assets/');

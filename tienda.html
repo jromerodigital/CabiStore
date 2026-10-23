@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda Oficial y Catálogo Completo | Cabi Store Perú</title>
+  <meta name="description" content="Explora todo el catálogo de Cabi Store Perú: smartwatches, masajeadores terapéuticos, audífonos bluetooth, smart home y cargadores con filtros avanzados y pago contra entrega.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23121212'><path d='M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5 10 5 10-5-5-2.5-5 2.5z'/></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos Globales y de Tienda -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=3.1">
+  <link rel="stylesheet" href="assets/css/tienda.css?v=1.0">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <aside class="announcement-bar" aria-label="Aviso promocional">
+    <button class="announcement-arrow" onclick="prevAnnouncement()" aria-label="Anterior">&lt;</button>
+    <div class="announcement-content" id="announcement-text">
+      ¡Pide HOY y paga en casa! Válido solo en Lima Metropolitana 🛵
+    </div>
+    <button class="announcement-arrow" onclick="nextAnnouncement()" aria-label="Siguiente">&gt;</button>
+  </aside>
+
+  <!-- ==========================================================================
+       2. MAIN HEADER (TechNova Minimalist Style)
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="header-main-row">
+      <!-- Left: Mobile Hamburger + Brand Logo -->
+      <div class="header-brand-left">
+        <button class="header-icon-btn mobile-only-btn" onclick="toggleMobileDrawer(true)" aria-label="Menú principal">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+
+        <a href="/" class="site-logo" aria-label="Cabi Store Perú Inicio">
+          <div class="logo-symbol-pill">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <div class="logo-text-block">
+            <div class="logo-brand-name">Cabi<span class="logo-accent">Store</span></div>
+            <div class="logo-subtext">TECH • BIENESTAR</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Navigation Menu -->
+      <nav class="header-nav" aria-label="Navegación principal">
+        <ul class="nav-menu-list">
+          <li><a href="/" class="nav-item-link">Inicio</a></li>
+          <li><a href="/tienda" class="nav-item-link active">Tienda 🛍️</a></li>
+          <li><a href="/#categorias" class="nav-item-link">Categorías</a></li>
+          <li><a href="/tienda?orden=discount-desc" class="nav-item-link">Ofertas 🔥</a></li>
+          <li><a href="/#beneficios" class="nav-item-link">Beneficios</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20Cabi%20Store,%20deseo%20asesoria%20sobre%20un%20producto" target="_blank" class="nav-item-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Center-Right: Header Search Input -->
+      <div class="header-search-wrap desktop-only-btn">
+        <svg class="header-search-icon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" class="header-search-input" id="header-global-search" placeholder="Buscar en la tienda..." oninput="document.getElementById('tienda-search-input').value = this.value; TiendaState.search = this.value.toLowerCase(); applyTiendaFilters();">
+      </div>
+
+      <!-- Right: User/Help & Cart Bag -->
+      <div class="header-right-actions">
+        <a href="https://api.whatsapp.com/send?phone=51984718555&text=Hola%20Cabi%20Store,%20necesito%20ayuda%20con%20mi%20pedido" target="_blank" class="header-icon-btn desktop-only-btn" aria-label="Asistencia al cliente" title="Asistencia en vivo">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path stroke-linecap="round" stroke-linejoin="round" d="M22 21v-2a4 4 0 0 0-3-3.87"/><path stroke-linecap="round" stroke-linejoin="round" d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </a>
+        <button class="cart-bag-btn" onclick="toggleCartDrawer(true)" aria-label="Bolsa de compras" id="header-cart-btn" title="Ver carrito de compras">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span class="cart-badge-count" id="header-cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       3. BREADCRUMBS
+       ========================================================================== -->
+  <nav class="tienda-breadcrumb-bar" aria-label="Migas de pan">
+    <div class="tienda-breadcrumb-container">
+      <a href="/">Inicio</a>
+      <span class="tienda-breadcrumb-sep">/</span>
+      <span class="tienda-breadcrumb-current">Tienda Oficial</span>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       4. TIENDA HERO & CATEGORY SCROLL (TechNova Store Style)
+       ========================================================================== -->
+  <section class="tienda-hero-header">
+    <div class="tienda-hero-inner">
+      <span class="tienda-hero-eyebrow">✦ Catálogo Exclusivo 2026</span>
+      <h1 class="tienda-hero-title">Explora Nuestra Colección</h1>
+      <p class="tienda-hero-desc">
+        Tecnología accesible y bienestar de alto rendimiento. Paga de forma segura al recibir tu pedido en la puerta de tu casa.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="tienda-quick-cat-scroll" id="tienda-quick-cats">
+        <!-- Renderizado dinámico por tienda.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. MAIN STORE LAYOUT (Sticky Sidebar + Dynamic Products Grid)
+       ========================================================================== -->
+  <main class="tienda-layout-container">
+
+    <!-- DESKTOP STICKY SIDEBAR (USAMS / Shopify Style) -->
+    <aside class="tienda-sidebar" aria-label="Filtros del catálogo">
+      <div class="tienda-sidebar-header">
+        <h2 class="tienda-sidebar-title">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          Filtros
+        </h2>
+        <button type="button" class="btn-reset-filters" onclick="resetAllTiendaFilters()">Limpiar todo</button>
+      </div>
+
+      <!-- 1. Categorías -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          <span>Categorías</span>
+        </div>
+        <ul class="filter-list">
+          <li class="filter-list-item" onclick="setTiendaCategory('all')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="all" checked>
+              <span>Todos los productos</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-all">11</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('smartwatch')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="smartwatch">
+              <span>Smartwatches</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-smartwatch">2</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('audio')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="audio">
+              <span>Audio &amp; Música</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-audio">2</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('masajeadores')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="masajeadores">
+              <span>Masajeadores</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-masajeadores">4</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('smarthome')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="smarthome">
+              <span>Smart Home</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-smarthome">2</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('cargadores')">
+            <label class="filter-label-group">
+              <input type="radio" name="tienda-cat" value="cargadores">
+              <span>Cargadores &amp; Hubs</span>
+            </label>
+            <span class="filter-badge-count" id="count-cat-cargadores">1</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 2. Filtro de Precio (Slider Interactivo) -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          <span>Rango de Precio</span>
+        </div>
+        <div class="price-slider-wrap">
+          <div class="price-range-inputs">
+            <span class="price-box-val">S/. 0</span>
+            <span style="color: #94a3b8; font-size: 0.75rem;">hasta</span>
+            <span class="price-box-val" id="tienda-price-max-val">S/. 350</span>
+          </div>
+          <input type="range" class="price-range-slider" id="tienda-price-slider" min="30" max="350" step="10" value="350">
+        </div>
+      </div>
+
+      <!-- 3. Disponibilidad & Tags -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          <span>Disponibilidad</span>
+        </div>
+        <ul class="filter-list">
+          <li class="filter-list-item">
+            <label class="filter-label-group">
+              <input type="checkbox" id="cb-in-stock" onchange="toggleTiendaStock(this.checked)">
+              <span>En stock inmediato</span>
+            </label>
+            <span class="filter-badge-count" id="count-stock">11</span>
+          </li>
+          <li class="filter-list-item">
+            <label class="filter-label-group">
+              <input type="checkbox" id="cb-bestseller" onchange="toggleTiendaBestSeller(this.checked)">
+              <span>Más vendidos 🔥</span>
+            </label>
+            <span class="filter-badge-count" id="count-bestsellers">8</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Trust Badge Box -->
+      <div style="background: #f8fafc; border-radius: 12px; padding: 14px; margin-top: 14px; font-size: 0.8rem; color: #475569; line-height: 1.5; border: 1px solid #e2e8f0;">
+        <strong style="color: #0f2c3d; display: block; margin-bottom: 4px;">🛵 Compra Segura</strong>
+        Paga cuando recibas tu pedido en Lima Metropolitana y Callao. Envíos nacionales con Shalom &amp; Olva.
+      </div>
+    </aside>
+
+    <!-- RIGHT: TOOLBAR & PRODUCT GRID -->
+    <section class="tienda-main-content">
+      
+      <!-- Toolbar -->
+      <div class="tienda-toolbar">
+        <div class="tienda-toolbar-left">
+          <button type="button" class="btn-mobile-filter-open" onclick="toggleMobileFilterDrawer(true)">
+            <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            <span>Filtros</span>
+          </button>
+          <span class="tienda-count-label" id="tienda-results-count">Mostrando <strong>11</strong> productos</span>
+        </div>
+
+        <div class="tienda-toolbar-right">
+          <!-- Search Pill -->
+          <div class="tienda-search-pill">
+            <svg class="tienda-search-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" class="tienda-search-input" id="tienda-search-input" placeholder="Filtrar por nombre o marca...">
+          </div>
+
+          <!-- Sort Select -->
+          <select class="tienda-sort-select" id="tienda-sort-select" aria-label="Ordenar productos por:">
+            <option value="bestselling" selected>🔥 Más pedidos</option>
+            <option value="discount-desc">🏷️ Mayor Descuento</option>
+            <option value="price-asc">💵 Precio: Menor a Mayor</option>
+            <option value="price-desc">💎 Precio: Mayor a Menor</option>
+            <option value="rating-desc">⭐ Mejor Calificados</option>
+            <option value="newest">✨ Más Recientes</option>
+          </select>
+
+          <!-- Grid / List Switcher -->
+          <div class="tienda-view-toggle desktop-only-btn">
+            <button type="button" class="tienda-view-btn active" id="btn-view-grid" onclick="setTiendaView('grid')" title="Vista en cuadrícula" aria-label="Vista cuadrícula">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z"/></svg>
+            </button>
+            <button type="button" class="tienda-view-btn" id="btn-view-list" onclick="setTiendaView('list')" title="Vista en lista detallada" aria-label="Vista lista">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filter Tags Row -->
+      <div class="tienda-active-tags-row" id="tienda-active-tags">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Products Grid -->
+      <div class="tienda-products-grid" id="tienda-products-container">
+        <!-- Renderizado dinámicamente por tienda.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       6. MOBILE FILTER DRAWER
+       ========================================================================== -->
+  <div class="mobile-filter-drawer-backdrop" id="mobile-filter-drawer" onclick="if(event.target === this) toggleMobileFilterDrawer(false)">
+    <div class="mobile-filter-drawer-panel">
+      <div class="mobile-filter-drawer-top">
+        <h3 class="mobile-filter-drawer-title">Filtros de Catálogo</h3>
+        <button type="button" class="mobile-filter-close-btn" onclick="toggleMobileFilterDrawer(false)">✕</button>
+      </div>
+
+      <!-- Categorías Móvil -->
+      <div class="filter-group">
+        <div class="filter-group-title">Categorías</div>
+        <ul class="filter-list">
+          <li class="filter-list-item" onclick="setTiendaCategory('all'); toggleMobileFilterDrawer(false);">
+            <span>Todos los productos</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('smartwatch'); toggleMobileFilterDrawer(false);">
+            <span>Smartwatches</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('audio'); toggleMobileFilterDrawer(false);">
+            <span>Audio &amp; Música</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('masajeadores'); toggleMobileFilterDrawer(false);">
+            <span>Masajeadores</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('smarthome'); toggleMobileFilterDrawer(false);">
+            <span>Smart Home</span>
+          </li>
+          <li class="filter-list-item" onclick="setTiendaCategory('cargadores'); toggleMobileFilterDrawer(false);">
+            <span>Cargadores &amp; Hubs</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Rango de Precios Móvil -->
+      <div class="filter-group">
+        <div class="filter-group-title">Precio Máximo</div>
+        <div class="price-slider-wrap">
+          <div class="price-range-inputs">
+            <span class="price-box-val">S/. 0</span>
+            <span class="price-box-val">Hasta S/. 350</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 20px;">
+        <button type="button" class="btn-hero-primary" style="width: 100%; justify-content: center;" onclick="toggleMobileFilterDrawer(false)">
+          Ver Resultados
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       7. FOOTER
+       ========================================================================== -->
+  <footer class="site-footer" id="contacto">
+    <div class="footer-top-wave">
+      <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none"><path d="M0,30 C320,60 480,0 720,30 C960,60 1120,0 1440,30 L1440,60 L0,60 Z" fill="#08221c"></path></svg>
+    </div>
+    <div class="footer-inner-container">
+      <div class="footer-primary-grid">
+        <div class="footer-brand-column">
+          <div class="footer-brand-logo">
+            <div class="logo-symbol-pill white-bg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d6e5a" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <div class="logo-text-block light-mode-text">
+              <div class="logo-brand-name">Cabi<span class="logo-accent-gold">Store</span></div>
+              <div class="logo-subtext">TECH • BIENESTAR</div>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            Tu tienda de confianza en el Perú. Tecnología accesible con garantía directa y pago contra entrega en la puerta de tu hogar.
+          </p>
+        </div>
+        <div class="footer-nav-column">
+          <h3 class="footer-column-heading">Explorar</h3>
+          <ul class="footer-links-list">
+            <li><a href="/" class="footer-link">Inicio</a></li>
+            <li><a href="/tienda" class="footer-link">Tienda Completa</a></li>
+            <li><a href="/#categorias" class="footer-link">Categorías</a></li>
+            <li><a href="/#beneficios" class="footer-link">Garantía &amp; Envíos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright-bar">
+        <span>&copy; 2026 Cabi Store Perú. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       8. MODALES COMPARTIDOS (PDP, COD, CART DRAWER, MOBILE MENU)
+       ========================================================================== -->
+  <!-- PDP Modal -->
+  <div class="pdp-modal-backdrop" id="pdp-modal-backdrop" onclick="if(event.target.id === 'pdp-modal-backdrop') closePDP()">
+    <div class="pdp-modal-box" onclick="event.stopPropagation()">
+      <button class="pdp-close-btn" onclick="closePDP()" aria-label="Cerrar modal">&times;</button>
+      <div class="pdp-grid">
+        <div class="pdp-gallery">
+          <div class="pdp-main-image-wrap">
+            <img src="" alt="Producto" class="pdp-main-image" id="pdp-main-img">
+          </div>
+          <div class="pdp-thumbnail-row" id="pdp-thumbnail-row"></div>
+        </div>
+        <div class="pdp-info">
+          <div class="pdp-vendor">CABI STORE PERÚ</div>
+          <h2 class="pdp-title" id="pdp-title">Nombre del Producto</h2>
+          <div class="pdp-rating-row">
+            <span class="star-icons">★★★★★</span>
+            <span class="review-count" id="pdp-rating-text">4.9 (384 Reseñas)</span>
+          </div>
+          <div class="pdp-price-row">
+            <span class="pdp-price-old" id="pdp-price-old">S/. 289.00</span>
+            <span class="pdp-price-current" id="pdp-price-current">S/. 169.00</span>
+            <span class="pdp-badge-oferta">Oferta</span>
+          </div>
+          <button class="btn-pdp-buy-now" onclick="openCODModal()">
+            <span class="btn-cta-main-text"><span>⚡</span> COMPRAR AHORA 🎁</span>
+            <span class="btn-cta-sub-text">Pago Contra Entrega en Lima y Envíos a todo el Perú</span>
+          </button>
+          <button type="button" class="btn-pdp-add-cart" onclick="handleAddToCart(state.activeProduct ? state.activeProduct.id : PRODUCTS[0].id)">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            <span>Agregar al Carrito de Compras</span>
+          </button>
+          <div class="pdp-details-tabs" style="margin-top: 20px;">
+            <details open>
+              <summary class="tab-summary">Descripción y Beneficios <span>▾</span></summary>
+              <div class="tab-content">
+                <p id="pdp-description-text"></p>
+                <ul id="pdp-features-list" style="list-style: none; margin-top: 10px; line-height: 1.8;"></ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COD Modal -->
+  <div class="cod-modal-backdrop" id="cod-modal-backdrop" onclick="if(event.target.id === 'cod-modal-backdrop') closeCODModal()">
+    <div class="cod-modal-card" onclick="event.stopPropagation()">
+      <div class="cod-modal-header">
+        <h3 class="cod-header-title">👉🏻 PAGO CONTRA ENTREGA LIMA Y CALLAO 🛵 Y PROVINCIA PREVIO ADELANTO 🚚</h3>
+        <button class="cod-close-btn" onclick="closeCODModal()" aria-label="Cerrar">&times;</button>
+      </div>
+      <div class="bundle-options-list">
+        <div class="bundle-item selected" id="bundle-opt-1" onclick="selectBundle(1)">
+          <div class="bundle-left">
+            <img src="" alt="Pack 1" class="bundle-img" id="bundle-img-1">
+            <div>
+              <div class="bundle-title">Compra 1 unidad</div>
+              <span class="bundle-badge">HASTA HOY</span>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-old-price" id="bundle-old-1">S/. 289.00</div>
+            <div class="bundle-current-price" id="bundle-price-1">S/. 169.00</div>
+          </div>
+        </div>
+        <div class="bundle-item" id="bundle-opt-2" onclick="selectBundle(2)">
+          <div class="bundle-left">
+            <img src="" alt="Pack 2" class="bundle-img" id="bundle-img-2">
+            <div>
+              <div class="bundle-title">¡Compra 2 con SUPER DESCUENTO!</div>
+              <span class="bundle-badge save" id="bundle-save-tag">¡Ahorra S/. 19.00!</span>
+            </div>
+          </div>
+          <div class="bundle-right">
+            <div class="bundle-old-price" id="bundle-old-2">S/. 578.00</div>
+            <div class="bundle-current-price" id="bundle-price-2">S/. 319.00</div>
+          </div>
+        </div>
+      </div>
+      <div class="coupon-row">
+        <input type="text" class="coupon-input" id="cod-coupon-input" placeholder="Código de descuento (ej: CABI10)">
+        <button type="button" class="btn-apply-coupon" onclick="applyCoupon()">Aplicar</button>
+      </div>
+      <form class="cod-form-box" onsubmit="submitCODForm(event)">
+        <div class="form-group">
+          <label for="cod-name">Nombres y Apellidos *</label>
+          <input type="text" id="cod-name" class="form-control" placeholder="Ej: Carlos Mendoza Ruiz" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cod-dni">DNI, CE o RUC *</label>
+            <input type="text" id="cod-dni" class="form-control" placeholder="8 a 11 dígitos" required maxlength="11">
+          </div>
+          <div class="form-group">
+            <label for="cod-phone">Teléfono WhatsApp *</label>
+            <input type="tel" id="cod-phone" class="form-control" placeholder="9 dígitos" required maxlength="9">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cod-address">Dirección de entrega *</label>
+          <input type="text" id="cod-address" class="form-control" placeholder="Av / Calle / Jr / Número / Dpto" required>
+        </div>
+        <div class="form-group">
+          <label for="cod-dept">Departamento *</label>
+          <select id="cod-dept" class="form-control no-icon" required>
+            <option value="PE-LMA" selected>Lima (Metropolitana)</option>
+            <option value="PE-CAL">Callao</option>
+            <option value="PE-LIM">Lima Provincias</option>
+          </select>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="cod-city">Provincia *</label>
+            <input type="text" id="cod-city" class="form-control no-icon" value="Lima" required>
+          </div>
+          <div class="form-group">
+            <label for="cod-dist">Distrito *</label>
+            <input type="text" id="cod-dist" class="form-control no-icon" placeholder="Ej: Miraflores" required>
+          </div>
+        </div>
+        <div class="totals-summary-box">
+          <div class="total-row"><span>Subtotal:</span><span id="cod-subtotal-val">S/. 169.00</span></div>
+          <div class="total-row"><span>Envío:</span><span id="cod-shipping-val">GRATIS</span></div>
+          <div class="total-row final"><span>Total al Recibir:</span><span id="cod-total-val" style="color: #059669;">S/. 169.00</span></div>
+        </div>
+        <button type="submit" class="btn-submit-cod" id="btn-submit-cod">
+          <span>CONFIRMAR PEDIDO - S/. 169.00</span>
+          <span class="sub">(Pago Contra entrega y Previo adelanto)</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" onclick="toggleMobileDrawer(false)">
+    <div class="mobile-drawer-panel" id="mobile-drawer-panel" onclick="event.stopPropagation()">
+      <div class="mobile-drawer-header">
+        <div class="logo-text-block">
+          <div class="logo-brand-name">Cabi<span class="logo-accent">Store</span></div>
+        </div>
+        <button class="mobile-drawer-close" onclick="toggleMobileDrawer(false)">✕</button>
+      </div>
+      <ul class="mobile-drawer-links">
+        <li><a href="/" class="mobile-drawer-link">Inicio <span>→</span></a></li>
+        <li><a href="/tienda" class="mobile-drawer-link" style="color: var(--primary-teal); font-weight: 700;">🛍️ Tienda &amp; Filtros <span>→</span></a></li>
+        <li><a href="/#categorias" class="mobile-drawer-link">Categorías <span>→</span></a></li>
+        <li><a href="/tienda?categoria=smartwatch" class="mobile-drawer-link">⌚ Smartwatch <span>→</span></a></li>
+        <li><a href="/tienda?categoria=audio" class="mobile-drawer-link">🎧 Audio <span>→</span></a></li>
+        <li><a href="/tienda?categoria=masajeadores" class="mobile-drawer-link">💆 Masajeadores <span>→</span></a></li>
+        <li><a href="/tienda?categoria=smarthome" class="mobile-drawer-link">🏡 Smart Home <span>→</span></a></li>
+        <li><a href="/tienda?categoria=cargadores" class="mobile-drawer-link">⚡ Cargadores <span>→</span></a></li>
+        <li><a href="/#beneficios" class="mobile-drawer-link">Beneficios &amp; Garantía <span>→</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" onclick="if(event.target === this) toggleCartDrawer(false)">
+    <div class="cart-drawer-panel" onclick="event.stopPropagation()">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title-wrap">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <h3 class="cart-drawer-title">Carrito de Compras</h3>
+          <span class="cart-drawer-count" id="cart-drawer-count-badge">0</span>
+        </div>
+        <button type="button" class="cart-drawer-close" onclick="toggleCartDrawer(false)">✕</button>
+      </div>
+      <div class="cart-shipping-meter" id="cart-shipping-meter">
+        <div class="cart-shipping-text" id="cart-shipping-text">¡Agrega <strong>S/. 200.00</strong> para <strong>Envío GRATIS</strong>! 🚚</div>
+        <div class="cart-shipping-bar"><div class="cart-shipping-fill" id="cart-shipping-fill" style="width: 0%;"></div></div>
+      </div>
+      <div class="cart-drawer-items" id="cart-drawer-items"></div>
+      <div class="cart-drawer-footer" id="cart-drawer-footer">
+        <div class="cart-drawer-subtotal-row">
+          <span class="subtotal-label">Subtotal</span>
+          <span class="subtotal-val" id="cart-drawer-subtotal">S/. 0.00</span>
+        </div>
+        <div class="cart-drawer-trust-note">🛵 Pago Contra Entrega en Lima y Callao • Envíos a todo el Perú</div>
+        <button type="button" class="btn-cart-checkout" id="btn-cart-checkout" onclick="checkoutFromCart()">
+          <span>⚡ Comprar Ahora Contra Entrega</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/app.js?v=2.7"></script>
+  <script src="assets/js/tienda.js?v=1.0"></script>
+</body>
+</html>
