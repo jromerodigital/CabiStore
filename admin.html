@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VITACORE | Panel de Control de Pedidos (Admin)</title>
+  <title>CABI STORE | Panel de Control de Pedidos (Admin)</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23111827'><path d='M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5 10 5 10-5-5-2.5-5 2.5z'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1083,7 +1083,7 @@
   <div class="login-screen" id="admin-login-screen">
     <div class="login-card">
       <div class="login-brand">
-        <div class="login-brand-name">VITACORE PERÚ</div>
+        <div class="login-brand-name">CABI STORE PERÚ</div>
         <div class="login-brand-sub">Acceso Restringido • Panel de Administración</div>
       </div>
 
@@ -1107,7 +1107,7 @@
   <header class="admin-header">
     <div class="header-inner">
       <div class="brand-area">
-        <span class="brand-logo-text">VITACORE</span>
+        <span class="brand-logo-text">CABI STORE</span>
         <span class="admin-pill">Panel de Pedidos</span>
         <span id="sheets-status-pill" style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #059669; font-weight: 500;">
           <span class="live-dot"></span> <span id="sheets-status-text">API Protegida</span>
@@ -1589,13 +1589,13 @@
         <div class="form-grid-2">
           <div class="form-group">
             <label>Marca / Línea</label>
-            <input type="text" id="prod-form-brand" list="brands-list" placeholder="Ej: VITACORE Power">
+            <input type="text" id="prod-form-brand" list="brands-list" placeholder="Ej: CABI Power">
             <datalist id="brands-list">
-              <option value="VITACORE Power">
-              <option value="VITACORE SmartTech">
-              <option value="VITACORE Pro Therapy">
-              <option value="VITACORE SoundLab">
-              <option value="VITACORE Sleep & Care">
+              <option value="CABI Power">
+              <option value="CABI SmartTech">
+              <option value="CABI Pro Therapy">
+              <option value="CABI SoundLab">
+              <option value="CABI Sleep & Care">
             </datalist>
           </div>
           <div class="form-group">
@@ -1885,7 +1885,7 @@ function deleteRowById(sheet, id) {
     let editingProductId = null;
     let currentUploadedImgUrl = '';
     let currentProductGallery = [];
-    let adminToken = sessionStorage.getItem('vitacore_admin_token') || '';
+    let adminToken = sessionStorage.getItem('cabi_admin_token') || sessionStorage.getItem('vitacore_admin_token') || '';
 
     function getAuthHeaders(extra = {}) {
       const headers = { ...extra };
@@ -1928,7 +1928,7 @@ function deleteRowById(sheet, id) {
         const data = await res.json();
         if (res.ok && data.success) {
           adminToken = data.token || '';
-          sessionStorage.setItem('vitacore_admin_token', adminToken);
+          sessionStorage.setItem('cabi_admin_token', adminToken);
           hideLoginScreen();
           await fetchOrdersAndStats();
           await loadSheetsStatus();
@@ -1948,6 +1948,7 @@ function deleteRowById(sheet, id) {
         await fetch('/api/admin/logout', { method: 'POST', headers: getAuthHeaders() });
       } catch {}
       adminToken = '';
+      sessionStorage.removeItem('cabi_admin_token');
       sessionStorage.removeItem('vitacore_admin_token');
       showLoginScreen();
     }
@@ -2050,7 +2051,7 @@ function deleteRowById(sheet, id) {
 
         const phone = order.customer?.phone || '';
         const name = order.customer?.name || 'Cliente';
-        const waMsg = encodeURIComponent(`Hola ${name}, te saludamos de *VITACORE Perú*. Queremos coordinar el despacho de tu pedido *${order.id}*. ¿Confirmas tu dirección de entrega en ${order.customer?.district || ''}?`);
+        const waMsg = encodeURIComponent(`Hola ${name}, te saludamos de *Cabi Store Perú*. Queremos coordinar el despacho de tu pedido *${order.id}*. ¿Confirmas tu dirección de entrega en ${order.customer?.district || ''}?`);
         const waUrl = `https://api.whatsapp.com/send?phone=51${phone}&text=${waMsg}`;
 
         const itemsSummary = (order.items || []).map(i => `${i.quantity}x ${i.title.substring(0, 24)}...`).join('<br>');
@@ -2340,7 +2341,7 @@ function deleteRowById(sheet, id) {
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement('a');
       link.setAttribute('href', encodedUri);
-      link.setAttribute('download', `pedidos_vitacore_${new Date().toISOString().slice(0, 10)}.csv`);
+      link.setAttribute('download', `pedidos_cabistore_${new Date().toISOString().slice(0, 10)}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -2477,7 +2478,7 @@ function deleteRowById(sheet, id) {
                     ${p.title}
                     ${photosBadge}
                   </div>
-                  <div style="font-size: 11px; color: var(--text-muted);">${p.brand || 'VITACORE'} • <code style="background:#f3f4f6; padding:1px 4px; border-radius:3px;">${p.id}</code></div>
+                  <div style="font-size: 11px; color: var(--text-muted);">${p.brand || 'CABI STORE'} • <code style="background:#f3f4f6; padding:1px 4px; border-radius:3px;">${p.id}</code></div>
                 </div>
               </div>
             </td>
@@ -2544,7 +2545,7 @@ function deleteRowById(sheet, id) {
         document.getElementById('prod-form-id').value = prod.id;
         document.getElementById('prod-form-id').disabled = true;
         document.getElementById('prod-form-title').value = prod.title || '';
-        document.getElementById('prod-form-brand').value = prod.brand || 'VITACORE';
+        document.getElementById('prod-form-brand').value = prod.brand || 'CABI STORE';
         document.getElementById('prod-form-category').value = prod.category || 'cargadores';
         document.getElementById('prod-form-price').value = prod.price || 0;
         document.getElementById('prod-form-oldprice').value = prod.oldPrice || 0;
@@ -2561,7 +2562,7 @@ function deleteRowById(sheet, id) {
       } else {
         titleEl.textContent = '🏷️ Nuevo Producto';
         document.getElementById('prod-form-id').disabled = false;
-        document.getElementById('prod-form-brand').value = 'VITACORE Power';
+        document.getElementById('prod-form-brand').value = 'CABI Power';
         document.getElementById('prod-form-category').value = 'cargadores';
         document.getElementById('prod-form-stock').value = 15;
         currentProductGallery = [];
@@ -3333,7 +3334,7 @@ function deleteRowById(sheet, id) {
     }
 
     function addAnnouncementItem() {
-      siteDesignState.announcements.push('🔥 Nueva promoción disponible hoy en VITACORE Perú');
+      siteDesignState.announcements.push('🔥 Nueva promoción disponible hoy en Cabi Store Perú');
       renderBuilderAnnouncements();
     }
 

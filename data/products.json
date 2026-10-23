@@ -1,8 +1,8 @@
 [
   {
     "id": "pistola-masaje-promax",
-    "title": "Pistola de Masaje Percusión VITACORE Pro Max + 6 Cabezales de regalo 🎁",
-    "brand": "VITACORE Pro Therapy",
+    "title": "Pistola de Masaje Percusión CABI Pro Max + 6 Cabezales de regalo 🎁",
+    "brand": "CABI Pro Therapy",
     "category": "masajeadores",
     "price": 169,
     "oldPrice": 289,
@@ -34,7 +34,7 @@
   {
     "id": "masajeador-manos-terapia",
     "title": "Masajeador de manos + Muñequera de compresión de regalo 🎁",
-    "brand": "VITACORE Pro Therapy",
+    "brand": "CABI Pro Therapy",
     "category": "masajeadores",
     "price": 179,
     "oldPrice": 359,
@@ -65,7 +65,7 @@
   {
     "id": "masajeador-cervical-4d",
     "title": "Masajeador Cervical Térmico 4D Shiatsu para Cuello y Espalda",
-    "brand": "VITACORE Pro Therapy",
+    "brand": "CABI Pro Therapy",
     "category": "masajeadores",
     "price": 139,
     "oldPrice": 249,
@@ -95,7 +95,7 @@
   {
     "id": "masajeador-ojos-presion",
     "title": "Masajeador de ojos inteligente con termoterapia y música Bluetooth",
-    "brand": "VITACORE Sleep & Care",
+    "brand": "CABI Sleep & Care",
     "category": "bienestar",
     "price": 139,
     "oldPrice": 279,
@@ -125,7 +125,7 @@
   {
     "id": "dilatador-nasal-magnetico",
     "title": "Dilatador nasal magnético ergonómico anti-ronquidos (Pack x 2)",
-    "brand": "VITACORE Sleep & Care",
+    "brand": "CABI Sleep & Care",
     "category": "accesorios",
     "price": 79,
     "oldPrice": 159,
@@ -154,8 +154,8 @@
   },
   {
     "id": "smartwatch-ultra-amoled",
-    "title": "Smartwatch VITACORE Ultra Amoled + Correa deportiva extra de regalo ⌚",
-    "brand": "VITACORE SmartTech",
+    "title": "Smartwatch CABI Ultra Amoled + Correa deportiva extra de regalo ⌚",
+    "brand": "CABI SmartTech",
     "category": "smartwatch",
     "price": 189,
     "oldPrice": 320,
@@ -184,8 +184,8 @@
   },
   {
     "id": "smartwatch-elegance-slim",
-    "title": "Smartwatch VITACORE Elegance Slim (Batería 10 días + 100 Modos Sport)",
-    "brand": "VITACORE SmartTech",
+    "title": "Smartwatch CABI Elegance Slim (Batería 10 días + 100 Modos Sport)",
+    "brand": "CABI SmartTech",
     "category": "smartwatch",
     "price": 149,
     "oldPrice": 249,
@@ -214,8 +214,8 @@
   },
   {
     "id": "audifonos-pro-anc",
-    "title": "Audífonos Inalámbricos VITACORE SoundPro con Cancelación de Ruido",
-    "brand": "VITACORE SoundLab",
+    "title": "Audífonos Inalámbricos CABI SoundPro con Cancelación de Ruido",
+    "brand": "CABI SoundLab",
     "category": "audio",
     "price": 149,
     "oldPrice": 260,
@@ -245,7 +245,7 @@
   {
     "id": "auriculares-air-sport",
     "title": "Auriculares Inalámbricos Air Pro con Estuche de Carga Inalámbrica",
-    "brand": "VITACORE SoundLab",
+    "brand": "CABI SoundLab",
     "category": "audio",
     "price": 119,
     "oldPrice": 199,
@@ -275,7 +275,7 @@
   {
     "id": "parlante-smarthome-alexa",
     "title": "Altavoz Inteligente Smart Home con Control de Voz & Reloj LED",
-    "brand": "VITACORE SmartTech",
+    "brand": "CABI SmartTech",
     "category": "smarthome",
     "price": 139,
     "oldPrice": 239,
@@ -305,7 +305,7 @@
   {
     "id": "difusor-ultrasonico-smart",
     "title": "Difusor Aromático Ultrasónico Smart Home con Luz Ambiente y App WiFi",
-    "brand": "VITACORE SmartTech",
+    "brand": "CABI SmartTech",
     "category": "smarthome",
     "price": 119,
     "oldPrice": 199,
@@ -335,7 +335,7 @@
   {
     "id": "cargador-rapido-20w-lightning",
     "title": "Cargador Rápido 20W Power Delivery + Cable Reforzado 1M",
-    "brand": "VITACORE Power",
+    "brand": "CABI Power",
     "category": "cargadores",
     "price": 69,
     "oldPrice": 129,

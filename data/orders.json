@@ -1,36 +1,167 @@
 [
   {
-    "id": "VIT-987660",
-    "createdAt": "2026-10-16T14:35:16.223Z",
+    "id": "CAB-835323",
+    "createdAt": "2026-10-20T23:20:58.108Z",
     "customer": {
-      "name": "Prueba Cliente Lima",
-      "email": "",
-      "phone": "998877665",
-      "dni": "74839201",
-      "address": "Av. Larco 742, Dpto 501",
-      "reference": "",
+      "name": "Jorge Romero",
+      "email": "jlromero.an@gmail.com",
+      "phone": "987654321",
+      "dni": "7640392",
+      "address": "Mz S2 Lote 3B Psj Cañete Vista Alegre De Villa",
+      "reference": "FRENTE AL PARQUE",
+      "department": "Lima (Metropolitana)",
+      "province": "Lima",
+      "district": "chorrillos"
+    },
+    "items": [
+      {
+        "id": "smartwatch-elegance-slim",
+        "title": "Smartwatch CABI Elegance Slim (Batería 10 días + 100 Modos Sport)",
+        "quantity": 1,
+        "price": 149
+      }
+    ],
+    "couponCode": "CABI10",
+    "discount": 10,
+    "subtotal": 139,
+    "shippingRate": {
+      "name": "Envío Delivery Cabi Store (2-3 días)",
+      "price": 0
+    },
+    "total": 139,
+    "paymentMethod": "Cash on Delivery (COD) Contra Entrega",
+    "status": "Pendiente",
+    "notes": "Pedido generado en web. Promo: 1 unidad(es)."
+  },
+  {
+    "id": "VIT-835323",
+    "createdAt": "2026-10-20T23:20:58.108Z",
+    "customer": {
+      "name": "Jorge Romero",
+      "email": "jlromero.an@gmail.com",
+      "phone": "987654321",
+      "dni": "7640392",
+      "address": "Mz S2 Lote 3B Psj Cañete Vista Alegre De Villa",
+      "reference": "FRENTE AL PARQUE",
+      "department": "Lima (Metropolitana)",
+      "province": "Lima",
+      "district": "chorrillos"
+    },
+    "items": [
+      {
+        "id": "smartwatch-elegance-slim",
+        "title": "Smartwatch VITACORE Elegance Slim (Batería 10 días + 100 Modos Sport)",
+        "quantity": 1,
+        "price": 149
+      }
+    ],
+    "couponCode": "VITACORE10",
+    "discount": 10,
+    "subtotal": 139,
+    "shippingRate": {
+      "name": "Envío Delivery VITACORE (2-3 días)",
+      "price": 0
+    },
+    "total": 139,
+    "paymentMethod": "Cash on Delivery (COD) Contra Entrega",
+    "status": "Pendiente",
+    "notes": "Pedido generado en web. Promo: 1 unidad(es)."
+  },
+  {
+    "id": "CAB-432198",
+    "createdAt": "2026-10-16T09:05:00.000Z",
+    "customer": {
+      "name": "Lucía Paredes Silva",
+      "email": "lucia.paredes@outlook.com",
+      "phone": "964789012",
+      "dni": "72341908",
+      "address": "Av. La Marina 2200",
+      "reference": "Cerca a Plaza San Miguel",
+      "department": "Lima (Metropolitana)",
+      "province": "Lima",
+      "district": "San Miguel"
+    },
+    "items": [
+      {
+        "id": "masajeador-ojos",
+        "title": "Antifaz Masajeador Ocular Smart con Presión de Aire y Bluetooth",
+        "quantity": 1,
+        "price": 119
+      }
+    ],
+    "subtotal": 119,
+    "shippingRate": {
+      "name": "Envío Delivery Cabi Store (2-3 días) - Contraentrega",
+      "price": 10
+    },
+    "total": 129,
+    "paymentMethod": "Pago Contra Entrega",
+    "status": "Pendiente",
+    "notes": "Nuevo pedido recibido desde la web. Requiere confirmación por WhatsApp."
+  },
+  {
+    "id": "VIT-432198",
+    "createdAt": "2026-10-16T09:05:00.000Z",
+    "customer": {
+      "name": "Lucía Paredes Silva",
+      "email": "lucia.paredes@outlook.com",
+      "phone": "964789012",
+      "dni": "72341908",
+      "address": "Av. La Marina 2200",
+      "reference": "Cerca a Plaza San Miguel",
+      "department": "Lima (Metropolitana)",
+      "province": "Lima",
+      "district": "San Miguel"
+    },
+    "items": [
+      {
+        "id": "masajeador-ojos",
+        "title": "Antifaz Masajeador Ocular Smart con Presión de Aire y Bluetooth",
+        "quantity": 1,
+        "price": 119
+      }
+    ],
+    "subtotal": 119,
+    "shippingRate": {
+      "name": "Envío Delivery VITACORE (2-3 días) - Contraentrega",
+      "price": 10
+    },
+    "total": 129,
+    "paymentMethod": "Pago Contra Entrega",
+    "status": "Pendiente",
+    "notes": "Nuevo pedido recibido desde la web. Requiere confirmación por WhatsApp."
+  },
+  {
+    "id": "CAB-918234",
+    "createdAt": "2026-10-16T08:30:00.000Z",
+    "customer": {
+      "name": "Carlos Mendoza Ruiz",
+      "email": "carlos.mendoza@gmail.com",
+      "phone": "987654321",
+      "dni": "45892147",
+      "address": "Av. Las Palmeras 450, Dpto 302",
+      "reference": "A dos cuadras del Parque Kennedy",
       "department": "Lima (Metropolitana)",
       "province": "Lima",
       "district": "Miraflores"
     },
     "items": [
       {
-        "id": "pistola-masaje-promax",
-        "title": "Pistola de Masaje Percusión VITACORE Pro Max + 6 Cabezales de regalo 🎁",
+        "id": "flagship-masajeador",
+        "title": "Pistola de Masaje Percusión CABI Pro Max (30 Velocidades + 6 Cabezales)",
         "quantity": 1,
         "price": 169
       }
     ],
     "subtotal": 169,
     "shippingRate": {
-      "name": "Envío Delivery VITACORE (2-3 días)",
+      "name": "Envío Delivery Cabi Store (2-3 días) - Contraentrega",
       "price": 0
     },
     "total": 169,
-    "paymentMethod": "Cash on Delivery (COD) Contra Entrega",
+    "paymentMethod": "Pago Contra Entrega (Efectivo / Yape)",
     "status": "Confirmado WhatsApp",
-    "notes": "Pedido generado en web. Promo: 1 unidad(es).",
-    "updatedAt": "2026-10-16T14:36:58.087Z"
+    "notes": "Cliente disponible a partir de las 2:00 PM."
   },
   {
     "id": "VIT-918234",
@@ -65,6 +196,38 @@
     "notes": "Cliente disponible a partir de las 2:00 PM."
   },
   {
+    "id": "CAB-782190",
+    "createdAt": "2026-10-16T07:15:00.000Z",
+    "customer": {
+      "name": "María Elena Vargas",
+      "email": "maria.vargas.peru@hotmail.com",
+      "phone": "951234876",
+      "dni": "70129845",
+      "address": "Calle San Martín 215, Urb. Primavera",
+      "reference": "Frente a la farmacia InkaFarma",
+      "department": "La Libertad",
+      "province": "Trujillo",
+      "district": "Trujillo"
+    },
+    "items": [
+      {
+        "id": "masajeador-cuello",
+        "title": "Masajeador Cervical Térmico 4D Ergonómico para Cuello y Espalda",
+        "quantity": 2,
+        "price": 139
+      }
+    ],
+    "subtotal": 278,
+    "shippingRate": {
+      "name": "Envío a Provincia por Agencia Shalom (Previo adelanto)",
+      "price": 0
+    },
+    "total": 278,
+    "paymentMethod": "Previo Adelanto + Envío Shalom",
+    "status": "En Camino",
+    "notes": "Guía Shalom N° 89201-TRU enviada al cliente."
+  },
+  {
     "id": "VIT-782190",
     "createdAt": "2026-10-16T07:15:00.000Z",
     "customer": {
@@ -97,6 +260,38 @@
     "notes": "Guía Shalom N° 89201-TRU enviada al cliente."
   },
   {
+    "id": "CAB-654129",
+    "createdAt": "2026-10-15T19:45:00.000Z",
+    "customer": {
+      "name": "Jorge Luis Alarcón",
+      "email": "jorge.alarcon@yahoo.com",
+      "phone": "993456123",
+      "dni": "09876543",
+      "address": "Jr. Huancavelica 890",
+      "reference": "Portón negro, timbre segundo piso",
+      "department": "Callao",
+      "province": "Callao",
+      "district": "Bellavista"
+    },
+    "items": [
+      {
+        "id": "masajeador-manos",
+        "title": "Masajeador de Manos con Compresión Térmica + Muñequera de regalo 🎁",
+        "quantity": 1,
+        "price": 179
+      }
+    ],
+    "subtotal": 179,
+    "shippingRate": {
+      "name": "Envío Delivery Express 24h Cabi Store",
+      "price": 15
+    },
+    "total": 194,
+    "paymentMethod": "Pago Contra Entrega (Efectivo / Plin)",
+    "status": "Entregado",
+    "notes": "Entrega realizada exitosamente por motorizado 4."
+  },
+  {
     "id": "VIT-654129",
     "createdAt": "2026-10-15T19:45:00.000Z",
     "customer": {
@@ -127,37 +322,5 @@
     "paymentMethod": "Pago Contra Entrega (Efectivo / Plin)",
     "status": "Entregado",
     "notes": "Entrega realizada exitosamente por motorizado 4."
-  },
-  {
-    "id": "VIT-432198",
-    "createdAt": "2026-10-16T09:05:00.000Z",
-    "customer": {
-      "name": "Lucía Paredes Silva",
-      "email": "lucia.paredes@outlook.com",
-      "phone": "964789012",
-      "dni": "72341908",
-      "address": "Av. La Marina 2200",
-      "reference": "Cerca a Plaza San Miguel",
-      "department": "Lima (Metropolitana)",
-      "province": "Lima",
-      "district": "San Miguel"
-    },
-    "items": [
-      {
-        "id": "masajeador-ojos",
-        "title": "Antifaz Masajeador Ocular Smart con Presión de Aire y Bluetooth",
-        "quantity": 1,
-        "price": 119
-      }
-    ],
-    "subtotal": 119,
-    "shippingRate": {
-      "name": "Envío Delivery VITACORE (2-3 días) - Contraentrega",
-      "price": 10
-    },
-    "total": 129,
-    "paymentMethod": "Pago Contra Entrega",
-    "status": "Pendiente",
-    "notes": "Nuevo pedido recibido desde la web. Requiere confirmación por WhatsApp."
   }
 ]

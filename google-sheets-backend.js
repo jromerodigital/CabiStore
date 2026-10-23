@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * VITACORE PERÚ - BACKEND GOOGLE SHEETS & DASHBOARD AUTOMATIZADO
+ * CABI STORE PERÚ - BACKEND GOOGLE SHEETS & DASHBOARD AUTOMATIZADO
  * ============================================================================
  * Conector oficial bidireccional para tienda e-commerce COD (Contra Entrega).
  * 
@@ -14,7 +14,7 @@
 // Menú personalizado al abrir la hoja de cálculo
 function onOpen() {
   SpreadsheetApp.getUi()
-    .createMenu('🚀 VITACORE Store')
+    .createMenu('🚀 Cabi Store')
     .addItem('📊 Inicializar / Reparar Estructura y Fórmulas', 'setupFullSpreadsheet')
     .addItem('🔄 Recalcular Dashboard de KPIs', 'setupDashboardSheet')
     .addItem('ℹ️ Ayuda de Conexión con Tienda', 'showConnectionHelp')
@@ -24,7 +24,7 @@ function onOpen() {
 function showConnectionHelp() {
   var ui = SpreadsheetApp.getUi();
   ui.alert(
-    'Conexión VITACORE Store',
+    'Conexión Cabi Store',
     'Para conectar este backend con tu tienda:\n\n' +
     '1. Ve a "Implementar > Administrar implementaciones" o "Nueva implementación".\n' +
     '2. Tipo: "Aplicación web".\n' +
@@ -50,7 +50,7 @@ function doGet(e) {
 
   var output = {
     ok: true,
-    store: 'VITACORE Perú',
+    store: 'Cabi Store Perú',
     timestamp: new Date().toISOString(),
     totalOrders: orders.length,
     totalProducts: products.length,
@@ -121,7 +121,7 @@ function setupFullSpreadsheet() {
   cleanDefaultEmptySheet(ss);
   SpreadsheetApp.flush();
   try {
-    SpreadsheetApp.getActiveSpreadsheet().toast('✅ Estructura y fórmulas configuradas con éxito.', 'VITACORE Store', 5);
+    SpreadsheetApp.getActiveSpreadsheet().toast('✅ Estructura y fórmulas configuradas con éxito.', 'Cabi Store', 5);
   } catch (e) {}
 }
 
@@ -185,7 +185,7 @@ function setupDashboardSheet() {
 
   // Título principal
   sheet.getRange('A1:G1').merge()
-    .setValue('📊 VITACORE PERÚ — TABLERO DE CONTROL & MÉTRICAS E-COMMERCE')
+    .setValue('📊 CABI STORE PERÚ — TABLERO DE CONTROL & MÉTRICAS E-COMMERCE')
     .setFontWeight('bold')
     .setFontSize(14)
     .setBackground('#0f172a')
@@ -371,7 +371,7 @@ function upsertProductRow(sheet, p) {
   var rowData = [
     p.id,
     p.title || '',
-    p.brand || 'VITACORE',
+    p.brand || 'CABI STORE',
     p.category || 'cargadores',
     Number(p.price || 0),
     Number(p.oldPrice || 0),

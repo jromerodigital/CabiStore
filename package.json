@@ -1,7 +1,7 @@
 {
-  "name": "vitacore-store",
+  "name": "cabi-store",
   "version": "1.0.0",
-  "description": "VITACORE Perú - E-Commerce High-Conversion COD Store & Admin Panel",
+  "description": "Cabi Store Perú - E-Commerce High-Conversion COD Store & Admin Panel",
   "type": "module",
   "main": "server.mjs",
   "scripts": {

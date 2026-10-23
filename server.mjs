@@ -18,14 +18,15 @@ const UPLOADS_DIR = path.join(__dirname, 'assets', 'uploads');
 
 // ===================== CREDENCIALES ADMIN (Configurables en Railway) =====================
 const ADMIN_USER = process.env.ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASS || 'vitacore2026';
-const ADMIN_SECRET = process.env.ADMIN_SECRET || crypto.createHash('sha256').update(`vitacore-secret-${ADMIN_USER}-${ADMIN_PASS}`).digest('hex');
+const ADMIN_PASS = process.env.ADMIN_PASS || 'cabi2026';
+const ADMIN_SECRET = process.env.ADMIN_SECRET || crypto.createHash('sha256').update(`cabi-secret-${ADMIN_USER}-${ADMIN_PASS}`).digest('hex');
 const TOKEN_TTL_MS = 24 * 60 * 60 * 1000; // 24 horas
 
 // ===================== CATÁLOGO Y REGLAS DE NEGOCIO (Validación Server-Side) =====================
 const FREE_SHIPPING_THRESHOLD = 200;
 
 const COUPONS = {
+  CABI10: { code: 'CABI10', discount: 10, description: 'S/. 10.00 de descuento' },
   VITACORE10: { code: 'VITACORE10', discount: 10, description: 'S/. 10.00 de descuento' },
   BOOST10: { code: 'BOOST10', discount: 10, description: 'S/. 10.00 de descuento' }
 };
@@ -33,7 +34,7 @@ const COUPONS = {
 const PRODUCTS_CATALOG = new Map([
   ['pistola-masaje-promax', {
     id: 'pistola-masaje-promax',
-    title: 'Pistola de Masaje Percusión VITACORE Pro Max + 6 Cabezales de regalo 🎁',
+    title: 'Pistola de Masaje Percusión CABI Pro Max + 6 Cabezales de regalo 🎁',
     price: 169.00,
     bundlePrice: 319.00
   }],
@@ -63,19 +64,19 @@ const PRODUCTS_CATALOG = new Map([
   }],
   ['smartwatch-ultra-amoled', {
     id: 'smartwatch-ultra-amoled',
-    title: 'Smartwatch VITACORE Ultra Amoled + Correa deportiva extra de regalo ⌚',
+    title: 'Smartwatch CABI Ultra Amoled + Correa deportiva extra de regalo ⌚',
     price: 189.00,
     bundlePrice: 350.00
   }],
   ['smartwatch-elegance-slim', {
     id: 'smartwatch-elegance-slim',
-    title: 'Smartwatch VITACORE Elegance Slim (Batería 10 días + 100 Modos Sport)',
+    title: 'Smartwatch CABI Elegance Slim (Batería 10 días + 100 Modos Sport)',
     price: 149.00,
     bundlePrice: 279.00
   }],
   ['audifonos-pro-anc', {
     id: 'audifonos-pro-anc',
-    title: 'Audífonos Inalámbricos VITACORE SoundPro con Cancelación de Ruido',
+    title: 'Audífonos Inalámbricos CABI SoundPro con Cancelación de Ruido',
     price: 149.00,
     bundlePrice: 279.00
   }],
@@ -364,6 +365,9 @@ function getAuthenticatedAdmin(req) {
     if (verified) return verified;
   }
   const cookies = parseCookies(req.headers.cookie || '');
+  if (cookies.cabi_admin_token) {
+    return verifyAdminToken(cookies.cabi_admin_token);
+  }
   if (cookies.vitacore_admin_token) {
     return verifyAdminToken(cookies.vitacore_admin_token);
   }
@@ -511,7 +515,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && pathname === '/api/health') {
     sendJson(req, res, 200, {
       status: 'ok',
-      service: 'vitacore-store',
+      service: 'cabi-store',
       uptime: Math.round(process.uptime()),
       timestamp: new Date().toISOString()
     });
@@ -550,7 +554,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const { username, password } = await readJsonBody(req);
       const validUser = safeCompare(sanitizeText(username, 64), ADMIN_USER);
-      const validPass = safeCompare(String(password ?? ''), ADMIN_PASS);
+      const validPass = safeCompare(String(password ?? ''), ADMIN_PASS) || (!process.env.ADMIN_PASS && safeCompare(String(password ?? ''), 'vitacore2026'));
 
       if (!validUser || !validPass) {
         sendJson(req, res, 401, { success: false, error: 'Usuario o contraseña incorrectos.' });
@@ -558,7 +562,7 @@ const server = http.createServer(async (req, res) => {
       }
 
       const token = createAdminToken(ADMIN_USER);
-      const cookie = `vitacore_admin_token=${encodeURIComponent(token)}; HttpOnly; Path=/; Max-Age=${Math.floor(TOKEN_TTL_MS / 1000)}; SameSite=Lax`;
+      const cookie = `cabi_admin_token=${encodeURIComponent(token)}; HttpOnly; Path=/; Max-Age=${Math.floor(TOKEN_TTL_MS / 1000)}; SameSite=Lax`;
       sendJson(req, res, 200, {
         success: true,
         user: ADMIN_USER,
@@ -571,7 +575,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && pathname === '/api/admin/logout') {
-    const expiredCookie = 'vitacore_admin_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax';
+    const expiredCookie = 'cabi_admin_token=; HttpOnly; Path=/; Max-Age=0; SameSite=Lax';
     sendJson(req, res, 200, { success: true }, { 'Set-Cookie': expiredCookie });
     return;
   }
@@ -690,7 +694,7 @@ const server = http.createServer(async (req, res) => {
       const newProduct = {
         id,
         title: sanitizeText(data.title, 200),
-        brand: sanitizeText(data.brand || 'VITACORE', 80),
+        brand: sanitizeText(data.brand || 'CABI STORE', 80),
         category: sanitizeText(data.category || 'cargadores', 50),
         price: Number(data.price) || 0,
         oldPrice: Number(data.oldPrice) || (Number(data.price) * 1.5),
@@ -963,7 +967,7 @@ const server = http.createServer(async (req, res) => {
       const verifiedShipPrice = validShippingPrices.has(requestedShipPrice) ? requestedShipPrice : 0;
       const verifiedTotal = verifiedSubtotal + verifiedShipPrice;
 
-      const orderId = `VIT-${Math.floor(100000 + Math.random() * 900000)}`;
+      const orderId = `CAB-${Math.floor(100000 + Math.random() * 900000)}`;
       const newOrder = {
         id: orderId,
         createdAt: new Date().toISOString(),
@@ -983,7 +987,7 @@ const server = http.createServer(async (req, res) => {
         discount: discountAmount,
         subtotal: verifiedSubtotal,
         shippingRate: {
-          name: sanitizeText(orderData.shippingRate?.name || 'Envío Delivery VITACORE', 120),
+          name: sanitizeText(orderData.shippingRate?.name || 'Envío Delivery Cabi Store', 120),
           price: verifiedShipPrice
         },
         total: verifiedTotal,
@@ -1158,6 +1162,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`[VITACORE Store] Servidor escuchando en: http://${HOST}:${PORT} (Local: http://localhost:${PORT})`);
-  console.log(`[VITACORE Store] Panel de Control Admin protegido: http://localhost:${PORT}/admin`);
+  console.log(`[Cabi Store] Servidor escuchando en: http://${HOST}:${PORT} (Local: http://localhost:${PORT})`);
+  console.log(`[Cabi Store] Panel de Control Admin protegido: http://localhost:${PORT}/admin`);
 });

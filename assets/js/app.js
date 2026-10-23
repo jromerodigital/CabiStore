@@ -1,11 +1,11 @@
 /**
- * VITACORE PERÚ - High-Conversion E-Commerce Architecture
+ * CABI STORE PERÚ - High-Conversion E-Commerce Architecture
  * Exact UI/UX & Flow inspired by The Boost Perú (Shopify Studio / Dawn)
  * Pure Vanilla JavaScript - Ultra-responsive, zero bloat, mobile-first.
  */
 
 const CONFIG = {
-  storeName: "VITACORE Perú",
+  storeName: "Cabi Store Perú",
   whatsappNumber: "51984718555",
   freeShippingThreshold: 200,
   currency: "S/."
@@ -17,8 +17,8 @@ const CONFIG = {
 const PRODUCTS = [
   {
     id: "pistola-masaje-promax",
-    title: "Pistola de Masaje Percusión VITACORE Pro Max + 6 Cabezales de regalo 🎁",
-    brand: "VITACORE Pro Therapy",
+    title: "Pistola de Masaje Percusión CABI Pro Max + 6 Cabezales de regalo 🎁",
+    brand: "CABI Pro Therapy",
     category: "masajeadores",
     price: 169.00,
     oldPrice: 289.00,
@@ -49,7 +49,7 @@ const PRODUCTS = [
   {
     id: "masajeador-manos-terapia",
     title: "Masajeador de manos + Muñequera de compresión de regalo 🎁",
-    brand: "VITACORE Pro Therapy",
+    brand: "CABI Pro Therapy",
     category: "masajeadores",
     price: 179.00,
     oldPrice: 359.00,
@@ -80,7 +80,7 @@ const PRODUCTS = [
   {
     id: "masajeador-cervical-4d",
     title: "Masajeador Cervical Térmico 4D Shiatsu para Cuello y Espalda",
-    brand: "VITACORE Pro Therapy",
+    brand: "CABI Pro Therapy",
     category: "masajeadores",
     price: 139.00,
     oldPrice: 249.00,
@@ -110,7 +110,7 @@ const PRODUCTS = [
   {
     id: "masajeador-ojos-presion",
     title: "Masajeador de ojos inteligente con termoterapia y música Bluetooth",
-    brand: "VITACORE Sleep & Care",
+    brand: "CABI Sleep & Care",
     category: "bienestar",
     price: 139.00,
     oldPrice: 279.00,
@@ -140,7 +140,7 @@ const PRODUCTS = [
   {
     id: "dilatador-nasal-magnetico",
     title: "Dilatador nasal magnético ergonómico anti-ronquidos (Pack x 2)",
-    brand: "VITACORE Sleep & Care",
+    brand: "CABI Sleep & Care",
     category: "accesorios",
     price: 79.00,
     oldPrice: 159.00,
@@ -169,8 +169,8 @@ const PRODUCTS = [
   },
   {
     id: "smartwatch-ultra-amoled",
-    title: "Smartwatch VITACORE Ultra Amoled + Correa deportiva extra de regalo ⌚",
-    brand: "VITACORE SmartTech",
+    title: "Smartwatch CABI Ultra Amoled + Correa deportiva extra de regalo ⌚",
+    brand: "CABI SmartTech",
     category: "smartwatch",
     price: 189.00,
     oldPrice: 320.00,
@@ -199,8 +199,8 @@ const PRODUCTS = [
   },
   {
     id: "smartwatch-elegance-slim",
-    title: "Smartwatch VITACORE Elegance Slim (Batería 10 días + 100 Modos Sport)",
-    brand: "VITACORE SmartTech",
+    title: "Smartwatch CABI Elegance Slim (Batería 10 días + 100 Modos Sport)",
+    brand: "CABI SmartTech",
     category: "smartwatch",
     price: 149.00,
     oldPrice: 249.00,
@@ -229,8 +229,8 @@ const PRODUCTS = [
   },
   {
     id: "audifonos-pro-anc",
-    title: "Audífonos Inalámbricos VITACORE SoundPro con Cancelación de Ruido",
-    brand: "VITACORE SoundLab",
+    title: "Audífonos Inalámbricos CABI SoundPro con Cancelación de Ruido",
+    brand: "CABI SoundLab",
     category: "audio",
     price: 149.00,
     oldPrice: 260.00,
@@ -260,7 +260,7 @@ const PRODUCTS = [
   {
     id: "auriculares-air-sport",
     title: "Auriculares Inalámbricos Air Pro con Estuche de Carga Inalámbrica",
-    brand: "VITACORE SoundLab",
+    brand: "CABI SoundLab",
     category: "audio",
     price: 119.00,
     oldPrice: 199.00,
@@ -290,7 +290,7 @@ const PRODUCTS = [
   {
     id: "parlante-smarthome-alexa",
     title: "Altavoz Inteligente Smart Home con Control de Voz & Reloj LED",
-    brand: "VITACORE SmartTech",
+    brand: "CABI SmartTech",
     category: "smarthome",
     price: 139.00,
     oldPrice: 239.00,
@@ -320,7 +320,7 @@ const PRODUCTS = [
   {
     id: "difusor-ultrasonico-smart",
     title: "Difusor Aromático Ultrasónico Smart Home con Luz Ambiente y App WiFi",
-    brand: "VITACORE SmartTech",
+    brand: "CABI SmartTech",
     category: "smarthome",
     price: 119.00,
     oldPrice: 199.00,
@@ -350,7 +350,7 @@ const PRODUCTS = [
   {
     id: "cargador-rapido-20w-lightning",
     title: "Cargador Rápido 20W Power Delivery + Cable Reforzado 1M",
-    brand: "VITACORE Power",
+    brand: "CABI Power",
     category: "cargadores",
     price: 69.00,
     oldPrice: 129.00,
@@ -396,11 +396,11 @@ const state = {
   appliedDiscount: 0,
   appliedCouponCode: null,
   selectedShippingPrice: 0,
-  selectedShippingName: "Envío Delivery VITACORE (2-3 días)",
+  selectedShippingName: "Envío Delivery Cabi Store (2-3 días)",
   isLimaCallao: true,
   cart: (() => {
     try {
-      const stored = localStorage.getItem("vitacore_cart");
+      const stored = localStorage.getItem("cabi_cart") || localStorage.getItem("vitacore_cart");
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
@@ -600,30 +600,32 @@ function renderProductsGrid() {
     return `
       <article class="product-card" onclick="openPDP('${product.id}')" aria-label="${product.title}">
         <div class="product-card-media">
-          ${topTagHtml}
-          <img src="${product.images[0]}" alt="${product.title}" class="product-card-img" loading="lazy" decoding="async">
-          <span class="product-card-badge ${product.isSoldOut ? 'sold-out' : ''}">
-            ${product.isSoldOut ? 'Agotado' : `-${discountPct}% ${product.badge}`}
+          <span class="product-card-badge-pill ${product.isSoldOut ? 'sold-out' : ''}">
+            ${product.isSoldOut ? 'Agotado' : `-${discountPct}%`}
           </span>
+          <button type="button" class="product-wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, '${product.id}')" aria-label="Favorito" title="Guardar en favoritos">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <img src="${product.images[0]}" alt="${product.title}" class="product-card-img" loading="lazy" decoding="async">
         </div>
         <div class="product-card-info">
           <span class="product-card-brand">${product.brand}</span>
           <h3 class="product-card-title">${product.title}</h3>
           <div class="product-card-rating">
-            <span class="stars">★★★★★</span>
-            <span class="rating-num">${product.rating.toFixed(1)} (${product.reviewsCount})</span>
+            <span class="stars-gold">★★★★★</span>
+            <span class="rating-num">(${product.reviewsCount})</span>
           </div>
           <div class="product-card-pricing">
-            <span class="price-regular">S/. ${product.oldPrice.toFixed(2)}</span>
             <span class="price-sale">S/. ${product.price.toFixed(2)}</span>
+            <span class="price-regular">S/. ${product.oldPrice.toFixed(2)}</span>
           </div>
           <div class="product-card-actions">
-            <button type="button" class="btn-card-buy-now" onclick="event.stopPropagation(); openCODDirect('${product.id}')" title="Comprar este producto de inmediato con Pago Contra Entrega">
-              ${product.isSoldOut ? 'Consultar Próximo Lote' : '⚡ Comprar ahora'}
+            <button type="button" class="btn-card-add-cart-technova" id="btn-add-${product.id}" onclick="event.stopPropagation(); handleAddToCart('${product.id}')" title="Agregar al carrito de compras">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 0 0-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+              <span>${product.isSoldOut ? 'Agotado' : 'Añadir al carrito'}</span>
             </button>
-            <button type="button" class="btn-card-add-cart" id="btn-add-${product.id}" onclick="event.stopPropagation(); handleAddToCart('${product.id}')" title="Agregar al carrito de compras">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-              <span>Agregar al carrito</span>
+            <button type="button" class="btn-card-cod-fast" onclick="event.stopPropagation(); openCODDirect('${product.id}')" title="Comprar contra entrega al instante">
+              <span>⚡ Pide hoy y paga en casa</span>
             </button>
           </div>
         </div>
@@ -837,7 +839,7 @@ function renderDynamicHeroSlides(slidesData) {
           <div class="hero-full-banner-wrap">
             <picture class="hero-picture-media">
               <source media="(max-width: 768px)" srcset="${mobileImg}">
-              <img src="${desktopImg}" alt="${s.title || 'Promoción VITACORE'}" class="hero-full-banner-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
+              <img src="${desktopImg}" alt="${s.title || 'Promoción Cabi Store'}" class="hero-full-banner-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
             </picture>
             ${overlayHtml}
           </div>
@@ -869,7 +871,7 @@ function renderDynamicHeroSlides(slidesData) {
           <div class="hero-image-wrap" onclick="triggerSlideAction('${actType}', '${actTarget}')" style="cursor: pointer;">
             <picture class="hero-picture-media">
               <source media="(max-width: 768px)" srcset="${mobileImg}">
-              <img src="${desktopImg}" alt="${s.title || 'Producto VITACORE'}" class="hero-product-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
+              <img src="${desktopImg}" alt="${s.title || 'Producto Cabi Store'}" class="hero-product-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
             </picture>
           </div>
         </div>
@@ -1198,7 +1200,7 @@ function updateShippingRatesDOM(isLima) {
 
   if (isLima) {
     opt1.dataset.price = isFree ? "0" : "10";
-    opt1.querySelector(".ship-name").textContent = "Envío Delivery VITACORE (2-3 días) - Contraentrega";
+    opt1.querySelector(".ship-name").textContent = "Envío Delivery Cabi Store (2-3 días) - Contraentrega";
     opt1.querySelector(".ship-price-val").textContent = isFree ? "GRATIS" : "S/. 10.00";
 
     opt2.dataset.price = "15";
@@ -1274,7 +1276,7 @@ async function submitCODForm(event) {
   const prod = state.activeProduct;
   const subtotal = (state.codUnits === 1 ? prod.price : prod.bundlePrice) - state.appliedDiscount;
   let total = subtotal + state.selectedShippingPrice;
-  let orderId = `VIT-${Math.floor(100000 + Math.random() * 900000)}`;
+  let orderId = `CAB-${Math.floor(100000 + Math.random() * 900000)}`;
 
   const orderPayload = {
     customer: {
@@ -1402,7 +1404,7 @@ function initCart() {
 
 function saveCart() {
   try {
-    localStorage.setItem("vitacore_cart", JSON.stringify(state.cart));
+    localStorage.setItem("cabi_cart", JSON.stringify(state.cart));
   } catch (err) {
     console.warn("Error guardando carrito en localStorage:", err);
   }
@@ -1649,5 +1651,44 @@ function openBenefitDetail(type) {
   }
 }
 window.openBenefitDetail = openBenefitDetail;
+
+// TechNova Header Search Sync
+function syncHeaderSearch(val) {
+  const catalogSearch = document.getElementById("catalog-search-input");
+  if (catalogSearch) {
+    catalogSearch.value = val;
+    handleCatalogFilterChange();
+    const catalogSec = document.getElementById("lo-mas-nuevo");
+    if (catalogSec && val.trim().length > 1) {
+      catalogSec.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+}
+window.syncHeaderSearch = syncHeaderSearch;
+
+// Wishlist interaction
+function toggleWishlist(btn, productId) {
+  btn.classList.toggle("active");
+  const svg = btn.querySelector("svg");
+  if (btn.classList.contains("active")) {
+    svg.setAttribute("fill", "#dc2626");
+    svg.setAttribute("stroke", "#dc2626");
+    showNotification("❤️ Guardado en tus favoritos");
+  } else {
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    showNotification("Removido de tus favoritos");
+  }
+}
+window.toggleWishlist = toggleWishlist;
+
+// Quick Catalog horizontal scroll
+function scrollCatalog(dir) {
+  const grid = document.getElementById("products-grid");
+  if (grid) {
+    grid.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  }
+}
+window.scrollCatalog = scrollCatalog;
 
 
