@@ -804,80 +804,55 @@ function renderDynamicHeroSlides(slidesData) {
 
   track.innerHTML = activeSlides.map((s, idx) => {
     const isFirst = idx === 0;
-    const desktopImg = s.desktopImage || "https://theboostperu.com/cdn/shop/files/banner.png?v=1707601305&width=2000";
+    const desktopImg = s.desktopImage || "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&h=650&q=85";
     const mobileImg = s.mobileImage || desktopImg;
-    const ratio = s.mobileRatio || "adapt";
-    const bg = s.bgColor || "#f4f4f4";
     const actType = s.actionType || "product";
     const actTarget = s.actionTarget || "pistola-masaje-promax";
+    const title = s.headline || s.title || "La tecnología de bienestar a tu alcance";
+    const eyebrow = s.eyebrow || "✦ Novedad 2026";
+    const desc = s.description || "Descubre los últimos smartwatches, pistolas de percusión y audífonos con máxima durabilidad y precios accesibles.";
+    const priceNow = s.price > 0 ? `S/. ${Number(s.price).toFixed(2)}` : "S/. 139.00";
+    const priceOld = s.oldPrice > 0 ? `Antes S/. ${Number(s.oldPrice).toFixed(2)}` : "";
 
-    if (s.layoutMode === "banner") {
-      const overlayHtml = s.showOverlayText ? `
-        <div class="hero-banner-overlay ${s.textAlign === 'center' ? 'align-center' : ''}">
-          <div class="hero-text-wrap" style="max-width: 580px;">
-            ${s.eyebrow ? `<div class="hero-eyebrow">${s.eyebrow}</div>` : ''}
-            ${s.headline ? `<h2 class="hero-headline">${s.headline}</h2>` : ''}
-            ${s.description ? `<p class="hero-description">${s.description}</p>` : ''}
-            <div class="hero-cta-row" style="${s.textAlign === 'center' ? 'justify-content:center;' : ''}">
-              <button type="button" class="hero-cta-btn" onclick="event.stopPropagation(); triggerSlideAction('${actType}', '${actTarget}')">
-                <span>${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
-                ${s.ctaSub ? `<span class="hero-cta-sub">${s.ctaSub}</span>` : ''}
-              </button>
-              ${s.price > 0 ? `
-                <div class="hero-price-box">
-                  ${s.oldPrice > 0 ? `<div class="hero-price-old">Normal: S/. ${Number(s.oldPrice).toFixed(2)}</div>` : ''}
-                  <div class="hero-price-now">Hoy: S/. ${Number(s.price).toFixed(2)}</div>
-                </div>
-              ` : ''}
-            </div>
-          </div>
-        </div>
-      ` : '';
-
-      return `
-        <div class="hero-slide hero-slide--banner ${isFirst ? 'active' : ''}" data-slide="${idx}" data-mobile-ratio="${ratio}" style="background: ${bg};" ${isFirst ? '' : 'hidden'} onclick="triggerSlideAction('${actType}', '${actTarget}')">
-          <div class="hero-full-banner-wrap">
-            <picture class="hero-picture-media">
-              <source media="(max-width: 768px)" srcset="${mobileImg}">
-              <img src="${desktopImg}" alt="${s.title || 'Promoción Cabi Store'}" class="hero-full-banner-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
-            </picture>
-            ${overlayHtml}
-          </div>
-        </div>
-      `;
-    }
-
-    // Modo "split" (2 columnas en Desktop, Imagen arriba + Tarjeta compacta abajo en Mobile)
     return `
-      <div class="hero-slide hero-slide--split ${isFirst ? 'active' : ''}" data-slide="${idx}" data-mobile-ratio="${ratio}" style="background: ${bg};" ${isFirst ? '' : 'hidden'}>
-        <div class="hero-banner-inner">
-          <div class="hero-text-wrap">
-            ${s.eyebrow ? `<div class="hero-eyebrow">${s.eyebrow}</div>` : ''}
-            <h2 class="hero-headline">${s.headline || s.title || ''}</h2>
-            ${s.description ? `<p class="hero-description">${s.description}</p>` : ''}
-            <div class="hero-cta-row">
-              <button type="button" class="hero-cta-btn" onclick="triggerSlideAction('${actType}', '${actTarget}')">
-                <span>${s.ctaText || 'OBTENER OFERTA 🎁'}</span>
-                ${s.ctaSub ? `<span class="hero-cta-sub">${s.ctaSub}</span>` : ''}
+      <div class="hero-curved-slide ${isFirst ? 'active' : ''}" data-slide="${idx}" ${isFirst ? '' : 'hidden'}>
+        <div class="hero-slide-grid">
+          <div class="hero-content-col">
+            <span class="hero-pill-badge">
+              <span class="badge-star">✦</span> ${eyebrow}
+            </span>
+            <h2 class="hero-big-title">${title}</h2>
+            <p class="hero-subtext-clean">${desc}</p>
+            <div class="hero-actions-group">
+              <button type="button" class="btn-hero-primary" onclick="triggerSlideAction('${actType}', '${actTarget}')">
+                <span>${s.ctaText || 'Descubrir la colección'}</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </button>
-              ${s.price > 0 ? `
-                <div class="hero-price-box">
-                  ${s.oldPrice > 0 ? `<div class="hero-price-old">Normal: S/. ${Number(s.oldPrice).toFixed(2)}</div>` : ''}
-                  <div class="hero-price-now">Hoy: S/. ${Number(s.price).toFixed(2)}</div>
-                </div>
-              ` : ''}
+              <div class="hero-price-tag-pill">
+                <span class="tag-from">${priceOld ? priceOld : 'Desde'}</span>
+                <strong class="tag-amount">${priceNow}</strong>
+              </div>
             </div>
           </div>
-          <div class="hero-image-wrap" onclick="triggerSlideAction('${actType}', '${actTarget}')" style="cursor: pointer;">
+
+          <div class="hero-visual-col" onclick="triggerSlideAction('${actType}', '${actTarget}')" style="cursor: pointer;">
+            <div class="hero-ambient-glow"></div>
             <picture class="hero-picture-media">
               <source media="(max-width: 768px)" srcset="${mobileImg}">
-              <img src="${desktopImg}" alt="${s.title || 'Producto Cabi Store'}" class="hero-product-img" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
+              <img src="${desktopImg}" alt="${title}" class="hero-main-gadget" ${isFirst ? 'fetchpriority="high"' : 'loading="lazy"'}>
             </picture>
           </div>
         </div>
       </div>
     `;
   }).join("");
+
+  dotsContainer.innerHTML = activeSlides.map((_, idx) => `
+    <span class="hero-dot ${idx === 0 ? 'active' : ''}" onclick="goToHeroSlide(${idx})" aria-label="Ir al slide ${idx + 1}"></span>
+  `).join("");
+
+  initHeroSlider();
+}
 
   dotsContainer.innerHTML = activeSlides.map((_, idx) => `
     <span class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToHeroSlide(${idx})" aria-label="Ir al slide ${idx + 1}"></span>
@@ -897,8 +872,11 @@ function renderDynamicCategories(categories) {
       </div>
       <div class="category-card-title">
         <span>${cat.name}</span>
-        <svg class="category-arrow-icon" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"/>
+      </div>
+      <div class="category-arrow-wrap">
+        <svg class="category-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </div>
     </a>
